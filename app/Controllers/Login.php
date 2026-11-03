@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Controllers;
+
+class Login extends BaseController
+{
+    public function index(): string
+    {
+        
+        return view('pages/login');
+    }
+
+    public function passwordLogin(): string
+    {
+        
+        return view('pages/password-login');
+    }
+}

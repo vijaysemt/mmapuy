@@ -1,0 +1,362 @@
+/* =========================================
+   LOGIN PAGE - MAIN CONTAINER
+========================================= */
+
+.login-page {
+    min-height: 100vh;
+    padding: 55px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(47, 128, 237, 0.10), transparent 30%),
+        radial-gradient(circle at 90% 90%, rgba(0, 173, 181, 0.10), transparent 30%),
+        #f2f6fc;
+}
+
+.login-wrapper {
+    width: 100%;
+    max-width: 1120px;
+    background: #ffffff;
+    border-radius: 22px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    box-shadow: 0 18px 55px rgba(30, 55, 90, 0.12);
+    border: 1px solid #e8eef7;
+}
+
+/* =========================================
+   LEFT SIDE - CM PROFILE
+========================================= */
+
+.login-left {
+    position: relative;
+    padding: 55px 35px;
+    background: linear-gradient(145deg, #103b70, #1766a8 65%, #168b9a);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.login-left::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50%;
+    top: -130px;
+    left: -130px;
+}
+
+.login-left::after {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50%;
+    bottom: -120px;
+    right: -100px;
+}
+
+.cm-profile {
+    position: relative;
+    z-index: 1;
+}
+
+.cm-profile img {
+    width: 230px;
+    height: 270px;
+    object-fit: contain;
+    object-position: center bottom;
+    margin-bottom: 22px;
+    filter: drop-shadow(0 10px 18px rgba(0,0,0,0.15));
+}
+
+.cm-profile h2 {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+.cm-profile h5 {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 25px;
+}
+
+.login-left-divider {
+    width: 65px;
+    height: 3px;
+    background: #ffd166;
+    border-radius: 5px;
+    margin: 0 auto 22px;
+}
+
+.login-left-description {
+    position: relative;
+    z-index: 1;
+    max-width: 330px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.88);
+}
+
+/* =========================================
+   RIGHT SIDE - LOGIN FORM
+========================================= */
+
+.login-right {
+    padding: 55px 65px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-top-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #1671b9;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.login-right h1 {
+    font-size: 29px;
+    font-weight: 750;
+    color: #183b60;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.login-subtitle {
+    font-size: 14px;
+    color: #75849a;
+    margin-bottom: 30px;
+    line-height: 1.7;
+}
+
+/* =========================================
+   FORM ELEMENTS
+========================================= */
+
+.login-form .form-group {
+    margin-bottom: 21px;
+}
+
+.login-form label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #344b65;
+    margin-bottom: 9px;
+}
+
+.login-form .form-control,
+.login-form .form-select {
+    min-height: 49px;
+    border: 1px solid #dce5ef;
+    border-radius: 9px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #263b53;
+    background-color: #f9fbfd;
+    transition: all 0.25s ease;
+    box-shadow: none;
+}
+
+.login-form .form-control:focus,
+.login-form .form-select:focus {
+    border-color: #2684c7;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(38,132,199,0.12);
+}
+
+.login-form .form-control::placeholder {
+    color: #a4afbd;
+}
+
+.login-error {
+    display: block;
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 7px;
+}
+
+.login-alert {
+    border-radius: 9px;
+    padding: 12px 15px;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.login-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.login-btn {
+    flex: 1;
+    min-height: 48px;
+    border: none;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    padding: 10px 15px;
+}
+
+.login-btn-primary {
+    background: linear-gradient(135deg, #176db3, #15528c);
+    color: #ffffff;
+}
+
+.login-btn-primary:hover {
+    background: linear-gradient(135deg, #125b99, #103f70);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 7px 16px rgba(23,109,179,0.22);
+}
+
+.login-btn-secondary {
+    background: #edf4fa;
+    color: #1a6098;
+    border: 1px solid #d7e6f3;
+}
+
+.login-btn-secondary:hover {
+    background: #e0edf8;
+    color: #124c7c;
+    transform: translateY(-2px);
+}
+
+.login-footer {
+    text-align: center;
+    font-size: 12px;
+    color: #94a1b1;
+    margin-top: 32px;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 991px) {
+
+    .login-wrapper {
+        max-width: 750px;
+        grid-template-columns: 0.8fr 1.2fr;
+    }
+
+    .login-left {
+        padding: 40px 20px;
+    }
+
+    .login-right {
+        padding: 40px 30px;
+    }
+
+    .cm-profile img {
+        width: 190px;
+        height: 230px;
+    }
+
+    .login-right h1 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .login-page {
+        padding: 20px 12px;
+        align-items: flex-start;
+    }
+
+    .login-wrapper {
+        max-width: 500px;
+        grid-template-columns: 1fr;
+        border-radius: 16px;
+    }
+
+    .login-left {
+        padding: 30px 20px 25px;
+    }
+
+    .cm-profile img {
+        width: 145px;
+        height: 165px;
+        margin-bottom: 10px;
+    }
+
+    .cm-profile h2 {
+        font-size: 21px;
+    }
+
+    .cm-profile h5 {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .login-left-divider {
+        margin-bottom: 12px;
+    }
+
+    .login-left-description {
+        font-size: 12px;
+        margin-bottom: 0;
+    }
+
+    .login-right {
+        padding: 32px 23px;
+    }
+
+    .login-right h1 {
+        font-size: 23px;
+    }
+
+    .login-subtitle {
+        margin-bottom: 23px;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .login-buttons {
+        flex-direction: column;
+    }
+
+    .login-btn {
+        width: 100%;
+        min-height: 46px;
+    }
+
+    .login-right {
+        padding: 28px 17px;
+    }
+
+    .login-right h1 {
+        font-size: 21px;
+    }
+}

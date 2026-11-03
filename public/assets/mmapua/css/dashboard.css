@@ -1,0 +1,164 @@
+/* DASHBOARD */
+
+.dashboard-page {
+    padding: 35px 15px;
+    min-height: 80vh;
+    background: #f3f6fb;
+}
+
+.dashboard-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.dashboard-eyebrow {
+    color: #1972b5;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+}
+
+.dashboard-heading h2 {
+    color: #183b60;
+    font-size: 28px;
+    font-weight: 750;
+    margin: 8px 0;
+}
+
+.dashboard-heading p {
+    color: #8491a3;
+    font-size: 14px;
+    margin: 0;
+}
+
+.dashboard-heading-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 15px;
+    background: #e2effa;
+    color: #176db3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.stat-card {
+    height: 100%;
+    padding: 24px;
+    background: #fff;
+    border: 1px solid #e8eef6;
+    border-radius: 16px;
+    box-shadow: 0 6px 22px rgba(30,55,90,.055);
+    transition: all .25s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(30,55,90,.10);
+}
+
+.stat-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 27px;
+}
+
+.stat-icon {
+    width: 49px;
+    height: 49px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+}
+
+.stat-icon.blue {
+    color: #176db3;
+    background: #e6f2fc;
+}
+
+.stat-icon.orange {
+    color: #dc8625;
+    background: #fff2df;
+}
+
+.stat-icon.green {
+    color: #198754;
+    background: #e4f5ec;
+}
+
+.stat-icon.red {
+    color: #dc3545;
+    background: #fde9eb;
+}
+
+.stat-icon.purple {
+    color: #7653b5;
+    background: #f0eafd;
+}
+
+.stat-indicator {
+    font-size: 11px;
+    color: #8491a3;
+    background: #f4f7fa;
+    border-radius: 20px;
+    padding: 6px 11px;
+}
+
+.stat-card-content p {
+    color: #718096;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 9px;
+}
+
+.stat-card-content h3 {
+    color: #183b60;
+    font-size: 32px;
+    font-weight: 750;
+    margin: 0;
+}
+
+.dashboard-empty {
+    padding: 40px 20px;
+    text-align: center;
+    background: white;
+    border-radius: 14px;
+    color: #718096;
+}
+
+.dashboard-empty i {
+    font-size: 30px;
+    color: #176db3;
+}
+
+@media(max-width:767px) {
+
+    .dashboard-page {
+        padding: 25px 12px;
+    }
+
+    .dashboard-heading h2 {
+        font-size: 23px;
+    }
+
+    .dashboard-heading-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+
+    .stat-card {
+        padding: 20px;
+    }
+
+    .stat-card-content h3 {
+        font-size: 28px;
+    }
+
+}
