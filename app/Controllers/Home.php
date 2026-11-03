@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 use App\Models\Home_model;
@@ -14,33 +15,32 @@ class Home extends BaseController
     }
 
     public function index(): string
-{
-    helper(['url']);
+    {
+        helper(['url']);
 
-    $data = [
-        'title' => 'मुख्यमंत्री अंत्योदय परिवार उत्थान योजना',
-        'Get_department_name' => $this->Home_model->Get_department_name(),
-        'counter' => []
-    ];
+        $data = [
+            'title' => 'मुख्यमंत्री अंत्योदय परिवार उत्थान योजना',
+            'Get_department_name' => $this->Home_model->Get_department_name(),
+            'counter' => []
+        ];
 
-    return view('pages/home', $data);
-}
+        return view('pages/home', $data);
+    }
 
     public function allScheme_list()
-	{
-		$departmentId                         = $this->request->getPost('department_id');
-		$adminpagedata                        = $this->Home_model->schemeName($departmentId);	
-		echo json_encode($adminpagedata);
+    {
+        $departmentId                         = $this->request->getPost('department_id');
+        $adminpagedata                        = $this->Home_model->schemeName($departmentId);
+        echo json_encode($adminpagedata);
+    }
 
-	}
-
-	public function allScheme_list_byId()
-	{
-		$scheme_id                            =$this->request->getPost('scheme_id');
-		$department_id                        = $this->request->getPost('department_id');
-		$adminpagedata                        = $this->Home_model->allScheme_list_byId($department_id,$scheme_id);	
-		echo json_encode($adminpagedata);
-	}
+    public function allScheme_list_byId()
+    {
+        $scheme_id                            = $this->request->getPost('scheme_id');
+        $department_id                        = $this->request->getPost('department_id');
+        $adminpagedata                        = $this->Home_model->allScheme_list_byId($department_id, $scheme_id);
+        echo json_encode($adminpagedata);
+    }
 
     public function SingleSchemelistbyId()
     {
@@ -55,9 +55,9 @@ class Home extends BaseController
         return $this->response->setJSON($result);
     }
 
-public function downloadDocuments(): string
-{
-            helper(['url']);
+    public function downloadDocuments(): string
+    {
+        helper(['url']);
 
         $data = [
             'title' => 'समर्थित दस्तावेज',
@@ -65,8 +65,5 @@ public function downloadDocuments(): string
         ];
 
         return view('pages/home_documents', $data);
-}
-
-
-
+    }
 }
