@@ -33,7 +33,7 @@ class LoginController extends BaseController
     // Display OTP screen
     public function mobileOtp()
     {
-        return view('pages/mobile-otp', [
+        return view('pages/auth/mobile_otp', [
             'mob' => session()->get('mob')
         ]);
     }
