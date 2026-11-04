@@ -1,9 +1,9 @@
 
 $(document).ready(function () {
 
-    const departmentUrl = BASE_URL + 'Home/allScheme_list';
-    const schemeUrl = BASE_URL + 'Home/allScheme_list_byId';
-    const detailUrl = BASE_URL + 'Home/SingleSchemelistbyId';
+    const departmentUrl = BASE_URL + 'schemes/list';
+    const schemeUrl = BASE_URL + 'schemes/list-by-id';
+    const detailUrl = BASE_URL + 'schemes/details-by-id';
 
     // DEPARTMENT CHANGE
     $('#department_name').on('change', function () {        
@@ -194,36 +194,64 @@ $(document).ready(function () {
         return;
     }
 
+ 
     let content = $('<div>');
 
-    // FIRST ROW: Department Name + Scheme Name
+    // First Row: Department Name, Scheme Name, Category, Type
     let row1 = $('<div>', { class: 'row' });
 
-    let col1 = $('<div>', { class: 'col-md-6' });
-    let col2 = $('<div>', { class: 'col-md-6' });
+    // Prepare available details
+    let details = [
+        {
+            label: 'विभाग का नाम',
+            value: item.name
+        },
+        {
+            label: 'योजना का नाम',
+            value: item.scheme_name
+        },
+        {
+            label: 'योजना की श्रेणी',
+            value: item.scheme_category
+        },
+        {
+            label: 'योजना का प्रकार',
+            value: item.scheme_type
+        }
+    ];
 
-    addDetail(col1, 'विभाग का नाम', item.name);
-    addDetail(col2, 'योजना का नाम', item.scheme_name);
+    // Filter out empty values
+    let availableDetails = details.filter(detail =>
+        detail.value !== null &&
+        detail.value !== undefined &&
+        detail.value !== ''
+    );
 
-    row1.append(col1, col2);
+    // Calculate column width dynamically
+    let colClass = availableDetails.length === 4
+        ? 'col-md-3'
+        : availableDetails.length === 3
+            ? 'col-md-4'
+            : availableDetails.length === 2
+                ? 'col-md-6'
+                : 'col-md-12';
+
+    // Generate columns
+    availableDetails.forEach(detail => {
+        let col = $('<div>', { class: colClass });
+
+        addDetail(col, detail.label, detail.value);
+
+        row1.append(col);
+    });
+
     content.append(row1);
 
-
-    // SECOND ROW: Scheme Category + Scheme Type
-    let row2 = $('<div>', { class: 'row' });
-
-    let col3 = $('<div>', { class: 'col-md-6' });
-    let col4 = $('<div>', { class: 'col-md-6' });
-
-    addDetail(col3, 'योजना की श्रेणी', item.scheme_category);
-    addDetail(col4, 'योजना का प्रकार', item.scheme_type);
-
-    row2.append(col3, col4);
-    content.append(row2);
-
-
     // REMAINING DETAILS
-    addDetail(content, 'लोन के उद्देश्य', item.if_scheme_isloan);
+    if(item.if_scheme_isloan && item.if_scheme_isloan != 'N/A') {
+        addDetail(content, 'लोन के उद्देश्य', item.if_scheme_isloan);
+    }
+    
     addDetail(content, 'पात्रता', item.applying_scheme_point);
     addDetail(content, 'योजना के लाभ', item.benefits_from_the_scheme);
     addDetail(content, 'वार्षिक वित्तीय लाभ', item.financial_benefit_scheme);

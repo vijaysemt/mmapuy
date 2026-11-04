@@ -45,7 +45,7 @@
 
             </ul>
 
-            <a href="<?= site_url('login') ?>" class="btn header-login-btn">
+            <a href="<?= site_url('login#login_otp') ?>" class="btn header-login-btn">
                 <i class="bi bi-person-circle me-1"></i>
                 लॉग इन
             </a>
