@@ -68,9 +68,8 @@
             <?php endif; ?>
 
 
-            <form action="<?= site_url('Login/validate') ?>"
-                  method="post"
-                  class="login-form">
+            <form class = "login-form" action="<?= base_url('show-otp') ?>" method="post">
+                  
 
                 <?= csrf_field() ?>
 

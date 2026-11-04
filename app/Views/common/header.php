@@ -36,7 +36,7 @@
       href="<?= base_url('assets/mmapua/css/login.css') ?>">
 
       <link rel="stylesheet"
-      href="<?= base_url('assets/css/dashboard.css') ?>">
+      href="<?= base_url('assets/mmapua/css/dashboard.css') ?>">
 </head>
 
 <body>

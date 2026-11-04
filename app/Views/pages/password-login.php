@@ -65,9 +65,7 @@
             <?php endif; ?>
 
 
-            <form action="<?= site_url('Login/validateloginWithPassword') ?>"
-                  method="post"
-                  class="login-form">
+            <form class = "login-form" action="<?= base_url('demo-password-login') ?>" method="post">
 
                 <?= csrf_field() ?>
 
@@ -89,7 +87,7 @@
                            placeholder="मोबाइल नंबर या Username दर्ज करें"
                            autocomplete="off"
                            required>
-
+                            
                 </div>
 
 

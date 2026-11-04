@@ -16,5 +16,13 @@ $routes->get('/download-documents', 'Home::downloadDocuments');
 $routes->get('/login', 'Login::index');
 $routes->get('/password-login', 'Login::passwordLogin');
 
-$routes->post('Zone_user/validate', 'Zone_user::validate');
-$routes->post('Login/validateotp', 'Login::validateotp');
+// Mobile OTP journey
+$routes->post('/show-otp', 'Login::showOtp');
+$routes->get('/mobile-otp', 'Login::mobileOtp');
+$routes->post('/demo-verify-otp', 'Login::demoVerifyOtp');
+
+// Password login journey
+$routes->post('/demo-password-login', 'Login::demoPasswordLogin');
+
+// Dashboard
+$routes->get('/dashboard', 'Login::dashboard');

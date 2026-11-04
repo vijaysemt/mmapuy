@@ -72,7 +72,7 @@
                        class="btn btn-documents">
 
                         <i class="bi bi-file-earmark-pdf me-2"></i>
-                        दस्तावेज डाउनलोड
+                        Download Documents
                     </a>
 
                 </div>

@@ -1,3 +1,7 @@
+<?= $this->extend('layouts/main') ?>
+
+<?= $this->section('content') ?>
+
 <div class="login-page">
 
     <div class="login-wrapper">
@@ -7,7 +11,7 @@
 
             <div class="cm-profile">
 
-                <img src="<?= base_url('assets/mmapua/images/cmo_hr_img1.png') ?>"
+                <img src="<?= base_url('assets/images/cmo_hr_img1.png') ?>"
                      alt="मुख्यमंत्री हरियाणा"
                      class="img-fluid">
 
@@ -51,10 +55,7 @@
             <?php endif; ?>
 
 
-            <form action="<?= site_url('Login/validateotp') ?>"
-                  method="post"
-                  class="login-form"
-                  id="otpForm">
+         <form class = "login-form" action="<?= base_url('demo-verify-otp') ?>" method="post">
 
                 <?= csrf_field() ?>
 
@@ -92,13 +93,12 @@
 
                 <div class="login-buttons">
 
-                    <button type="submit"
-                            name="submit"
-                            class="login-btn login-btn-primary"
-                            id="submit"
-                            onclick="optSubmit()">
+                   <button type="submit"
+                    name="submit"
+                    class="login-btn login-btn-primary"
+                    id="submit">
 
-                        <i class="bi bi-shield-check"></i>
+                    <i class="bi bi-shield-check"></i>
                         सबमिट करें
 
                     </button>
@@ -118,3 +118,5 @@
     </div>
 
 </div>
+
+<?= $this->endSection() ?>
