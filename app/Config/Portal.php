@@ -4,6 +4,7 @@ namespace Config;
 
 use CodeIgniter\Config\BaseConfig;
 
+
 class Portal extends BaseConfig
 {
     public array $cmProfile = [
