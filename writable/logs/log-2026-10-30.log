@@ -7,50 +7,50 @@ in APPPATH\Controllers\Home.php on line 8.
  4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
  5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
-CRITICAL - 2026-10-30 09:21:44 --> ErrorException: Undefined property: App\Controllers\Home::$Login_model
+CRITICAL - 2026-10-30 09:21:44 --> ErrorException: Undefined property: App\Controllers\Home::$LoginModel
 [Method: GET, Route: /]
 in APPPATH\Controllers\Home.php on line 13.
- 1 APPPATH\Controllers\Home.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Home::$Login_model', 'C:\\wamp64\\www\\mmapuy\\app\\Controllers\\Home.php', 13)
+ 1 APPPATH\Controllers\Home.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Home::$LoginModel', 'C:\\wamp64\\www\\mmapuy\\app\\Controllers\\Home.php', 13)
  2 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Home->index()
  3 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
  4 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
  6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
-CRITICAL - 2026-10-30 09:26:15 --> ErrorException: Undefined property: App\Controllers\Home::$Login_model
+CRITICAL - 2026-10-30 09:26:15 --> ErrorException: Undefined property: App\Controllers\Home::$LoginModel
 [Method: GET, Route: /]
 in APPPATH\Controllers\Home.php on line 13.
- 1 APPPATH\Controllers\Home.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Home::$Login_model', 'C:\\wamp64\\www\\mmapuy\\app\\Controllers\\Home.php', 13)
+ 1 APPPATH\Controllers\Home.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Home::$LoginModel', 'C:\\wamp64\\www\\mmapuy\\app\\Controllers\\Home.php', 13)
  2 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Home->index()
  3 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
  4 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
  6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
-CRITICAL - 2026-10-30 09:27:40 --> ErrorException: Undefined property: App\Controllers\Home::$Login_model
+CRITICAL - 2026-10-30 09:27:40 --> ErrorException: Undefined property: App\Controllers\Home::$LoginModel
 [Method: GET, Route: /]
 in APPPATH\Controllers\Home.php on line 13.
- 1 APPPATH\Controllers\Home.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Home::$Login_model', 'C:\\wamp64\\www\\mmapuy\\app\\Controllers\\Home.php', 13)
+ 1 APPPATH\Controllers\Home.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Home::$LoginModel', 'C:\\wamp64\\www\\mmapuy\\app\\Controllers\\Home.php', 13)
  2 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Home->index()
  3 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
  4 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
  6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
-CRITICAL - 2026-10-30 09:30:16 --> ErrorException: Undefined property: App\Controllers\Home::$Login_model
+CRITICAL - 2026-10-30 09:30:16 --> ErrorException: Undefined property: App\Controllers\Home::$LoginModel
 [Method: GET, Route: /]
 in APPPATH\Controllers\Home.php on line 13.
- 1 APPPATH\Controllers\Home.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Home::$Login_model', 'C:\\wamp64\\www\\mmapuy\\app\\Controllers\\Home.php', 13)
+ 1 APPPATH\Controllers\Home.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Home::$LoginModel', 'C:\\wamp64\\www\\mmapuy\\app\\Controllers\\Home.php', 13)
  2 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Home->index()
  3 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
  4 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
  6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
-CRITICAL - 2026-10-30 09:30:19 --> ErrorException: Undefined property: App\Controllers\Home::$Login_model
+CRITICAL - 2026-10-30 09:30:19 --> ErrorException: Undefined property: App\Controllers\Home::$LoginModel
 [Method: GET, Route: /]
 in APPPATH\Controllers\Home.php on line 13.
- 1 APPPATH\Controllers\Home.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Home::$Login_model', 'C:\\wamp64\\www\\mmapuy\\app\\Controllers\\Home.php', 13)
+ 1 APPPATH\Controllers\Home.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Home::$LoginModel', 'C:\\wamp64\\www\\mmapuy\\app\\Controllers\\Home.php', 13)
  2 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Home->index()
  3 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
  4 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
@@ -72,8 +72,8 @@ in APPPATH\Controllers\Home.php on line 14.
  6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 CRITICAL - 2026-10-30 09:34:29 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Result::num_rows()
 [Method: GET, Route: /]
-in APPPATH\Models\Login_model.php on line 14.
- 1 APPPATH\Controllers\Home.php(22): App\Models\Login_model->Get_department_name()
+in APPPATH\Models\LoginModel.php on line 14.
+ 1 APPPATH\Controllers\Home.php(22): App\Models\LoginModel->Get_department_name()
  2 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Home->index()
  3 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
  4 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
@@ -82,5 +82,5 @@ in APPPATH\Models\Login_model.php on line 14.
  7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 CRITICAL - 2026-10-30 09:35:21 --> ErrorException: Namespace declaration statement has to be the very first statement or after any declare call in the script
 [Method: GET, Route: /]
-in APPPATH\Models\Login_model.php on line 4.
+in APPPATH\Models\LoginModel.php on line 4.
  1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()

@@ -1,20 +1,26 @@
+
 <?php
 
 use CodeIgniter\Router\RouteCollection;
 
 /** @var RouteCollection $routes */
-$routes->get('/', 'Home::index');
 
+// Home
+$routes->get('/', 'HomeController::index');
 
+// Scheme AJAX Routes
+$routes->group('schemes', static function ($routes) {
+    $routes->post('list', 'HomeController::getAllSchemes');
+    $routes->post('list-by-id', 'HomeController::getSchemesById');
+    $routes->post('details-by-id', 'HomeController::getSchemeDetailsById');
+});
 
-// AJAX routes
-$routes->post('Home/allScheme_list', 'Home::allScheme_list');
-$routes->post('Home/allScheme_list_byId', 'Home::allScheme_list_byId');
-$routes->post('Home/SingleSchemelistbyId', 'Home::SingleSchemelistbyId');
-$routes->get('/download-documents', 'Home::downloadDocuments');
+// Document Routes
+$routes->get('download-documents', 'HomeController::downloadDocuments');
 
-$routes->get('/login', 'Login::index');
-$routes->get('/password-login', 'Login::passwordLogin');
+// Authentication Routes
+$routes->get('login', 'LoginController::index');
+$routes->get('password-login', 'LoginController::passwordLogin');
 
-$routes->post('Zone_user/validate', 'Zone_user::validate');
-$routes->post('Login/validateotp', 'Login::validateotp');
+// OTP Authentication
+$routes->post('login/validate-otp', 'LoginController::validateOtp');

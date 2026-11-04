@@ -1,0 +1,70 @@
+ERROR - 2026-11-04 04:14:51 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php:200
+Stack trace:
+#0 C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php(200): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'db_mmapua', 3306, '', 0)
+#1 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(550): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(792): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\mmapuy\app\Models\HomeModel.php(12): CodeIgniter\Database\BaseConnection->query('SELECT * FROM d...')
+#4 C:\xampp\htdocs\mmapuy\app\Controllers\Home.php(23): App\Models\HomeModel->Get_department_name()
+#5 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(974): App\Controllers\Home->index()
+#6 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\mmapuy\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\mmapuy\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\mmapuy\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\xampp\htdocs\mmapuy\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php:230
+Stack trace:
+#0 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(550): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(792): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\mmapuy\app\Models\HomeModel.php(12): CodeIgniter\Database\BaseConnection->query('SELECT * FROM d...')
+#3 C:\xampp\htdocs\mmapuy\app\Controllers\Home.php(23): App\Models\HomeModel->Get_department_name()
+#4 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(974): App\Controllers\Home->index()
+#5 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#6 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\mmapuy\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\mmapuy\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\mmapuy\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\xampp\htdocs\mmapuy\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2026-11-04 04:14:51 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 601.
+ 1 SYSTEMPATH\Database\BaseConnection.php(792): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH\Models\HomeModel.php(12): CodeIgniter\Database\BaseConnection->query('SELECT * FROM departments_list WHERE status = \'1\'')
+ 3 APPPATH\Controllers\Home.php(23): App\Models\HomeModel->Get_department_name()
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Home->index()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+DEBUG - 2026-11-04 04:15:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 04:15:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 04:16:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 04:16:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 04:16:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 04:18:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 04:18:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 04:18:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 04:34:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 04:34:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 04:34:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 04:34:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 05:05:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 05:05:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 05:27:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 05:41:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 05:42:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 05:42:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 05:42:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 05:43:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 05:43:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 05:43:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 05:43:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 05:45:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 05:45:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 05:51:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
