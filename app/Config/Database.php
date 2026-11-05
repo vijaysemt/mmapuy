@@ -26,9 +26,9 @@ class Database extends Config
      */
     public array $default = [
         'DSN'          => '',
-        'hostname'     => 'localhost',
-        'username'     => 'root',
-        'password'     => '',
+        'hostname'     => '10.88.234.124',
+        'username'     => 'devadmin',
+        'password'     => 'C0v!d2019vi%LT',
         'database'     => 'db_mmapua',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',

@@ -36,7 +36,27 @@
       href="<?= base_url('assets/mmapua/css/login.css') ?>">
 
       <link rel="stylesheet"
-      href="<?= base_url('assets/css/dashboard.css') ?>">
+      href="<?= base_url('assets/mmapua/css/dashboard.css') ?>">
+
+
+      <style>
+        .login-btn:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+}
+
+.btn-loader {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-loader.d-none,
+.btn-text.d-none {
+    display: none !important;
+}
+      </style>
 </head>
 
 <body>

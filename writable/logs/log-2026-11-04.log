@@ -1,46 +1,24 @@
-ERROR - 2026-11-04 04:14:51 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php:200
-Stack trace:
-#0 C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php(200): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'db_mmapua', 3306, '', 0)
-#1 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(550): CodeIgniter\Database\MySQLi\Connection->connect(false)
-#2 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(792): CodeIgniter\Database\BaseConnection->initialize()
-#3 C:\xampp\htdocs\mmapuy\app\Models\HomeModel.php(12): CodeIgniter\Database\BaseConnection->query('SELECT * FROM d...')
-#4 C:\xampp\htdocs\mmapuy\app\Controllers\Home.php(23): App\Models\HomeModel->Get_department_name()
-#5 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(974): App\Controllers\Home->index()
-#6 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
-#7 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
-#8 C:\xampp\htdocs\mmapuy\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
-#9 C:\xampp\htdocs\mmapuy\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
-#10 C:\xampp\htdocs\mmapuy\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
-#11 C:\xampp\htdocs\mmapuy\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
-#12 {main}
-
-Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php:230
-Stack trace:
-#0 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(550): CodeIgniter\Database\MySQLi\Connection->connect(false)
-#1 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(792): CodeIgniter\Database\BaseConnection->initialize()
-#2 C:\xampp\htdocs\mmapuy\app\Models\HomeModel.php(12): CodeIgniter\Database\BaseConnection->query('SELECT * FROM d...')
-#3 C:\xampp\htdocs\mmapuy\app\Controllers\Home.php(23): App\Models\HomeModel->Get_department_name()
-#4 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(974): App\Controllers\Home->index()
-#5 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
-#6 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
-#7 C:\xampp\htdocs\mmapuy\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
-#8 C:\xampp\htdocs\mmapuy\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
-#9 C:\xampp\htdocs\mmapuy\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
-#10 C:\xampp\htdocs\mmapuy\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
-#11 {main}
-CRITICAL - 2026-11-04 04:14:51 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
-Main connection [MySQLi]: No connection could be made because the target machine actively refused it
-[Method: GET, Route: /]
-in SYSTEMPATH\Database\BaseConnection.php on line 601.
- 1 SYSTEMPATH\Database\BaseConnection.php(792): CodeIgniter\Database\BaseConnection->initialize()
- 2 APPPATH\Models\HomeModel.php(12): CodeIgniter\Database\BaseConnection->query('SELECT * FROM departments_list WHERE status = \'1\'')
- 3 APPPATH\Controllers\Home.php(23): App\Models\HomeModel->Get_department_name()
- 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Home->index()
- 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+DEBUG - 2026-11-04 06:28:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 06:55:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 06:55:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 06:55:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 06:56:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 06:57:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 06:58:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 06:58:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-11-04 06:58:02 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pages/mobile-otp.php"
+[Method: GET, Route: mobile-otp]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/mobile-otp.php')
+ 2 SYSTEMPATH\Common.php(1268): CodeIgniter\View\View->render('pages/mobile-otp', [], true)
+ 3 APPPATH\Controllers\LoginController.php(36): view('pages/mobile-otp', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\LoginController->mobileOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
  6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
  8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+<<<<<<< HEAD
 10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
 DEBUG - 2026-11-04 04:15:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2026-11-04 04:15:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
@@ -69,3 +47,644 @@ DEBUG - 2026-11-04 05:45:05 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2026-11-04 05:45:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2026-11-04 05:51:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2026-11-04 06:16:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+=======
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\wamp64\\www\\mmapuy\\public\\index.php')
+DEBUG - 2026-11-04 07:00:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:00:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:00:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-11-04 07:00:50 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pages/mobile-otp.php"
+[Method: GET, Route: mobile-otp]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/mobile-otp.php')
+ 2 SYSTEMPATH\Common.php(1268): CodeIgniter\View\View->render('pages/mobile-otp', [], true)
+ 3 APPPATH\Controllers\LoginController.php(36): view('pages/mobile-otp', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\LoginController->mobileOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\wamp64\\www\\mmapuy\\public\\index.php')
+DEBUG - 2026-11-04 07:01:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-11-04 07:01:20 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pages/mobile-otp.php"
+[Method: GET, Route: mobile-otp]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/mobile-otp.php')
+ 2 SYSTEMPATH\Common.php(1268): CodeIgniter\View\View->render('pages/mobile-otp', [], true)
+ 3 APPPATH\Controllers\LoginController.php(36): view('pages/mobile-otp', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\LoginController->mobileOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\wamp64\\www\\mmapuy\\public\\index.php')
+DEBUG - 2026-11-04 07:01:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:01:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:01:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-11-04 07:01:33 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pages/mobile-otp.php"
+[Method: GET, Route: mobile-otp]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/mobile-otp.php')
+ 2 SYSTEMPATH\Common.php(1268): CodeIgniter\View\View->render('pages/mobile-otp', [], true)
+ 3 APPPATH\Controllers\LoginController.php(36): view('pages/mobile-otp', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\LoginController->mobileOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\wamp64\\www\\mmapuy\\public\\index.php')
+DEBUG - 2026-11-04 07:03:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:03:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:03:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-11-04 07:03:41 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pages/mobile-otp.php"
+[Method: GET, Route: mobile-otp]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/mobile-otp.php')
+ 2 SYSTEMPATH\Common.php(1268): CodeIgniter\View\View->render('pages/mobile-otp', [], true)
+ 3 APPPATH\Controllers\LoginController.php(36): view('pages/mobile-otp', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\LoginController->mobileOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\wamp64\\www\\mmapuy\\public\\index.php')
+DEBUG - 2026-11-04 07:03:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:03:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:03:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:03:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:04:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:04:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:04:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-11-04 07:04:07 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pages/mobile-otp.php"
+[Method: GET, Route: mobile-otp]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/mobile-otp.php')
+ 2 SYSTEMPATH\Common.php(1268): CodeIgniter\View\View->render('pages/mobile-otp', [], true)
+ 3 APPPATH\Controllers\LoginController.php(36): view('pages/mobile-otp', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\LoginController->mobileOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\wamp64\\www\\mmapuy\\public\\index.php')
+DEBUG - 2026-11-04 07:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:05:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:05:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:05:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:19:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:19:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:19:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:19:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:20:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:20:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:20:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:20:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:30:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:31:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 07:31:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 08:29:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 08:29:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 08:29:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 08:30:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 08:30:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 08:30:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-11-04 08:30:25 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pages/mobile-otp.php"
+[Method: GET, Route: mobile-otp]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/mobile-otp.php')
+ 2 SYSTEMPATH\Common.php(1268): CodeIgniter\View\View->render('pages/mobile-otp', [], true)
+ 3 APPPATH\Controllers\LoginController.php(36): view('pages/mobile-otp', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\LoginController->mobileOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\wamp64\\www\\mmapuy\\public\\index.php')
+DEBUG - 2026-11-04 08:31:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-11-04 08:31:41 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pages/auth/mobile-otp.php"
+[Method: GET, Route: mobile-otp]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/auth/mobile-otp.php')
+ 2 SYSTEMPATH\Common.php(1268): CodeIgniter\View\View->render('pages/auth/mobile-otp', [], true)
+ 3 APPPATH\Controllers\LoginController.php(36): view('pages/auth/mobile-otp', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\LoginController->mobileOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\wamp64\\www\\mmapuy\\public\\index.php')
+DEBUG - 2026-11-04 08:31:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 08:31:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-11-04 08:31:47 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pages/auth/mobile-otp.php"
+[Method: GET, Route: mobile-otp]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/auth/mobile-otp.php')
+ 2 SYSTEMPATH\Common.php(1268): CodeIgniter\View\View->render('pages/auth/mobile-otp', [], true)
+ 3 APPPATH\Controllers\LoginController.php(36): view('pages/auth/mobile-otp', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\LoginController->mobileOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\wamp64\\www\\mmapuy\\public\\index.php')
+DEBUG - 2026-11-04 08:31:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-11-04 08:31:54 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pages/auth/mobile-otp.php"
+[Method: GET, Route: mobile-otp]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pages/auth/mobile-otp.php')
+ 2 SYSTEMPATH\Common.php(1268): CodeIgniter\View\View->render('pages/auth/mobile-otp', [], true)
+ 3 APPPATH\Controllers\LoginController.php(36): view('pages/auth/mobile-otp', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\LoginController->mobileOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\wamp64\\www\\mmapuy\\public\\index.php')
+DEBUG - 2026-11-04 08:32:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+>>>>>>> 27ddd13aeebde24b41ce8f40abcbc799439770d5
+DEBUG - 2026-11-04 08:36:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 08:36:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 08:39:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 08:40:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 08:40:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 08:41:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 09:01:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 09:04:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-11-04 09:05:36 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'devadmin'@'10.88.187.156' (using password: YES) in C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php:200
+Stack trace:
+#0 C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php(200): mysqli->real_connect('10.88.234.124', 'devadmin', Object(SensitiveParameterValue), 'db_mmapua', 3306, '', 0)
+#1 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(550): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(792): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\mmapuy\app\Models\HomeModel.php(12): CodeIgniter\Database\BaseConnection->query('SELECT * FROM d...')
+#4 C:\xampp\htdocs\mmapuy\app\Controllers\HomeController.php(23): App\Models\HomeModel->Get_department_name()
+#5 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(974): App\Controllers\HomeController->index()
+#6 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#7 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\mmapuy\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\mmapuy\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\mmapuy\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\xampp\htdocs\mmapuy\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'10.88.187.156' (using password: YES) in C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php:230
+Stack trace:
+#0 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(550): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(792): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\mmapuy\app\Models\HomeModel.php(12): CodeIgniter\Database\BaseConnection->query('SELECT * FROM d...')
+#3 C:\xampp\htdocs\mmapuy\app\Controllers\HomeController.php(23): App\Models\HomeModel->Get_department_name()
+#4 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(974): App\Controllers\HomeController->index()
+#5 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+#6 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\mmapuy\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#8 C:\xampp\htdocs\mmapuy\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\xampp\htdocs\mmapuy\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 C:\xampp\htdocs\mmapuy\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2026-11-04 09:05:36 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'10.88.187.156' (using password: YES)
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 601.
+ 1 SYSTEMPATH\Database\BaseConnection.php(792): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH\Models\HomeModel.php(12): CodeIgniter\Database\BaseConnection->query('SELECT * FROM departments_list WHERE status = \'1\'')
+ 3 APPPATH\Controllers\HomeController.php(23): App\Models\HomeModel->Get_department_name()
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\HomeController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+DEBUG - 2026-11-04 09:05:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 09:07:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-11-04 10:13:58 --> ErrorException: Declaration of App\Controllers\LoginController::validate() must be compatible with CodeIgniter\Controller::validate($rules, array $messages = []): bool
+[Method: GET, Route: password-login]
+in APPPATH\Controllers\LoginController.php on line 42.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+DEBUG - 2026-11-04 10:18:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 10:18:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-11-04 10:21:51 --> ErrorException: Namespace declaration statement has to be the very first statement or after any declare call in the script
+[Method: POST, Route: auth/send-otp]
+in APPPATH\Controllers\Auth\AuthController.php on line 4.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+DEBUG - 2026-11-04 10:22:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 10:22:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-11-04 10:22:09 --> ErrorException: Namespace declaration statement has to be the very first statement or after any declare call in the script
+[Method: POST, Route: auth/send-otp]
+in APPPATH\Controllers\Auth\AuthController.php on line 4.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-11-04 10:22:31 --> Error: Class "App\Models\Auth\LoginModel" not found
+[Method: POST, Route: auth/send-otp]
+in APPPATH\Controllers\Auth\AuthController.php on line 17.
+ 1 SYSTEMPATH\CodeIgniter.php(944): App\Controllers\Auth\AuthController->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(511): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+CRITICAL - 2026-11-04 10:24:10 --> ErrorException: Namespace declaration statement has to be the very first statement or after any declare call in the script
+[Method: POST, Route: auth/send-otp]
+in APPPATH\Models\LoginModel.php on line 4.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-11-04 10:24:44 --> Error: Class "App\Models\LoginModel" not found
+[Method: POST, Route: auth/send-otp]
+in APPPATH\Controllers\Auth\AuthController.php on line 17.
+ 1 SYSTEMPATH\CodeIgniter.php(944): App\Controllers\Auth\AuthController->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(511): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+CRITICAL - 2026-11-04 10:25:11 --> ErrorException: Namespace declaration statement has to be the very first statement or after any declare call in the script
+[Method: POST, Route: auth/send-otp]
+in APPPATH\Config\AuthRoles.php on line 4.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+DEBUG - 2026-11-04 10:25:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-11-04 10:25:32 --> Unknown column 'otp_hash' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 294.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(294): mysqli->query('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$rXcz8uz0xhec5ql8wtZLDufT4QO02giIhAXZDO.zwHfJuvz/o/a8.\', `otp_expires_at` = \'2026-11-04 10:30:32\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(905): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$rXcz8uz0xhec5ql8wtZLDufT4QO02giIhAXZDO.zwHfJuvz/o/a8.\', `otp_expires_at` = \'2026-11-04 10:30:32\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(822): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$rXcz8uz0xhec5ql8wtZLDufT4QO02giIhAXZDO.zwHfJuvz/o/a8.\', `otp_expires_at` = \'2026-11-04 10:30:32\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2540): CodeIgniter\Database\BaseConnection->query('UPDATE `superadmin` SET `otp_hash` = :otp_hash:, `otp_expires_at` = :otp_expires_at:, `otp_attempts` = :otp_attempts:
+WHERE `mobile` = :mobile:
+AND `isActive` = :isActive:
+AND `role` = :role:', [...], false)
+ 5 APPPATH\Models\LoginModel.php(93): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 APPPATH\Controllers\Auth\AuthController.php(81): App\Models\LoginModel->saveOtp('6666666666', '10', '$2y$12$rXcz8uz0xhec5ql8wtZLDufT4QO02giIhAXZDO.zwHfJuvz/o/a8.')
+ 7 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 8 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 9 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+CRITICAL - 2026-11-04 10:25:32 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'otp_hash' in 'field list'
+[Method: POST, Route: auth/send-otp]
+in SYSTEMPATH\Database\BaseConnection.php on line 860.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2540): CodeIgniter\Database\BaseConnection->query('UPDATE `superadmin` SET `otp_hash` = :otp_hash:, `otp_expires_at` = :otp_expires_at:, `otp_attempts` = :otp_attempts:
+WHERE `mobile` = :mobile:
+AND `isActive` = :isActive:
+AND `role` = :role:', [...], false)
+ 2 APPPATH\Models\LoginModel.php(93): CodeIgniter\Database\BaseBuilder->update([...])
+ 3 APPPATH\Controllers\Auth\AuthController.php(81): App\Models\LoginModel->saveOtp('6666666666', '10', '$2y$12$rXcz8uz0xhec5ql8wtZLDufT4QO02giIhAXZDO.zwHfJuvz/o/a8.')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+CRITICAL - 2026-11-04 10:25:32 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'otp_hash' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 304.
+ 1 SYSTEMPATH\Database\BaseConnection.php(905): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$rXcz8uz0xhec5ql8wtZLDufT4QO02giIhAXZDO.zwHfJuvz/o/a8.\', `otp_expires_at` = \'2026-11-04 10:30:32\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(822): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$rXcz8uz0xhec5ql8wtZLDufT4QO02giIhAXZDO.zwHfJuvz/o/a8.\', `otp_expires_at` = \'2026-11-04 10:30:32\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2540): CodeIgniter\Database\BaseConnection->query('UPDATE `superadmin` SET `otp_hash` = :otp_hash:, `otp_expires_at` = :otp_expires_at:, `otp_attempts` = :otp_attempts:
+WHERE `mobile` = :mobile:
+AND `isActive` = :isActive:
+AND `role` = :role:', [...], false)
+ 4 APPPATH\Models\LoginModel.php(93): CodeIgniter\Database\BaseBuilder->update([...])
+ 5 APPPATH\Controllers\Auth\AuthController.php(81): App\Models\LoginModel->saveOtp('6666666666', '10', '$2y$12$rXcz8uz0xhec5ql8wtZLDufT4QO02giIhAXZDO.zwHfJuvz/o/a8.')
+ 6 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 7 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 8 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+CRITICAL - 2026-11-04 10:25:32 --> [Caused by] mysqli_sql_exception: Unknown column 'otp_hash' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 294.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(294): mysqli->query('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$rXcz8uz0xhec5ql8wtZLDufT4QO02giIhAXZDO.zwHfJuvz/o/a8.\', `otp_expires_at` = \'2026-11-04 10:30:32\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(905): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$rXcz8uz0xhec5ql8wtZLDufT4QO02giIhAXZDO.zwHfJuvz/o/a8.\', `otp_expires_at` = \'2026-11-04 10:30:32\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(822): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$rXcz8uz0xhec5ql8wtZLDufT4QO02giIhAXZDO.zwHfJuvz/o/a8.\', `otp_expires_at` = \'2026-11-04 10:30:32\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2540): CodeIgniter\Database\BaseConnection->query('UPDATE `superadmin` SET `otp_hash` = :otp_hash:, `otp_expires_at` = :otp_expires_at:, `otp_attempts` = :otp_attempts:
+WHERE `mobile` = :mobile:
+AND `isActive` = :isActive:
+AND `role` = :role:', [...], false)
+ 5 APPPATH\Models\LoginModel.php(93): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 APPPATH\Controllers\Auth\AuthController.php(81): App\Models\LoginModel->saveOtp('6666666666', '10', '$2y$12$rXcz8uz0xhec5ql8wtZLDufT4QO02giIhAXZDO.zwHfJuvz/o/a8.')
+ 7 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 8 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 9 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+DEBUG - 2026-11-04 10:28:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-11-04 10:28:07 --> Unknown column 'otp_hash' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 294.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(294): mysqli->query('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$jq.lopRKCSc5hz82t3idie1ymCWgJPpPnCJh9iNx8N3Hk/ukB64Aa\', `otp_expires_at` = \'2026-11-04 10:33:07\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(905): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$jq.lopRKCSc5hz82t3idie1ymCWgJPpPnCJh9iNx8N3Hk/ukB64Aa\', `otp_expires_at` = \'2026-11-04 10:33:07\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(822): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$jq.lopRKCSc5hz82t3idie1ymCWgJPpPnCJh9iNx8N3Hk/ukB64Aa\', `otp_expires_at` = \'2026-11-04 10:33:07\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2540): CodeIgniter\Database\BaseConnection->query('UPDATE `superadmin` SET `otp_hash` = :otp_hash:, `otp_expires_at` = :otp_expires_at:, `otp_attempts` = :otp_attempts:
+WHERE `mobile` = :mobile:
+AND `isActive` = :isActive:
+AND `role` = :role:', [...], false)
+ 5 APPPATH\Models\LoginModel.php(93): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 APPPATH\Controllers\Auth\AuthController.php(81): App\Models\LoginModel->saveOtp('6666666666', '10', '$2y$12$jq.lopRKCSc5hz82t3idie1ymCWgJPpPnCJh9iNx8N3Hk/ukB64Aa')
+ 7 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 8 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 9 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+CRITICAL - 2026-11-04 10:28:07 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'otp_hash' in 'field list'
+[Method: POST, Route: auth/send-otp]
+in SYSTEMPATH\Database\BaseConnection.php on line 860.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2540): CodeIgniter\Database\BaseConnection->query('UPDATE `superadmin` SET `otp_hash` = :otp_hash:, `otp_expires_at` = :otp_expires_at:, `otp_attempts` = :otp_attempts:
+WHERE `mobile` = :mobile:
+AND `isActive` = :isActive:
+AND `role` = :role:', [...], false)
+ 2 APPPATH\Models\LoginModel.php(93): CodeIgniter\Database\BaseBuilder->update([...])
+ 3 APPPATH\Controllers\Auth\AuthController.php(81): App\Models\LoginModel->saveOtp('6666666666', '10', '$2y$12$jq.lopRKCSc5hz82t3idie1ymCWgJPpPnCJh9iNx8N3Hk/ukB64Aa')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+CRITICAL - 2026-11-04 10:28:07 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'otp_hash' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 304.
+ 1 SYSTEMPATH\Database\BaseConnection.php(905): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$jq.lopRKCSc5hz82t3idie1ymCWgJPpPnCJh9iNx8N3Hk/ukB64Aa\', `otp_expires_at` = \'2026-11-04 10:33:07\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(822): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$jq.lopRKCSc5hz82t3idie1ymCWgJPpPnCJh9iNx8N3Hk/ukB64Aa\', `otp_expires_at` = \'2026-11-04 10:33:07\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2540): CodeIgniter\Database\BaseConnection->query('UPDATE `superadmin` SET `otp_hash` = :otp_hash:, `otp_expires_at` = :otp_expires_at:, `otp_attempts` = :otp_attempts:
+WHERE `mobile` = :mobile:
+AND `isActive` = :isActive:
+AND `role` = :role:', [...], false)
+ 4 APPPATH\Models\LoginModel.php(93): CodeIgniter\Database\BaseBuilder->update([...])
+ 5 APPPATH\Controllers\Auth\AuthController.php(81): App\Models\LoginModel->saveOtp('6666666666', '10', '$2y$12$jq.lopRKCSc5hz82t3idie1ymCWgJPpPnCJh9iNx8N3Hk/ukB64Aa')
+ 6 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 7 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 8 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+CRITICAL - 2026-11-04 10:28:07 --> [Caused by] mysqli_sql_exception: Unknown column 'otp_hash' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 294.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(294): mysqli->query('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$jq.lopRKCSc5hz82t3idie1ymCWgJPpPnCJh9iNx8N3Hk/ukB64Aa\', `otp_expires_at` = \'2026-11-04 10:33:07\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(905): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$jq.lopRKCSc5hz82t3idie1ymCWgJPpPnCJh9iNx8N3Hk/ukB64Aa\', `otp_expires_at` = \'2026-11-04 10:33:07\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(822): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$jq.lopRKCSc5hz82t3idie1ymCWgJPpPnCJh9iNx8N3Hk/ukB64Aa\', `otp_expires_at` = \'2026-11-04 10:33:07\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2540): CodeIgniter\Database\BaseConnection->query('UPDATE `superadmin` SET `otp_hash` = :otp_hash:, `otp_expires_at` = :otp_expires_at:, `otp_attempts` = :otp_attempts:
+WHERE `mobile` = :mobile:
+AND `isActive` = :isActive:
+AND `role` = :role:', [...], false)
+ 5 APPPATH\Models\LoginModel.php(93): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 APPPATH\Controllers\Auth\AuthController.php(81): App\Models\LoginModel->saveOtp('6666666666', '10', '$2y$12$jq.lopRKCSc5hz82t3idie1ymCWgJPpPnCJh9iNx8N3Hk/ukB64Aa')
+ 7 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 8 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 9 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+DEBUG - 2026-11-04 10:28:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-11-04 10:28:29 --> Unknown column 'otp_hash' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 294.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(294): mysqli->query('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$uBRtTES5t7sRuTrbrsPqsOHVupogLBqIfCkcx/PL.bLgIfhz2mjgC\', `otp_expires_at` = \'2026-11-04 10:33:29\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(905): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$uBRtTES5t7sRuTrbrsPqsOHVupogLBqIfCkcx/PL.bLgIfhz2mjgC\', `otp_expires_at` = \'2026-11-04 10:33:29\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(822): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$uBRtTES5t7sRuTrbrsPqsOHVupogLBqIfCkcx/PL.bLgIfhz2mjgC\', `otp_expires_at` = \'2026-11-04 10:33:29\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2540): CodeIgniter\Database\BaseConnection->query('UPDATE `superadmin` SET `otp_hash` = :otp_hash:, `otp_expires_at` = :otp_expires_at:, `otp_attempts` = :otp_attempts:
+WHERE `mobile` = :mobile:
+AND `isActive` = :isActive:
+AND `role` = :role:', [...], false)
+ 5 APPPATH\Models\LoginModel.php(93): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 APPPATH\Controllers\Auth\AuthController.php(81): App\Models\LoginModel->saveOtp('6666666666', '10', '$2y$12$uBRtTES5t7sRuTrbrsPqsOHVupogLBqIfCkcx/PL.bLgIfhz2mjgC')
+ 7 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 8 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 9 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+CRITICAL - 2026-11-04 10:28:29 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'otp_hash' in 'field list'
+[Method: POST, Route: auth/send-otp]
+in SYSTEMPATH\Database\BaseConnection.php on line 860.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2540): CodeIgniter\Database\BaseConnection->query('UPDATE `superadmin` SET `otp_hash` = :otp_hash:, `otp_expires_at` = :otp_expires_at:, `otp_attempts` = :otp_attempts:
+WHERE `mobile` = :mobile:
+AND `isActive` = :isActive:
+AND `role` = :role:', [...], false)
+ 2 APPPATH\Models\LoginModel.php(93): CodeIgniter\Database\BaseBuilder->update([...])
+ 3 APPPATH\Controllers\Auth\AuthController.php(81): App\Models\LoginModel->saveOtp('6666666666', '10', '$2y$12$uBRtTES5t7sRuTrbrsPqsOHVupogLBqIfCkcx/PL.bLgIfhz2mjgC')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+CRITICAL - 2026-11-04 10:28:29 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'otp_hash' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 304.
+ 1 SYSTEMPATH\Database\BaseConnection.php(905): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$uBRtTES5t7sRuTrbrsPqsOHVupogLBqIfCkcx/PL.bLgIfhz2mjgC\', `otp_expires_at` = \'2026-11-04 10:33:29\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(822): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$uBRtTES5t7sRuTrbrsPqsOHVupogLBqIfCkcx/PL.bLgIfhz2mjgC\', `otp_expires_at` = \'2026-11-04 10:33:29\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2540): CodeIgniter\Database\BaseConnection->query('UPDATE `superadmin` SET `otp_hash` = :otp_hash:, `otp_expires_at` = :otp_expires_at:, `otp_attempts` = :otp_attempts:
+WHERE `mobile` = :mobile:
+AND `isActive` = :isActive:
+AND `role` = :role:', [...], false)
+ 4 APPPATH\Models\LoginModel.php(93): CodeIgniter\Database\BaseBuilder->update([...])
+ 5 APPPATH\Controllers\Auth\AuthController.php(81): App\Models\LoginModel->saveOtp('6666666666', '10', '$2y$12$uBRtTES5t7sRuTrbrsPqsOHVupogLBqIfCkcx/PL.bLgIfhz2mjgC')
+ 6 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 7 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 8 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+CRITICAL - 2026-11-04 10:28:29 --> [Caused by] mysqli_sql_exception: Unknown column 'otp_hash' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 294.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(294): mysqli->query('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$uBRtTES5t7sRuTrbrsPqsOHVupogLBqIfCkcx/PL.bLgIfhz2mjgC\', `otp_expires_at` = \'2026-11-04 10:33:29\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(905): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$uBRtTES5t7sRuTrbrsPqsOHVupogLBqIfCkcx/PL.bLgIfhz2mjgC\', `otp_expires_at` = \'2026-11-04 10:33:29\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(822): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$uBRtTES5t7sRuTrbrsPqsOHVupogLBqIfCkcx/PL.bLgIfhz2mjgC\', `otp_expires_at` = \'2026-11-04 10:33:29\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2540): CodeIgniter\Database\BaseConnection->query('UPDATE `superadmin` SET `otp_hash` = :otp_hash:, `otp_expires_at` = :otp_expires_at:, `otp_attempts` = :otp_attempts:
+WHERE `mobile` = :mobile:
+AND `isActive` = :isActive:
+AND `role` = :role:', [...], false)
+ 5 APPPATH\Models\LoginModel.php(93): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 APPPATH\Controllers\Auth\AuthController.php(81): App\Models\LoginModel->saveOtp('6666666666', '10', '$2y$12$uBRtTES5t7sRuTrbrsPqsOHVupogLBqIfCkcx/PL.bLgIfhz2mjgC')
+ 7 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 8 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 9 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+DEBUG - 2026-11-04 10:28:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 10:28:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 10:28:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-11-04 10:28:39 --> Unknown column 'otp_hash' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 294.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(294): mysqli->query('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$FqH9jxl3ciYnVyqswze2jusIvuGHLbCfDvaWQ3zh.Hw3dFdGiP/k.\', `otp_expires_at` = \'2026-11-04 10:33:39\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(905): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$FqH9jxl3ciYnVyqswze2jusIvuGHLbCfDvaWQ3zh.Hw3dFdGiP/k.\', `otp_expires_at` = \'2026-11-04 10:33:39\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(822): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$FqH9jxl3ciYnVyqswze2jusIvuGHLbCfDvaWQ3zh.Hw3dFdGiP/k.\', `otp_expires_at` = \'2026-11-04 10:33:39\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2540): CodeIgniter\Database\BaseConnection->query('UPDATE `superadmin` SET `otp_hash` = :otp_hash:, `otp_expires_at` = :otp_expires_at:, `otp_attempts` = :otp_attempts:
+WHERE `mobile` = :mobile:
+AND `isActive` = :isActive:
+AND `role` = :role:', [...], false)
+ 5 APPPATH\Models\LoginModel.php(93): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 APPPATH\Controllers\Auth\AuthController.php(81): App\Models\LoginModel->saveOtp('6666666666', '10', '$2y$12$FqH9jxl3ciYnVyqswze2jusIvuGHLbCfDvaWQ3zh.Hw3dFdGiP/k.')
+ 7 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 8 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 9 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+CRITICAL - 2026-11-04 10:28:39 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'otp_hash' in 'field list'
+[Method: POST, Route: auth/send-otp]
+in SYSTEMPATH\Database\BaseConnection.php on line 860.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2540): CodeIgniter\Database\BaseConnection->query('UPDATE `superadmin` SET `otp_hash` = :otp_hash:, `otp_expires_at` = :otp_expires_at:, `otp_attempts` = :otp_attempts:
+WHERE `mobile` = :mobile:
+AND `isActive` = :isActive:
+AND `role` = :role:', [...], false)
+ 2 APPPATH\Models\LoginModel.php(93): CodeIgniter\Database\BaseBuilder->update([...])
+ 3 APPPATH\Controllers\Auth\AuthController.php(81): App\Models\LoginModel->saveOtp('6666666666', '10', '$2y$12$FqH9jxl3ciYnVyqswze2jusIvuGHLbCfDvaWQ3zh.Hw3dFdGiP/k.')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+CRITICAL - 2026-11-04 10:28:39 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'otp_hash' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 304.
+ 1 SYSTEMPATH\Database\BaseConnection.php(905): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$FqH9jxl3ciYnVyqswze2jusIvuGHLbCfDvaWQ3zh.Hw3dFdGiP/k.\', `otp_expires_at` = \'2026-11-04 10:33:39\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(822): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$FqH9jxl3ciYnVyqswze2jusIvuGHLbCfDvaWQ3zh.Hw3dFdGiP/k.\', `otp_expires_at` = \'2026-11-04 10:33:39\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2540): CodeIgniter\Database\BaseConnection->query('UPDATE `superadmin` SET `otp_hash` = :otp_hash:, `otp_expires_at` = :otp_expires_at:, `otp_attempts` = :otp_attempts:
+WHERE `mobile` = :mobile:
+AND `isActive` = :isActive:
+AND `role` = :role:', [...], false)
+ 4 APPPATH\Models\LoginModel.php(93): CodeIgniter\Database\BaseBuilder->update([...])
+ 5 APPPATH\Controllers\Auth\AuthController.php(81): App\Models\LoginModel->saveOtp('6666666666', '10', '$2y$12$FqH9jxl3ciYnVyqswze2jusIvuGHLbCfDvaWQ3zh.Hw3dFdGiP/k.')
+ 6 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 7 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 8 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+CRITICAL - 2026-11-04 10:28:39 --> [Caused by] mysqli_sql_exception: Unknown column 'otp_hash' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 294.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(294): mysqli->query('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$FqH9jxl3ciYnVyqswze2jusIvuGHLbCfDvaWQ3zh.Hw3dFdGiP/k.\', `otp_expires_at` = \'2026-11-04 10:33:39\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(905): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$FqH9jxl3ciYnVyqswze2jusIvuGHLbCfDvaWQ3zh.Hw3dFdGiP/k.\', `otp_expires_at` = \'2026-11-04 10:33:39\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(822): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `superadmin` SET `otp_hash` = \'$2y$12$FqH9jxl3ciYnVyqswze2jusIvuGHLbCfDvaWQ3zh.Hw3dFdGiP/k.\', `otp_expires_at` = \'2026-11-04 10:33:39\', `otp_attempts` = 0
+WHERE `mobile` = \'6666666666\'
+AND `isActive` = 1
+AND `role` = \'3\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2540): CodeIgniter\Database\BaseConnection->query('UPDATE `superadmin` SET `otp_hash` = :otp_hash:, `otp_expires_at` = :otp_expires_at:, `otp_attempts` = :otp_attempts:
+WHERE `mobile` = :mobile:
+AND `isActive` = :isActive:
+AND `role` = :role:', [...], false)
+ 5 APPPATH\Models\LoginModel.php(93): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 APPPATH\Controllers\Auth\AuthController.php(81): App\Models\LoginModel->saveOtp('6666666666', '10', '$2y$12$FqH9jxl3ciYnVyqswze2jusIvuGHLbCfDvaWQ3zh.Hw3dFdGiP/k.')
+ 7 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 8 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 9 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+DEBUG - 2026-11-04 10:33:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-04 10:33:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

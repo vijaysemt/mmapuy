@@ -360,3 +360,99 @@
         font-size: 21px;
     }
 }
+
+/* PASSWORD INPUT */
+
+.password-input-wrapper {
+    position: relative;
+}
+
+.password-input-wrapper .form-control {
+    padding-right: 48px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    color: #75849a;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.password-toggle:hover {
+    color: #176db3;
+}
+
+/* Consistent spacing for login forms */
+.login-form .form-group {
+    margin-bottom: 24px;
+}
+
+/* Labels */
+.login-form .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    line-height: 1.5;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* Input fields and dropdown */
+.login-form .form-control,
+.login-form .form-select {
+    height: 52px;
+    padding: 10px 16px;
+    font-size: 17px;
+    border-radius: 9px;
+}
+
+/* OTP instruction text */
+.login-form .form-group small {
+    display: block;
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+/* Space between last field and buttons */
+.login-form .login-buttons {
+    margin-top: 28px;
+}
+
+/* =================================
+   LOGIN FORM SPACING FIX
+================================= */
+
+/* Space between consecutive form fields */
+.login-form .form-group + .form-group {
+    margin-top: 26px !important;
+}
+
+/* Space between label and input */
+.login-form .form-group label {
+    display: block;
+    margin-bottom: 10px !important;
+    line-height: 1.5;
+}
+
+/* Input and dropdown height */
+.login-form .form-control,
+.login-form .form-select {
+    height: 52px;
+    padding: 10px 16px;
+}
+
+/* Space between dropdown and login buttons */
+.login-form .login-buttons {
+    margin-top: 32px !important;
+}
+
+/* OTP instruction spacing */
+.login-form .form-group small {
+    display: block;
+    margin-top: 10px !important;
+}

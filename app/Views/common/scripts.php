@@ -41,5 +41,44 @@
 
 <script src="<?= base_url('assets/mmapua/js/home.js') ?>"></script>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    document.querySelectorAll('.login-form').forEach(function(form) {
+
+        form.addEventListener('submit', function(event) {
+
+            if (!form.checkValidity()) {
+                return;
+            }
+
+            const button = form.querySelector(
+                'button[type="submit"]'
+            );
+
+            if (!button) return;
+
+            if (button.dataset.submitting === 'true') {
+                event.preventDefault();
+                return;
+            }
+
+            button.dataset.submitting = 'true';
+            button.disabled = true;
+
+            const text = button.querySelector('.btn-text');
+            const loader = button.querySelector('.btn-loader');
+
+            if (text) text.classList.add('d-none');
+
+            if (loader) loader.classList.remove('d-none');
+
+        });
+
+    });
+
+});
+</script>
+
 </body>
 </html>

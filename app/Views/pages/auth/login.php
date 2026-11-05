@@ -38,18 +38,28 @@
             <?php endif; ?>
 
 
-            <?php if (session()->getFlashdata('error')): ?>
 
+            <?php if (session()->getFlashdata('error')): ?>
                 <div class="alert alert-danger login-alert">
                     <?= esc(session()->getFlashdata('error')) ?>
                 </div>
-
             <?php endif; ?>
 
-
-            <form action="<?= site_url('Login/validate') ?>"
-                  method="post"
-                  class="login-form">
+            <?php if (session()->getFlashdata('errors')): ?>
+                <div class="alert alert-danger login-alert">
+                    <?php foreach (session()->getFlashdata('errors') as $error): ?>
+                        <div><?= esc($error) ?></div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+            <form
+                class="login-form"
+                action="<?= site_url('auth/send-otp') ?>"
+                method="post"
+                id="otpLoginForm"
+            >
+                <?= csrf_field() ?>
+                  
 
                 <?= csrf_field() ?>
 
@@ -93,7 +103,7 @@
 
                         <option value="9">Super Admin</option>
                         <option value="10">SLBC</option>
-                        <option value="2">District User (DIO)</option>
+                        <option value="1">District User (DIO)</option>
                         <option value="3">State Department User</option>
                         <option value="6">Department District User</option>
                         <option value="8">ADC User</option>
@@ -108,12 +118,19 @@
                 <!-- BUTTONS -->
                 <div class="login-buttons">
 
-                    <button type="submit"
-                            name="submit"
-                            class="login-btn login-btn-primary">
+                   <button type="submit"
+                                class="login-btn login-btn-primary"
+                                id="otpLoginBtn">
 
-                        <i class="bi bi-shield-check"></i>
-                        ओटीपी से लॉगिन करें
+                            <span class="btn-text">
+                                <i class="bi bi-shield-check"></i>
+                                ओटीपी से लॉगिन करें
+                            </span>
+
+                            <span class="btn-loader d-none">
+                                <span class="spinner-border spinner-border-sm"></span>
+                                कृपया प्रतीक्षा करें...
+                            </span>
 
                     </button>
 

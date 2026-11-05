@@ -1,0 +1,853 @@
+DEBUG - 2026-11-05 04:02:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 04:02:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 04:02:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 04:07:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 04:27:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 04:27:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 04:27:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-11-05 04:27:38 --> ErrorException: Namespace declaration statement has to be the very first statement or after any declare call in the script
+[Method: POST, Route: auth/send-otp]
+in APPPATH\Libraries\SmsService.php on line 4.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+DEBUG - 2026-11-05 04:28:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 04:28:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 04:28:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 04:28:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 04:42:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-11-05 04:42:44 --> SMS Gateway HTTP Status: 200
+INFO - 2026-11-05 04:42:44 --> SMS Gateway Response: 402,MsgID = 051120261793853764671haryanait-dsje
+DEBUG - 2026-11-05 04:42:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 04:44:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 04:45:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 04:45:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 04:45:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 04:46:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 04:46:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-11-05 04:46:45 --> SMS Gateway HTTP Status: 200
+INFO - 2026-11-05 04:46:45 --> SMS Gateway Response: 402,MsgID = 051120261793854005726haryanait-dsje
+DEBUG - 2026-11-05 04:46:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 04:50:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-11-05 04:50:22 --> ErrorException: Namespace declaration statement has to be the very first statement or after any declare call in the script
+[Method: POST, Route: auth/send-otp]
+in APPPATH\Libraries\SmsService.php on line 4.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+DEBUG - 2026-11-05 04:50:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 04:50:32 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 134.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 545491. Department of Social Justice and Empowerment, Haryana', '7973972631', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(92): App\Libraries\SmsService->sendOtp('7973972631', '545491')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 04:50:32 --> SMS Gateway Response: 402,MsgID = 051120261793854232473haryanait-dsje
+
+DEBUG - 2026-11-05 04:50:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 04:50:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 04:50:43 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 134.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 904290. Department of Social Justice and Empowerment, Haryana', '7973972631', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(92): App\Libraries\SmsService->sendOtp('7973972631', '904290')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 04:50:43 --> SMS Gateway Response: 402,MsgID = 051120261793854243630haryanait-dsje
+
+DEBUG - 2026-11-05 04:50:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 04:51:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 04:51:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 04:51:53 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 461167. Department of Social Justice and Empowerment, Haryana', '7973972631', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(92): App\Libraries\SmsService->sendOtp('7973972631', '461167')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 04:51:53 --> SMS Gateway Response: 402,MsgID = 051120261793854313910haryanait-dsje
+
+DEBUG - 2026-11-05 04:54:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 04:54:38 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 566227. Department of Social Justice and Empowerment, Haryana', '7973972631', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(92): App\Libraries\SmsService->sendOtp('7973972631', '566227')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 04:54:38 --> SMS HTTP Status: 200
+INFO - 2026-11-05 04:54:38 --> SMS Gateway Response: 402,MsgID = 051120261793854478624haryanait-dsje
+
+DEBUG - 2026-11-05 04:54:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 04:54:41 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 733043. Department of Social Justice and Empowerment, Haryana', '7973972631', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(92): App\Libraries\SmsService->sendOtp('7973972631', '733043')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 04:54:41 --> SMS HTTP Status: 200
+INFO - 2026-11-05 04:54:41 --> SMS Gateway Response: 402,MsgID = 051120261793854481503haryanait-dsje
+
+DEBUG - 2026-11-05 04:54:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 04:54:44 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 179237. Department of Social Justice and Empowerment, Haryana', '7973972631', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(92): App\Libraries\SmsService->sendOtp('7973972631', '179237')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 04:54:44 --> SMS HTTP Status: 200
+INFO - 2026-11-05 04:54:44 --> SMS Gateway Response: 402,MsgID = 051120261793854484161haryanait-dsje
+
+DEBUG - 2026-11-05 04:54:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 04:54:46 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 388015. Department of Social Justice and Empowerment, Haryana', '7973972631', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(92): App\Libraries\SmsService->sendOtp('7973972631', '388015')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 04:54:46 --> SMS HTTP Status: 200
+INFO - 2026-11-05 04:54:46 --> SMS Gateway Response: 402,MsgID = 051120261793854486667haryanait-dsje
+
+DEBUG - 2026-11-05 04:55:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 04:55:18 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 668314. Department of Social Justice and Empowerment, Haryana', '7973972631', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(92): App\Libraries\SmsService->sendOtp('7973972631', '668314')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 04:55:18 --> SMS HTTP Status: 200
+INFO - 2026-11-05 04:55:18 --> SMS Gateway Response: 402,MsgID = 051120261793854518139haryanait-dsje
+
+INFO - 2026-11-05 04:55:18 --> SMS Gateway Message ID: 051120261793854518139haryanait
+DEBUG - 2026-11-05 04:55:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-11-05 04:55:18 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "auth/verify_otp.php"
+[Method: GET, Route: auth/verify-otp]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('auth/verify_otp.php')
+ 2 SYSTEMPATH\Common.php(1268): CodeIgniter\View\View->render('auth/verify_otp', [], true)
+ 3 APPPATH\Controllers\Auth\AuthController.php(118): view('auth/verify_otp', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->otpPage()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+DEBUG - 2026-11-05 04:58:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:05:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:05:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:06:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:06:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:06:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:06:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:06:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:07:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:07:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:07:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:07:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 05:07:19 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 188573. Department of Social Justice and Empowerment, Haryana', '7973972631', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(92): App\Libraries\SmsService->sendOtp('7973972631', '188573')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 05:07:19 --> SMS HTTP Status: 200
+INFO - 2026-11-05 05:07:19 --> SMS Gateway Response: 402,MsgID = 051120261793855239049haryanait-dsje
+
+INFO - 2026-11-05 05:07:19 --> SMS Gateway Message ID: 051120261793855239049haryanait
+DEBUG - 2026-11-05 05:07:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:07:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:07:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:10:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:10:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:10:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:10:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:10:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:11:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:11:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:11:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:11:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:11:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:11:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:11:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:11:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:11:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:11:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:12:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 05:12:05 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 638528. Department of Social Justice and Empowerment, Haryana', '7973972631', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(92): App\Libraries\SmsService->sendOtp('7973972631', '638528')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 05:12:05 --> SMS HTTP Status: 200
+INFO - 2026-11-05 05:12:05 --> SMS Gateway Response: 402,MsgID = 051120261793855525172haryanait-dsje
+
+INFO - 2026-11-05 05:12:05 --> SMS Gateway Message ID: 051120261793855525172haryanait
+DEBUG - 2026-11-05 05:12:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:12:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:12:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:12:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:12:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:13:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:13:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:13:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:14:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:14:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:15:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 05:15:10 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 692689. Department of Social Justice and Empowerment, Haryana', '7973972631', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(92): App\Libraries\SmsService->sendOtp('7973972631', '692689')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 05:15:10 --> SMS HTTP Status: 200
+INFO - 2026-11-05 05:15:10 --> SMS Gateway Response: 402,MsgID = 051120261793855710238haryanait-dsje
+
+INFO - 2026-11-05 05:15:10 --> SMS Gateway Message ID: 051120261793855710238haryanait
+DEBUG - 2026-11-05 05:15:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:15:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:15:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:15:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:15:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:15:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:15:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:17:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:17:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:18:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:18:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:18:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:19:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:19:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:19:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:20:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:20:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:20:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:21:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:21:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:21:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:22:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:22:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:22:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:22:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 05:22:20 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 636688. Department of Social Justice and Empowerment, Haryana', '7973972631', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(92): App\Libraries\SmsService->sendOtp('7973972631', '636688')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 05:22:20 --> SMS HTTP Status: 200
+INFO - 2026-11-05 05:22:20 --> SMS Gateway Response: 402,MsgID = 051120261793856140214haryanait-dsje
+
+INFO - 2026-11-05 05:22:20 --> SMS Gateway Message ID: 051120261793856140214haryanait
+DEBUG - 2026-11-05 05:22:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:23:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:23:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:24:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:29:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:29:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:29:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:29:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:29:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 05:30:00 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 593942. Department of Social Justice and Empowerment, Haryana', '7973972631', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(92): App\Libraries\SmsService->sendOtp('7973972631', '593942')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 05:30:00 --> SMS HTTP Status: 200
+INFO - 2026-11-05 05:30:00 --> SMS Gateway Response: 402,MsgID = 051120261793856600113haryanait-dsje
+
+INFO - 2026-11-05 05:30:00 --> SMS Gateway Message ID: 051120261793856600113haryanait
+DEBUG - 2026-11-05 05:30:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:30:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:32:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:33:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:33:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:33:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 05:33:25 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 794245. Department of Social Justice and Empowerment, Haryana', '7015416908', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(92): App\Libraries\SmsService->sendOtp('7015416908', '794245')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 05:33:25 --> SMS HTTP Status: 200
+INFO - 2026-11-05 05:33:25 --> SMS Gateway Response: 402,MsgID = 051120261793856805031haryanait-dsje
+
+INFO - 2026-11-05 05:33:25 --> SMS Gateway Message ID: 051120261793856805031haryanait
+DEBUG - 2026-11-05 05:33:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:42:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:42:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:42:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 05:42:34 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 254448. Department of Social Justice and Empowerment, Haryana', '7015416908', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(92): App\Libraries\SmsService->sendOtp('7015416908', '254448')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 05:42:34 --> SMS HTTP Status: 200
+INFO - 2026-11-05 05:42:34 --> SMS Gateway Response: 402,MsgID = 051120261793857354546haryanait-dsje
+
+INFO - 2026-11-05 05:42:34 --> SMS Gateway Message ID: 051120261793857354546haryanait
+DEBUG - 2026-11-05 05:42:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:45:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:45:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:45:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:46:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:46:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:46:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:46:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 05:46:37 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 795208. Department of Social Justice and Empowerment, Haryana', '7015416908', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(92): App\Libraries\SmsService->sendOtp('7015416908', '795208')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 05:46:37 --> SMS HTTP Status: 200
+INFO - 2026-11-05 05:46:37 --> SMS Gateway Response: 402,MsgID = 051120261793857597222haryanait-dsje
+
+INFO - 2026-11-05 05:46:37 --> SMS Gateway Message ID: 051120261793857597222haryanait
+DEBUG - 2026-11-05 05:46:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:47:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:50:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:50:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:50:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 05:50:38 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 656519. Department of Social Justice and Empowerment, Haryana', '7015416908', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(93): App\Libraries\SmsService->sendOtp('7015416908', '656519')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 05:50:38 --> SMS HTTP Status: 200
+INFO - 2026-11-05 05:50:38 --> SMS Gateway Response: 402,MsgID = 051120261793857838641haryanait-dsje
+
+INFO - 2026-11-05 05:50:38 --> SMS Gateway Message ID: 051120261793857838641haryanait
+DEBUG - 2026-11-05 05:50:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:51:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:51:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:51:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:51:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:52:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:52:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:52:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:52:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:53:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:56:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:56:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:57:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 05:57:05 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 473378. Department of Social Justice and Empowerment, Haryana', '7015416908', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(93): App\Libraries\SmsService->sendOtp('7015416908', '473378')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 05:57:05 --> SMS HTTP Status: 200
+INFO - 2026-11-05 05:57:05 --> SMS Gateway Response: 402,MsgID = 051120261793858226016haryanait-dsje
+
+INFO - 2026-11-05 05:57:05 --> SMS Gateway Message ID: 051120261793858226016haryanait
+DEBUG - 2026-11-05 05:57:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:57:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:57:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:57:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:57:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:58:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:58:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 05:58:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 07:05:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 07:05:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 07:06:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 07:06:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 07:07:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 07:07:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 07:08:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 07:08:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 08:49:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 08:49:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 08:49:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 08:52:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 08:52:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 08:53:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 08:57:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 08:57:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 08:57:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 08:57:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 08:57:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 08:57:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 08:58:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 08:58:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 08:59:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:00:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:00:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:00:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:00:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:04:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-11-05 09:10:47 --> ErrorException: Namespace declaration statement has to be the very first statement or after any declare call in the script
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard\DashboardController.php on line 4.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-11-05 09:11:01 --> ErrorException: Namespace declaration statement has to be the very first statement or after any declare call in the script
+[Method: GET, Route: dashboard]
+in APPPATH\Filters\AuthFilter.php on line 4.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+DEBUG - 2026-11-05 09:11:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:12:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:12:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:23:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:23:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:23:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:23:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:24:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:24:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:25:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:26:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:28:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:29:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 09:29:29 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 135790. Department of Social Justice and Empowerment, Haryana', '7777777777', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(98): App\Libraries\SmsService->sendOtp('7777777777', '135790')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 09:29:29 --> SMS HTTP Status: 200
+INFO - 2026-11-05 09:29:29 --> SMS Gateway Response: 406,MsgID = 051120261793870970106haryanait-dsje
+
+ERROR - 2026-11-05 09:29:29 --> SMS Gateway rejected or returned an unknown response: 406,MsgID = 051120261793870970106haryanait-dsje
+DEBUG - 2026-11-05 09:29:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:29:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:29:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 09:29:41 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 135790. Department of Social Justice and Empowerment, Haryana', '7777777777', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(98): App\Libraries\SmsService->sendOtp('7777777777', '135790')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 09:29:41 --> SMS HTTP Status: 200
+INFO - 2026-11-05 09:29:41 --> SMS Gateway Response: 406,MsgID = 051120261793870981525haryanait-dsje
+
+ERROR - 2026-11-05 09:29:41 --> SMS Gateway rejected or returned an unknown response: 406,MsgID = 051120261793870981525haryanait-dsje
+DEBUG - 2026-11-05 09:29:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:31:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 09:31:05 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 135790. Department of Social Justice and Empowerment, Haryana', '7015416900', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(98): App\Libraries\SmsService->sendOtp('7015416900', '135790')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 09:31:05 --> SMS HTTP Status: 200
+INFO - 2026-11-05 09:31:05 --> SMS Gateway Response: 402,MsgID = 051120261793871065744haryanait-dsje
+
+INFO - 2026-11-05 09:31:05 --> SMS Gateway Message ID: 051120261793871065744haryanait
+DEBUG - 2026-11-05 09:31:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:31:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:31:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-11-05 09:31:23 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "auth/set_password.php"
+[Method: GET, Route: auth/set-password]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('auth/set_password.php')
+ 2 SYSTEMPATH\Common.php(1268): CodeIgniter\View\View->render('auth/set_password', [], true)
+ 3 APPPATH\Controllers\Auth\AuthController.php(252): view('auth/set_password')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->setPasswordPage()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+DEBUG - 2026-11-05 09:32:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-11-05 09:32:39 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "auth/set_password.php"
+[Method: GET, Route: auth/set-password]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('auth/set_password.php')
+ 2 SYSTEMPATH\Common.php(1268): CodeIgniter\View\View->render('auth/set_password', [], true)
+ 3 APPPATH\Controllers\Auth\AuthController.php(252): view('auth/set_password')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->setPasswordPage()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+DEBUG - 2026-11-05 09:33:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-11-05 09:33:27 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "auth/set_password.php"
+[Method: GET, Route: auth/set-password]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('auth/set_password.php')
+ 2 SYSTEMPATH\Common.php(1268): CodeIgniter\View\View->render('auth/set_password', [], true)
+ 3 APPPATH\Controllers\Auth\AuthController.php(252): view('auth/set_password')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->setPasswordPage()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+DEBUG - 2026-11-05 09:33:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-11-05 09:33:48 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "auth/set_password.php"
+[Method: GET, Route: auth/set-password]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('auth/set_password.php')
+ 2 SYSTEMPATH\Common.php(1268): CodeIgniter\View\View->render('auth/set_password', [], true)
+ 3 APPPATH\Controllers\Auth\AuthController.php(252): view('auth/set_password')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->setPasswordPage()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+DEBUG - 2026-11-05 09:36:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:38:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:38:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:38:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:38:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:40:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:40:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:40:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:41:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:41:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:42:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:42:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:47:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:48:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:48:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:48:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:48:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:48:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:49:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:49:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:49:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:49:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:51:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 09:52:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:02:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:02:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:02:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:02:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:02:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:03:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 10:03:09 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 135790. Department of Social Justice and Empowerment, Haryana', '9777777777', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(98): App\Libraries\SmsService->sendOtp('9777777777', '135790')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 10:03:09 --> SMS HTTP Status: 200
+INFO - 2026-11-05 10:03:09 --> SMS Gateway Response: 406,MsgID = 051120261793872990005haryanait-dsje
+
+ERROR - 2026-11-05 10:03:09 --> SMS Gateway rejected or returned an unknown response: 406,MsgID = 051120261793872990005haryanait-dsje
+DEBUG - 2026-11-05 10:03:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:03:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 10:03:16 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 135790. Department of Social Justice and Empowerment, Haryana', '9777777777', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(98): App\Libraries\SmsService->sendOtp('9777777777', '135790')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 10:03:16 --> SMS HTTP Status: 200
+INFO - 2026-11-05 10:03:16 --> SMS Gateway Response: 406,MsgID = 051120261793872996571haryanait-dsje
+
+ERROR - 2026-11-05 10:03:16 --> SMS Gateway rejected or returned an unknown response: 406,MsgID = 051120261793872996571haryanait-dsje
+DEBUG - 2026-11-05 10:03:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:03:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 10:03:46 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 135790. Department of Social Justice and Empowerment, Haryana', '9997777777', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(98): App\Libraries\SmsService->sendOtp('9997777777', '135790')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 10:03:46 --> SMS HTTP Status: 200
+INFO - 2026-11-05 10:03:46 --> SMS Gateway Response: 402,MsgID = 051120261793873027004haryanait-dsje
+
+INFO - 2026-11-05 10:03:46 --> SMS Gateway Message ID: 051120261793873027004haryanait
+DEBUG - 2026-11-05 10:03:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:03:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:04:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 10:04:09 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 135790. Department of Social Justice and Empowerment, Haryana', '9977777777', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(98): App\Libraries\SmsService->sendOtp('9977777777', '135790')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 10:04:09 --> SMS HTTP Status: 200
+INFO - 2026-11-05 10:04:09 --> SMS Gateway Response: 402,MsgID = 051120261793873049987haryanait-dsje
+
+INFO - 2026-11-05 10:04:09 --> SMS Gateway Message ID: 051120261793873049987haryanait
+DEBUG - 2026-11-05 10:04:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:04:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:04:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 10:04:28 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 135790. Department of Social Justice and Empowerment, Haryana', '9777777777', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(98): App\Libraries\SmsService->sendOtp('9777777777', '135790')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 10:04:28 --> SMS HTTP Status: 200
+INFO - 2026-11-05 10:04:28 --> SMS Gateway Response: 406,MsgID = 051120261793873068431haryanait-dsje
+
+ERROR - 2026-11-05 10:04:28 --> SMS Gateway rejected or returned an unknown response: 406,MsgID = 051120261793873068431haryanait-dsje
+DEBUG - 2026-11-05 10:04:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:04:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 10:04:44 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 135790. Department of Social Justice and Empowerment, Haryana', '9977777777', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(98): App\Libraries\SmsService->sendOtp('9977777777', '135790')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 10:04:44 --> SMS HTTP Status: 200
+INFO - 2026-11-05 10:04:44 --> SMS Gateway Response: 402,MsgID = 051120261793873085101haryanait-dsje
+
+INFO - 2026-11-05 10:04:44 --> SMS Gateway Message ID: 051120261793873085101haryanait
+DEBUG - 2026-11-05 10:04:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:05:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:05:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:05:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:06:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:06:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:06:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:09:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:09:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:09:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:13:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-11-05 10:13:38 --> TypeError: App\Controllers\LoginController::index(): Return value must be of type string, CodeIgniter\HTTP\RedirectResponse returned
+[Method: GET, Route: login]
+in APPPATH\Controllers\LoginController.php on line 10.
+ 1 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\LoginController->index()
+ 2 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 3 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+DEBUG - 2026-11-05 10:14:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:14:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:14:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:14:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:15:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:15:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:15:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:15:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:15:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:15:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:18:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:18:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:18:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:18:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:18:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:18:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:18:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:18:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:20:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:20:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:20:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:20:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:23:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-05 10:23:39 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 123456. Department of Social Justice and Empowerment, Haryana', '9966666666', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(83): App\Libraries\SmsService->sendOtp('9966666666', '123456')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-05 10:23:39 --> SMS HTTP Status: 200
+INFO - 2026-11-05 10:23:39 --> SMS Gateway Response: 402,MsgID = 051120261793874219986haryanait-dsje
+
+INFO - 2026-11-05 10:23:39 --> SMS Gateway Message ID: 051120261793874219986haryanait
+DEBUG - 2026-11-05 10:23:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:23:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:23:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:23:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:23:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:25:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:25:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:25:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:27:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:27:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:28:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:39:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:39:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:39:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:42:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:42:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:42:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-11-05 10:44:25 --> CodeIgniter\Filters\Exceptions\FilterException: "auth,role" filter must have a matching alias defined.
+[Method: GET, Route: Super_admin/dashboard]
+in SYSTEMPATH\Filters\Filters.php on line 590.
+ 1 SYSTEMPATH\Filters\Filters.php(590): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias('auth,role')
+ 2 SYSTEMPATH\Filters\Filters.php(641): CodeIgniter\Filters\Filters->enableFilter('auth,role:9', 'before')
+ 3 SYSTEMPATH\CodeIgniter.php(476): CodeIgniter\Filters\Filters->enableFilters([...], 'before')
+ 4 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+CRITICAL - 2026-11-05 10:44:44 --> CodeIgniter\Filters\Exceptions\FilterException: "auth,role" filter must have a matching alias defined.
+[Method: GET, Route: Slbc_admin/dashboard]
+in SYSTEMPATH\Filters\Filters.php on line 590.
+ 1 SYSTEMPATH\Filters\Filters.php(590): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias('auth,role')
+ 2 SYSTEMPATH\Filters\Filters.php(641): CodeIgniter\Filters\Filters->enableFilter('auth,role:10', 'before')
+ 3 SYSTEMPATH\CodeIgniter.php(476): CodeIgniter\Filters\Filters->enableFilters([...], 'before')
+ 4 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+CRITICAL - 2026-11-05 10:44:45 --> CodeIgniter\Filters\Exceptions\FilterException: "auth,role" filter must have a matching alias defined.
+[Method: GET, Route: Slbc_admin/dashboard]
+in SYSTEMPATH\Filters\Filters.php on line 590.
+ 1 SYSTEMPATH\Filters\Filters.php(590): CodeIgniter\Filters\Exceptions\FilterException::forNoAlias('auth,role')
+ 2 SYSTEMPATH\Filters\Filters.php(641): CodeIgniter\Filters\Filters->enableFilter('auth,role:10', 'before')
+ 3 SYSTEMPATH\CodeIgniter.php(476): CodeIgniter\Filters\Filters->enableFilters([...], 'before')
+ 4 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+DEBUG - 2026-11-05 10:47:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:48:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:48:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:48:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:48:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:49:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:49:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:49:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:50:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:51:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:52:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:52:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:52:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:52:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:52:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:52:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-05 10:53:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

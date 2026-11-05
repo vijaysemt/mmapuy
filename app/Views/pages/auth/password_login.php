@@ -7,28 +7,7 @@
     <div class="login-wrapper">
 
         <!-- LEFT SECTION -->
-        <div class="login-left" id="login_password">
-
-            <div class="cm-profile">
-
-                <img src="<?= base_url('assets/images/cmo_hr_img1.png') ?>"
-                     alt="माननीय मुख्यमंत्री हरियाणा"
-                     class="img-fluid">
-
-                <h2>श्री नायब सिंह सैनी</h2>
-
-                <h5>माननीय मुख्यमंत्री, हरियाणा</h5>
-
-                <div class="login-left-divider"></div>
-
-                <p class="login-left-description">
-                    मुख्यमंत्री अंत्योदय परिवार उत्थान योजना
-                    के आधिकारिक पोर्टल पर आपका स्वागत है।
-                </p>
-
-            </div>
-
-        </div>
+       <?= view('partials/cm_profile') ?>
 
 
         <!-- RIGHT SECTION -->
@@ -65,9 +44,13 @@
             <?php endif; ?>
 
 
-            <form action="<?= site_url('Login/validateloginWithPassword') ?>"
-                  method="post"
-                  class="login-form">
+            <form
+                class="login-form"
+                action="<?= site_url('auth/password-login') ?>"
+                method="post"
+                id="passwordLoginForm"
+            >
+                <?= csrf_field() ?>
 
                 <?= csrf_field() ?>
 
@@ -89,7 +72,7 @@
                            placeholder="मोबाइल नंबर या Username दर्ज करें"
                            autocomplete="off"
                            required>
-
+                            
                 </div>
 
 
@@ -127,7 +110,7 @@
 
                         <option value="">-- रोल चुनें --</option>
 
-                        <option value="2">District User (DIO)</option>
+                        <option value="1">District User (DIO)</option>
                         <option value="3">State Department User</option>
                         <option value="6">Department District User</option>
                         <option value="8">ADC User</option>
@@ -149,13 +132,19 @@
                 <div class="login-buttons">
 
                     <button type="submit"
-                            name="submit"
-                            class="login-btn login-btn-primary">
+        class="login-btn login-btn-primary">
 
-                        <i class="bi bi-box-arrow-in-right"></i>
-                        लॉगिन करें
+    <span class="btn-text">
+        <i class="bi bi-box-arrow-in-right"></i>
+        लॉगिन करें
+    </span>
 
-                    </button>
+    <span class="btn-loader d-none">
+        <span class="spinner-border spinner-border-sm"></span>
+        Logging in...
+    </span>
+
+</button>
 
 
                     <a href="<?= site_url('login#login_otp') ?>"
