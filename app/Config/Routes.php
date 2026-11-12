@@ -65,15 +65,44 @@ $routes->group('auth', ['namespace' => 'App\Controllers\Auth'], static function 
 
 $routes->group('', ['filter' => 'auth'], function ($routes) {
 
-    $routes->get('District_user/dashboard', 'Dashboard\DashboardController::index',['filter' => 'role:1']);
-    $routes->get('Department_user/view_dashboard', 'Dashboard\DashboardController::index',['filter' => 'role:3']);
-    $routes->get('Cm/dashboard', 'Dashboard\DashboardController::index');
-    $routes->get('Department_district_user/view_dashboard', 'Dashboard\DashboardController::index',['filter' => 'role:6']);
-    $routes->get('ADC_user/dashboard', 'Dashboard\DashboardController::index',['filter' => 'role:8']);
-    $routes->get('Super_admin/dashboard', 'Dashboard\DashboardController::index',['filter' => 'role:9']);
-    $routes->get('Slbc_admin/dashboard', 'Dashboard\DashboardController::index',['filter' => 'role:10']);
-    $routes->get('LDM_user/dashboard', 'Dashboard\DashboardController::index',['filter' => 'role:11']);
-    $routes->get('Controlling_heads/dashboard', 'Dashboard\DashboardController::index',['filter' => 'role:18']);
+    $routes->get('district-user/dashboard', 'Dashboard\DashboardController::index',['filter' => 'role:1']);
+    $routes->get('department-user/view_dashboard', 'Dashboard\DashboardController::index',['filter' => 'role:3']);
+    $routes->get('cm/dashboard', 'Dashboard\DashboardController::index');
+    $routes->get('department-district-user/view_dashboard', 'Dashboard\DashboardController::index',['filter' => 'role:6']);
+    $routes->get('adc-user/dashboard', 'Dashboard\DashboardController::index',['filter' => 'role:8']);
+    $routes->get('super-admin/dashboard', 'SuperAdminController::index',['filter' => 'role:9']);
+    $routes->get('slbc-admin/dashboard', 'Dashboard\DashboardController::index',['filter' => 'role:10']);
+    $routes->get('ldm-user/dashboard', 'Dashboard\DashboardController::index',['filter' => 'role:11']);
+    $routes->get('controlling-heads/dashboard', 'Dashboard\DashboardController::index',['filter' => 'role:18']);
 
 });
+
+// Dashboard statistics API
+$routes->get('api/super-admin/dashboard-stats', 'SuperAdminController::stats');
+
+
+$routes->get(
+    'super-admin/search-by-family-id',
+    'SuperAdminController::searchByFamilyId'
+);
+
+$routes->get(
+    'super-admin/schemewise-report',
+    'SuperAdminController::schemeWiseReport'
+);
+
+$routes->get(
+    'super-admin/calling-status',
+    'SuperAdminController::callingStatus'
+);
+
+$routes->get(
+    'super-admin/historical-data',
+    'SuperAdminController::historicalData'
+);
+
+$routes->get(
+    'super-admin/docs-requests-dashboard',
+    'SuperAdminController::docsRequestsDashboard'
+);
 

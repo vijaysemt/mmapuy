@@ -1,0 +1,306 @@
+DEBUG - 2026-11-12 04:30:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 04:30:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 04:30:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-12 04:30:23 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 135790. Department of Social Justice and Empowerment, Haryana', '9977777777', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(83): App\Libraries\SmsService->sendOtp('9977777777', '135790')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-12 04:30:23 --> SMS HTTP Status: 200
+INFO - 2026-11-12 04:30:23 --> SMS Gateway Response: 402,MsgID = 121120261794457823989haryanait-dsje
+
+INFO - 2026-11-12 04:30:23 --> SMS Gateway Message ID: 121120261794457823989haryanait
+DEBUG - 2026-11-12 04:30:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 04:30:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 04:30:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 04:30:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 04:44:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 04:44:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-11-12 04:44:48 --> Error connecting to the database: mysqli_sql_exception: A socket operation was attempted to an unreachable host in C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php:200
+Stack trace:
+#0 C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php(200): mysqli->real_connect('10.88.234.124', 'devadmin', Object(SensitiveParameterValue), 'db_mmapua', 3306, '', 0)
+#1 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(550): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(792): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(55): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array)
+#4 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(90): App\Models\SuperAdminModel->countQuery('SELECT COUNT(*)...', Array)
+#5 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(27): App\Models\SuperAdminModel->getAdministrationStats()
+#6 C:\xampp\htdocs\mmapuy\app\Controllers\SuperAdminController.php(83): App\Models\SuperAdminModel->getDashboardStats('2')
+#7 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(974): App\Controllers\SuperAdminController->stats()
+#8 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdminController))
+#9 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\mmapuy\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\mmapuy\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\mmapuy\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\xampp\htdocs\mmapuy\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: A socket operation was attempted to an unreachable host in C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php:230
+Stack trace:
+#0 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(550): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(792): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(55): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array)
+#3 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(90): App\Models\SuperAdminModel->countQuery('SELECT COUNT(*)...', Array)
+#4 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(27): App\Models\SuperAdminModel->getAdministrationStats()
+#5 C:\xampp\htdocs\mmapuy\app\Controllers\SuperAdminController.php(83): App\Models\SuperAdminModel->getDashboardStats('2')
+#6 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(974): App\Controllers\SuperAdminController->stats()
+#7 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdminController))
+#8 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\mmapuy\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\mmapuy\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\mmapuy\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 C:\xampp\htdocs\mmapuy\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+ERROR - 2026-11-12 04:44:48 --> Super Admin Dashboard API Error: Unable to connect to the database.
+Main connection [MySQLi]: A socket operation was attempted to an unreachable host
+DEBUG - 2026-11-12 04:48:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 04:48:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-11-12 04:48:12 --> Error connecting to the database: mysqli_sql_exception: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond in C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php:200
+Stack trace:
+#0 C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php(200): mysqli->real_connect('10.88.234.124', 'devadmin', Object(SensitiveParameterValue), 'db_mmapua', 3306, '', 0)
+#1 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(550): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(792): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(55): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array)
+#4 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(90): App\Models\SuperAdminModel->countQuery('SELECT COUNT(*)...', Array)
+#5 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(27): App\Models\SuperAdminModel->getAdministrationStats()
+#6 C:\xampp\htdocs\mmapuy\app\Controllers\SuperAdminController.php(83): App\Models\SuperAdminModel->getDashboardStats('2')
+#7 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(974): App\Controllers\SuperAdminController->stats()
+#8 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdminController))
+#9 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\mmapuy\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\mmapuy\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\mmapuy\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\xampp\htdocs\mmapuy\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond in C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php:230
+Stack trace:
+#0 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(550): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(792): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(55): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array)
+#3 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(90): App\Models\SuperAdminModel->countQuery('SELECT COUNT(*)...', Array)
+#4 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(27): App\Models\SuperAdminModel->getAdministrationStats()
+#5 C:\xampp\htdocs\mmapuy\app\Controllers\SuperAdminController.php(83): App\Models\SuperAdminModel->getDashboardStats('2')
+#6 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(974): App\Controllers\SuperAdminController->stats()
+#7 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdminController))
+#8 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\mmapuy\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\mmapuy\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\mmapuy\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 C:\xampp\htdocs\mmapuy\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+ERROR - 2026-11-12 04:48:12 --> Super Admin Dashboard API Error: Unable to connect to the database.
+Main connection [MySQLi]: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+DEBUG - 2026-11-12 04:48:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 04:48:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-11-12 04:48:33 --> Error connecting to the database: mysqli_sql_exception: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond in C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php:200
+Stack trace:
+#0 C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php(200): mysqli->real_connect('10.88.234.124', 'devadmin', Object(SensitiveParameterValue), 'db_mmapua', 3306, '', 0)
+#1 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(550): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(792): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(55): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array)
+#4 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(90): App\Models\SuperAdminModel->countQuery('SELECT COUNT(*)...', Array)
+#5 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(27): App\Models\SuperAdminModel->getAdministrationStats()
+#6 C:\xampp\htdocs\mmapuy\app\Controllers\SuperAdminController.php(83): App\Models\SuperAdminModel->getDashboardStats('1')
+#7 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(974): App\Controllers\SuperAdminController->stats()
+#8 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdminController))
+#9 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\mmapuy\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\mmapuy\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\mmapuy\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\xampp\htdocs\mmapuy\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond in C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php:230
+Stack trace:
+#0 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(550): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(792): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(55): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array)
+#3 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(90): App\Models\SuperAdminModel->countQuery('SELECT COUNT(*)...', Array)
+#4 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(27): App\Models\SuperAdminModel->getAdministrationStats()
+#5 C:\xampp\htdocs\mmapuy\app\Controllers\SuperAdminController.php(83): App\Models\SuperAdminModel->getDashboardStats('1')
+#6 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(974): App\Controllers\SuperAdminController->stats()
+#7 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdminController))
+#8 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\mmapuy\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\mmapuy\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\mmapuy\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 C:\xampp\htdocs\mmapuy\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+ERROR - 2026-11-12 04:48:33 --> Super Admin Dashboard API Error: Unable to connect to the database.
+Main connection [MySQLi]: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+DEBUG - 2026-11-12 04:49:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 04:49:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 04:59:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 04:59:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 05:09:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 05:09:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 05:21:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 05:21:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-11-12 05:21:11 --> Error connecting to the database: mysqli_sql_exception: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond in C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php:200
+Stack trace:
+#0 C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php(200): mysqli->real_connect('10.88.234.124', 'devadmin', Object(SensitiveParameterValue), 'db_mmapua', 3306, '', 0)
+#1 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(550): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(792): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(55): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array)
+#4 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(90): App\Models\SuperAdminModel->countQuery('SELECT COUNT(*)...', Array)
+#5 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(27): App\Models\SuperAdminModel->getAdministrationStats('1')
+#6 C:\xampp\htdocs\mmapuy\app\Controllers\SuperAdminController.php(84): App\Models\SuperAdminModel->getDashboardStats('1')
+#7 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(974): App\Controllers\SuperAdminController->stats()
+#8 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdminController))
+#9 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\mmapuy\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\mmapuy\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\mmapuy\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\xampp\htdocs\mmapuy\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond in C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php:230
+Stack trace:
+#0 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(550): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(792): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(55): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array)
+#3 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(90): App\Models\SuperAdminModel->countQuery('SELECT COUNT(*)...', Array)
+#4 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(27): App\Models\SuperAdminModel->getAdministrationStats('1')
+#5 C:\xampp\htdocs\mmapuy\app\Controllers\SuperAdminController.php(84): App\Models\SuperAdminModel->getDashboardStats('1')
+#6 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(974): App\Controllers\SuperAdminController->stats()
+#7 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdminController))
+#8 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\mmapuy\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\mmapuy\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\mmapuy\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 C:\xampp\htdocs\mmapuy\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+ERROR - 2026-11-12 05:21:11 --> Super Admin Dashboard API Error: Unable to connect to the database.
+Main connection [MySQLi]: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+DEBUG - 2026-11-12 05:21:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 05:21:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-11-12 05:21:29 --> Error connecting to the database: mysqli_sql_exception: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond in C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php:200
+Stack trace:
+#0 C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php(200): mysqli->real_connect('10.88.234.124', 'devadmin', Object(SensitiveParameterValue), 'db_mmapua', 3306, '', 0)
+#1 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(550): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(792): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(55): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array)
+#4 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(90): App\Models\SuperAdminModel->countQuery('SELECT COUNT(*)...', Array)
+#5 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(27): App\Models\SuperAdminModel->getAdministrationStats('1')
+#6 C:\xampp\htdocs\mmapuy\app\Controllers\SuperAdminController.php(84): App\Models\SuperAdminModel->getDashboardStats('1')
+#7 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(974): App\Controllers\SuperAdminController->stats()
+#8 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdminController))
+#9 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\mmapuy\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\mmapuy\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\mmapuy\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\xampp\htdocs\mmapuy\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond in C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php:230
+Stack trace:
+#0 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(550): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(792): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(55): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array)
+#3 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(90): App\Models\SuperAdminModel->countQuery('SELECT COUNT(*)...', Array)
+#4 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(27): App\Models\SuperAdminModel->getAdministrationStats('1')
+#5 C:\xampp\htdocs\mmapuy\app\Controllers\SuperAdminController.php(84): App\Models\SuperAdminModel->getDashboardStats('1')
+#6 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(974): App\Controllers\SuperAdminController->stats()
+#7 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdminController))
+#8 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\mmapuy\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\mmapuy\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\mmapuy\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 C:\xampp\htdocs\mmapuy\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+ERROR - 2026-11-12 05:21:29 --> Super Admin Dashboard API Error: Unable to connect to the database.
+Main connection [MySQLi]: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+DEBUG - 2026-11-12 05:21:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 05:21:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-11-12 05:21:47 --> Error connecting to the database: mysqli_sql_exception: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond in C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php:200
+Stack trace:
+#0 C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php(200): mysqli->real_connect('10.88.234.124', 'devadmin', Object(SensitiveParameterValue), 'db_mmapua', 3306, '', 0)
+#1 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(550): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(792): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(55): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array)
+#4 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(90): App\Models\SuperAdminModel->countQuery('SELECT COUNT(*)...', Array)
+#5 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(27): App\Models\SuperAdminModel->getAdministrationStats('1')
+#6 C:\xampp\htdocs\mmapuy\app\Controllers\SuperAdminController.php(84): App\Models\SuperAdminModel->getDashboardStats('1')
+#7 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(974): App\Controllers\SuperAdminController->stats()
+#8 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdminController))
+#9 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\mmapuy\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\mmapuy\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\mmapuy\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\xampp\htdocs\mmapuy\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond in C:\xampp\htdocs\mmapuy\system\Database\MySQLi\Connection.php:230
+Stack trace:
+#0 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(550): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\mmapuy\system\Database\BaseConnection.php(792): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(55): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array)
+#3 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(90): App\Models\SuperAdminModel->countQuery('SELECT COUNT(*)...', Array)
+#4 C:\xampp\htdocs\mmapuy\app\Models\SuperAdminModel.php(27): App\Models\SuperAdminModel->getAdministrationStats('1')
+#5 C:\xampp\htdocs\mmapuy\app\Controllers\SuperAdminController.php(84): App\Models\SuperAdminModel->getDashboardStats('1')
+#6 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(974): App\Controllers\SuperAdminController->stats()
+#7 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SuperAdminController))
+#8 C:\xampp\htdocs\mmapuy\system\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\mmapuy\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\mmapuy\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\mmapuy\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 C:\xampp\htdocs\mmapuy\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+ERROR - 2026-11-12 05:21:47 --> Super Admin Dashboard API Error: Unable to connect to the database.
+Main connection [MySQLi]: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
+DEBUG - 2026-11-12 05:21:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 05:21:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 05:49:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 05:49:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 05:51:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 05:51:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 05:53:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 05:53:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 05:54:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 05:54:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 05:55:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 05:55:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 06:15:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 06:15:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 06:19:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 06:19:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 06:22:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 06:22:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 06:23:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 06:23:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 06:24:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 06:24:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 06:25:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 06:25:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 06:27:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 06:27:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 06:29:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 06:29:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 06:38:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 06:38:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 06:45:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 06:45:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 06:58:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 06:58:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 07:11:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 07:11:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 07:12:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 07:12:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 07:28:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 07:28:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 07:38:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 07:38:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 07:43:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 07:43:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-11-12 07:44:03 --> Super Admin Dashboard API Error: App\Models\SuperAdminModel::getUnattendedFamilies(): Return value must be of type array, string returned
+DEBUG - 2026-11-12 07:44:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 07:44:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-11-12 07:44:20 --> Super Admin Dashboard API Error: App\Models\SuperAdminModel::getUnattendedFamilies(): Return value must be of type array, string returned
+DEBUG - 2026-11-12 07:44:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-12 07:44:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

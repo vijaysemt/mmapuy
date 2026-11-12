@@ -1,20 +1,21 @@
-
 <?php
+
 $userName =
     $user['user_name']
     ?? $user['name']
     ?? $user['mobile']
     ?? $user['depart_dist_mob']
     ?? 'Portal User';
+
 ?>
 
-<header class="admin-header">
+<header class="admin-header d-flex justify-content-between align-items-center bg-white p-3 shadow-sm">
 
-    <div class="header-left">
+    <div class="header-left d-flex align-items-center gap-3">
 
         <?php if (empty($headerOnly)): ?>
 
-            <button class="sidebar-toggle"
+            <button class="sidebar-toggle btn btn-light"
                     id="sidebarToggle"
                     type="button">
 
@@ -24,42 +25,47 @@ $userName =
 
         <?php endif; ?>
 
-        <div class="header-brand">
+        <div class="header-brand fw-bold">
 
-            <i class="bi bi-shield-check"></i>
+            <i class="bi bi-shield-check text-primary"></i>
 
-            <span>
-                Parivar Utthan Portal
-            </span>
+            <span>Parivar Utthan Portal</span>
 
         </div>
 
     </div>
 
 
-    <div class="header-right">
+    <div class="header-right d-flex align-items-center gap-3">
 
-        <div class="header-date">
+        <div class="header-date text-muted">
+
             <i class="bi bi-calendar3"></i>
+
             <?= date('d M Y') ?>
+
         </div>
 
 
         <div class="dropdown">
 
-            <button class="user-profile dropdown-toggle"
+            <button class="user-profile btn btn-light dropdown-toggle"
                     type="button"
                     data-bs-toggle="dropdown">
 
                 <span class="user-avatar">
-                    <?= strtoupper(substr($userName, 0, 1)) ?>
+
+                    <?= esc(strtoupper(substr($userName, 0, 1))) ?>
+
                 </span>
 
                 <span class="user-info">
 
                     <strong><?= esc($userName) ?></strong>
 
-                    <small>Role ID: <?= esc($role) ?></small>
+                    <small class="d-block">
+                        Role ID: <?= esc($role) ?>
+                    </small>
 
                 </span>
 
@@ -69,6 +75,7 @@ $userName =
             <ul class="dropdown-menu dropdown-menu-end">
 
                 <li>
+
                     <a class="dropdown-item"
                        href="<?= site_url('auth/logout') ?>">
 
@@ -76,6 +83,7 @@ $userName =
                         Logout
 
                     </a>
+
                 </li>
 
             </ul>
