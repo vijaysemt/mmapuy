@@ -1,0 +1,24 @@
+DEBUG - 2026-11-16 10:18:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-16 10:18:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-16 10:18:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-11-16 10:18:38 --> [DEPRECATED] Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in APPPATH\Libraries\SmsService.php on line 135.
+ 1 APPPATH\Libraries\SmsService.php(87): App\Libraries\SmsService->post_to_url('https://msdgweb.mgov.gov.in/esms/sendsmsrequestDLT', [...])
+ 2 APPPATH\Libraries\SmsService.php(34): App\Libraries\SmsService->sendSingleSMS('Dear Sir/Madam, Your OTP for Parivar Utthan Survey Portal is 135790. Department of Social Justice and Empowerment, Haryana', '9977777777', '1407162696596023763')
+ 3 APPPATH\Controllers\Auth\AuthController.php(83): App\Libraries\SmsService->sendOtp('9977777777', '135790')
+ 4 SYSTEMPATH\CodeIgniter.php(974): App\Controllers\Auth\AuthController->sendOtp()
+ 5 SYSTEMPATH\CodeIgniter.php(520): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(363): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\mmapuy\\public\\index.php')
+INFO - 2026-11-16 10:18:38 --> SMS HTTP Status: 200
+INFO - 2026-11-16 10:18:38 --> SMS Gateway Response: 402,MsgID = 161120261794824318709haryanait-dsje
+
+INFO - 2026-11-16 10:18:38 --> SMS Gateway Message ID: 161120261794824318709haryanait
+DEBUG - 2026-11-16 10:18:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-16 10:18:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-16 10:18:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-16 10:18:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-16 10:18:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-11-16 10:18:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

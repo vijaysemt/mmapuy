@@ -8,6 +8,59 @@ class SuperAdminModel extends Model
 {
     protected $db;
 
+
+    private const MS_FROM = 'member_schemes ms INNER JOIN district d ON ms.district_id = d.id';
+
+    private const ACTIVE = "ms.member_scheme_active = '1'";
+
+    /** Columns of the family-wise report (order = order of the generated UNION). */
+    private const FAMILY_COLUMNS = [
+        'DistrictCount',
+        'EligibleFamilycount',
+        'FamilySurveyed',
+        'ApplicationsReceived',
+        'Applicationsunattended',
+        'ApplicationsInprogress',
+        'ApplicationsRejected',
+        'ApplicationsSanction',
+        'noscheme',
+        'LoanApplication',
+        'LoanDisbursed',
+        'forwardtobank',
+        'wage_emp',
+        'training',
+        'honorarium',
+        'apporved_no_action',
+        'forwarded_to_bank_no_action',
+    ];
+
+    private const MEMBER_COLUMNS = [
+        'DistrictCount',
+        'FamilyCount',
+        'FamilySurveyed',
+        'MembersSurveyed',
+        'Applicationsunattended',
+        'ApplicationsReceived',
+        'ApplicationsInprogress',
+        'ApplicationsSanction',
+        'ZoneName',
+        'noscheme',
+        'LoanApplication',
+        'LoanDisbursed',
+        'LoanApplicationByDept',
+        'LoanDisbursedByDept',
+        'Rejected_by_dept',
+        'not_interested_by_dept',
+        'apporved_no_action',
+        'wage_emp',
+        'training_given',
+        'honorarium_given',
+        'forwarded_to_bank',
+        'forwarded_to_bank_no_action',
+        'pending_disbursal',
+        'recjeted_by_bank',
+    ];
+
     public function __construct()
     {
         parent::__construct();
@@ -679,7 +732,7 @@ class SuperAdminModel extends Model
     ";
 
         $query = $this->db->query($sql);
-         $row = $query->getRowArray();
+        $row = $query->getRowArray();
         return (int) ($row['totalunatt'] ?? 0);
     }
 
@@ -1243,5 +1296,948 @@ class SuperAdminModel extends Model
     ";
 
         return (int) ($this->db->query($sql)->getRowArray()['total'] ?? 0);
+    }
+
+
+    private function getHighlightStats(string $version): array
+    {
+        return [
+            'joined_hkrn_applications'     => $this->getJoinedHkrnApplications(),
+            'approved_harhit_applications' => $this->getApprovedHarhitApplications(),
+            'npa_marked'                   => $this->getNpaMarkedCount($version),
+        ];
+    }
+
+    //  new cloude code
+    public function getGroupStats(string $group, string $version): array
+    {
+        if (!in_array($version, ['1', '2'], true)) {
+            throw new \InvalidArgumentException('Invalid dashboard version.');
+        }
+
+        return match ($group) {
+            'overview'     => ['administration' => $this->getOverviewStats()],
+            'highlights' => ['administration' => $this->getHighlightStats($version)],
+            'adc'          => ['administration' => $this->getAdcStats($version)],
+            'mela'         => ['melaStats' => [
+                'phase_1' => $this->getMelaStatsPhase1(),
+                'phase_2' => $this->getMelaStatsPhase2(),
+                'phase_3' => $this->getMelaStatsPhase3(),
+                'harhit'  => $this->getHarhitMelaStats(),
+                'phase_4' => $this->getMelaStatsPhase4(),
+            ]],
+            'families'     => ['families'     => $this->getFamilyStats($version)],
+            'members'      => ['members'      => $this->getMemberStats($version)],
+            'applications' => ['applications' => $this->getApplicationStats($version)],
+            'reported'     => ['reported'     => $this->getReportedStats($version)],
+            default        => throw new \InvalidArgumentException('Invalid group.'),
+        };
+    }
+
+    /** Light counts: shown immediately on page load. */
+    private function getOverviewStats(): array
+    {
+        return [
+            'districts'    => 22,
+            'departments'  => $this->countQuery("SELECT COUNT(*) AS total FROM departments_list WHERE `status` = ?", ['1']),
+            'schemes'      => $this->countQuery("SELECT COUNT(*) AS total FROM scheme_list WHERE `status` = ?", ['1']),
+            'formed_zones' => $this->countQuery("SELECT COUNT(*) AS total FROM alloted_zones WHERE district_id != ?", ['25']),
+            'total_zones'  => $this->countQuery("SELECT COUNT(DISTINCT Zonecode) AS total FROM new_masters WHERE DistrictSeccode != ?", ['25']),
+        ];
+    }
+
+    /** ADC submissions + HKRN/Harhit + NPA: heavy, loaded on tab click. */
+    private function getAdcStats(string $version): array
+    {
+        return [
+            'rejection_pending'            => $this->getRejectionRequestCount($version, 1),
+            'rejection_approved'           => $this->getRejectionRequestCount($version, 2),
+            'rejection_disapproved'        => $this->getRejectionRequestCount($version, 3),
+            'not_interested_pending'       => $this->getRejectionRequestCount($version, 1, 5),
+            'not_interested_approved'      => $this->getRejectionRequestCount($version, 2, 5),
+            'not_interested_disapproved'   => $this->getRejectionRequestCount($version, 3, 5),
+        ];
+    }
+
+
+
+
+    // ------------------------------------------------------------------
+    // FAMILY WISE
+    // ------------------------------------------------------------------
+
+    /**
+     * @return list<array<string,mixed>> district rows (sorted) followed by one "Total" row
+     */
+    public function getFamilyWise(string $version = '1'): array
+    {
+        $cond = get_ms_conditions($version);
+        $act  = self::ACTIVE;
+
+        $ms = static fn(string $expr, string $where): array => [
+            'district' => 'd.dist_name',
+            'expr'     => $expr,
+            'from'     => self::MS_FROM,
+            'where'    => $where,
+            'group'    => 'd.dist_name',
+        ];
+
+        // Applications of a family that has no approved / rejected scheme (old "unattended" logic).
+        $unattendedFrom = "(SELECT ms.family_id, ms.district_id, ms.reject_status
+                            FROM member_schemes ms
+                            WHERE NOT EXISTS (
+                                SELECT 1 FROM member_schemes x
+                                WHERE x.family_id = ms.family_id
+                                  AND ((x.member_scheme_active = '1' AND x.noscheme = '0' AND x.reject_status = '1')
+                                       OR x.sent_approve = '1')
+                            )
+                            AND ms.member_scheme_active = '1'
+                            AND ms.noscheme = '0') t
+                           INNER JOIN district d ON t.district_id = d.id";
+
+        $branches = [
+            'DistrictCount' => [
+                'district' => 'd.dist_name',
+                'id'       => 'MAX(d.id)',
+                'expr'     => 'COUNT(*)',
+                'from'     => 'district d',
+                'group'    => 'd.dist_name',
+            ],
+            'EligibleFamilycount' => [
+                'district' => 'p.districtName',
+                'expr'     => 'SUM(p.cnt)',
+                'from'     => $this->eligibleFamiliesFrom(),
+                'group'    => 'p.districtName',
+            ],
+            'FamilySurveyed'       => $ms('COUNT(DISTINCT ms.family_id)', $act),
+            'ApplicationsReceived' => $ms('COUNT(DISTINCT ms.family_id)', "{$act} AND ms.noscheme = '0'"),
+            'Applicationsunattended' => [
+                'district' => 'd.dist_name',
+                'expr'     => 'COUNT(DISTINCT t.family_id)',
+                'from'     => $unattendedFrom,
+                'where'    => "t.reject_status = '0'",
+                'group'    => 'd.dist_name',
+            ],
+            'ApplicationsInprogress' => $ms(
+                'COUNT(DISTINCT ms.family_id)',
+                "NOT EXISTS (SELECT 1 FROM member_schemes x
+                             WHERE x.family_id = ms.family_id
+                               AND x.member_scheme_active = '1'
+                               AND x.sent_approve = '1'
+                               AND x.sention_status = '1')
+                 AND {$act} AND ms.sent_approve = '1' AND ms.sention_status = '0'"
+            ),
+            'ApplicationsRejected' => $ms(
+                'COUNT(DISTINCT ms.family_id)',
+                "NOT EXISTS (SELECT 1 FROM member_schemes x
+                             WHERE x.family_id = ms.family_id
+                               AND x.member_scheme_active = '1'
+                               AND x.reject_status = '0'
+                               AND x.noscheme = '0'
+                               AND (x.sention_status = '1' OR x.sent_approve = '1'))
+                 AND {$act} AND ms.reject_status IN ('1','2') AND ms.noscheme = '0'"
+            ),
+            'ApplicationsSanction' => $ms(
+                'COUNT(DISTINCT ms.family_id)',
+                "{$act} AND ms.sent_approve = '1' AND ms.sention_status = '1'"
+            ),
+            'noscheme' => $ms(
+                'COUNT(DISTINCT ms.family_id)',
+                "NOT EXISTS (SELECT 1 FROM member_schemes dms
+                             WHERE dms.family_id = ms.family_id
+                               AND dms.noscheme = '0'
+                               AND dms.member_scheme_active = '1')
+                 AND {$act} AND ms.noscheme = '1'"
+            ),
+            'LoanApplication' => $ms(
+                'COUNT(DISTINCT ms.family_id)',
+                "ms.radiobuttonStatus {$cond['loan_sanction_in']} AND {$act} AND ms.noscheme = '0'"
+            ),
+            'LoanDisbursed' => $ms(
+                'COUNT(DISTINCT ms.family_id)',
+                "ms.radiobuttonStatus {$cond['loan_disbursed_in']} AND {$act} AND ms.noscheme = '0'"
+            ),
+            'forwardtobank' => $ms(
+                'COUNT(DISTINCT ms.family_id)',
+                "ms.forwarded_to_bank IS NOT NULL AND {$act}"
+            ),
+            'wage_emp' => $ms(
+                'COUNT(DISTINCT ms.family_id)',
+                "{$act} AND ms.sent_approve = '1' AND ms.sention_status = '1'
+                 AND ms.radiobuttonStatus IN ('2','9')"
+            ),
+            'training' => $ms(
+                'COUNT(DISTINCT ms.family_id)',
+                "{$act} AND ms.sent_approve = '1' AND ms.sention_status = '1'
+                 AND (ms.radiobuttonStatus = '4' OR ms.training_honorarium_status = '2')"
+            ),
+            'honorarium' => $ms(
+                'COUNT(DISTINCT ms.family_id)',
+                "{$act} AND ms.sent_approve = '1' AND ms.sention_status = '1'
+                 AND (ms.radiobuttonStatus = '6' OR ms.training_honorarium_status = '3')"
+            ),
+            'apporved_no_action' => $ms(
+                'COUNT(DISTINCT ms.family_id)',
+                "{$act} AND ms.sention_status = '1' AND ms.radiobuttonStatus IS NULL
+                 AND ms.forwarded_to_bank IS NULL"
+            ),
+            'forwarded_to_bank_no_action' => $ms(
+                'COUNT(DISTINCT ms.family_id)',
+                "{$act} AND ms.sention_status = '1' AND ms.radiobuttonStatus IS NULL
+                 AND ms.forwarded_to_bank IS NOT NULL"
+            ),
+        ];
+
+        $rows = $this->runReport(self::FAMILY_COLUMNS, $branches, '');
+
+        return $this->finalise(
+            $rows,
+            self::FAMILY_COLUMNS,
+            static function (array $r): array {
+                $r['pending_disbursal'] = ($r['LoanApplication'] ?? 0) - ($r['LoanDisbursed'] ?? 0);
+
+                // These four columns are shown by the old view but were never calculated
+                // by the old family-wise query. Kept as null so the view prints "—".
+                $r['not_interested_by_dept'] = null;
+                $r['LoanApplicationByDept']  = null;
+                $r['LoanDisbursedByDept']    = null;
+                $r['Rejected_by_bank']       = null;
+
+                return $r;
+            }
+        );
+    }
+
+    /** Eligible families come from four mela tables, grouped by district name. */
+    private function eligibleFamiliesFrom(): string
+    {
+        return "(
+            SELECT fn.districtName AS districtName, COUNT(DISTINCT fn.familyid) AS cnt
+            FROM tbl_mela_schedule_agewise_rec_new fn
+            GROUP BY fn.districtName
+
+            UNION ALL
+            SELECT mf.districtName, COUNT(DISTINCT mf.familyID)
+            FROM march_mela_schedule_eligible_famlies mf
+            GROUP BY mf.districtName
+
+            UNION ALL
+            SELECT mf.districtName, COUNT(DISTINCT mf.familyID)
+            FROM june_mela_scheduling_eligible_famlies_with_venue_copy2 mf
+            WHERE mf.is_ladd = '1' AND mf.is_scheduled = '1'
+            GROUP BY mf.districtName
+
+            UNION ALL
+            SELECT mf.districtName, COUNT(DISTINCT mf.familyID)
+            FROM mela_phase_4_eligible_families mf
+            GROUP BY mf.districtName
+        ) p";
+    }
+
+    // ------------------------------------------------------------------
+    // MEMBER WISE
+    // ------------------------------------------------------------------
+
+    /**
+     * @return list<array<string,mixed>> district rows (sorted) followed by one "Total" row
+     */
+    public function getMemberWise(string $version, int $melaPhase = 0, int $isSsa = 0): array
+    {
+        $verAnd = build_version_condition($version);   // values are intval()'d
+        $cond   = get_ms_conditions($version, $melaPhase);
+        $act    = self::ACTIVE;
+
+        // Version / phase conditions for family_details_new (fn) – same rules as the old code.
+        $verFdn = $verAnd;
+
+        if ($melaPhase > 0) {
+            $verAnd .= " AND ms.mela_phase = {$melaPhase} AND ms.is_ssa = {$isSsa}";
+
+            if ($isSsa !== 0) {
+                $verFdn = " AND is_ssa_pushed = {$isSsa}";
+            } else {
+                $verFdn .= " {$cond['fdn_phase_and']} AND is_ssa_pushed = {$isSsa}";
+            }
+        } else {
+            $verFdn = ' AND ((fn.app_version = 2 AND fn.PHASE IN (14, 16) AND fn.is_ssa_pushed = 0)'
+                . ' OR fn.is_ssa_pushed = 1)';
+        }
+
+        $ms = static fn(string $expr, string $where): array => [
+            'district' => 'd.dist_name',
+            'expr'     => $expr,
+            'from'     => self::MS_FROM,
+            'where'    => $where,
+            'group'    => 'd.dist_name',
+        ];
+
+        $cm = 'COUNT(DISTINCT ms.member_id)';
+
+        $branches = [
+            'DistrictCount' => [
+                'district' => 'd.dist_name',
+                'id'       => 'MAX(d.id)',
+                'expr'     => 'COUNT(*)',
+                'from'     => 'district d',
+                'group'    => 'd.dist_name',
+            ],
+            'FamilyCount' => [
+                'district' => 'fn.districtName',
+                'expr'     => 'COUNT(DISTINCT fn.familyID)',
+                'from'     => 'family_details_new fn',
+                'where'    => "fn.hofName = 'H' {$verFdn}",
+                'group'    => 'fn.districtName',
+            ],
+            'FamilySurveyed' => $ms('COUNT(DISTINCT ms.family_id)', "{$act} {$verAnd}"),
+            'MembersSurveyed' => $ms($cm, "{$act} {$cond['no_schm_and']} {$verAnd}"),
+
+            'ApplicationsReceived' => $ms(
+                $cm,
+                "ms.id IN (SELECT MIN(m.id) FROM member_schemes m
+                           WHERE m.member_scheme_active = '1' AND m.noscheme = '0'
+                           GROUP BY m.member_id)
+                 AND {$act} AND ms.noscheme = '0' {$verAnd}"
+            ),
+
+            'Applicationsunattended' => $ms(
+                $cm,
+                "ms.id IN (SELECT MIN(m.id) FROM member_schemes m
+                           WHERE NOT EXISTS (SELECT 1 FROM member_schemes x
+                                             WHERE x.member_id = m.member_id
+                                               AND x.member_scheme_active = '1'
+                                               AND x.sent_approve = '1')
+                             AND m.member_scheme_active = '1' AND m.noscheme = '0'
+                           GROUP BY m.member_id)
+                 AND {$act} AND ms.sent_approve = '0' AND ms.noscheme = '0'
+                 AND ms.reject_status = '0' {$verAnd}"
+            ),
+
+            'ApplicationsInprogress' => $ms(
+                $cm,
+                "{$act} AND ms.sent_approve = '1' AND ms.sention_status = '0' {$verAnd}"
+            ),
+
+            'ApplicationsSanction' => $ms(
+                $cm,
+                "{$act} AND (ms.sention_status = '1' {$cond['rejected_after_approved_or']}) {$verAnd}"
+            ),
+
+            'ZoneName' => [
+                'district' => 'dname',
+                'expr'     => 'COUNT(DISTINCT Zone)',
+                'from'     => 'new_masters',
+                'group'    => 'dname',
+            ],
+
+            'noscheme' => $ms(
+                $cm,
+                "NOT EXISTS (SELECT 1 FROM member_schemes dms
+                             WHERE dms.member_id = ms.member_id
+                               AND dms.noscheme = '0'
+                               AND dms.member_scheme_active = '1')
+                 AND {$act} AND ms.noscheme = '1' {$verAnd}"
+            ),
+
+            'LoanApplication' => $ms(
+                $cm,
+                "ms.radiobuttonStatus {$cond['loan_sanction_bank_in']}
+                 AND {$act} AND ms.noscheme = '0' {$verAnd}"
+            ),
+            'LoanDisbursed' => $ms(
+                $cm,
+                "ms.radiobuttonStatus {$cond['loan_disbursed_bank_in']}
+                 AND {$act} AND ms.noscheme = '0' {$verAnd}"
+            ),
+
+            // Loan sanctioned / disbursed at department level (mostly dept id 9 and 21)
+            'LoanApplicationByDept' => $ms(
+                $cm,
+                "ms.radiobuttonStatus {$cond['loan_sanction_dept_in']}
+                 AND {$act} AND ms.noscheme = '0' {$verAnd}"
+            ),
+            'LoanDisbursedByDept' => $ms(
+                $cm,
+                "ms.radiobuttonStatus {$cond['loan_disbursed_in_dept']} AND ms.forwarded_to_bank IS NULL
+                 AND {$act} AND ms.noscheme = '0' {$verAnd}"
+            ),
+
+            'Rejected_by_dept' => $ms(
+                $cm,
+                "{$act} AND ms.noscheme = '0' {$cond['rejected']} {$verAnd}"
+            ),
+            'not_interested_by_dept' => $ms(
+                $cm,
+                "{$act} {$cond['rejected_after_approved_and']} {$verAnd}"
+            ),
+
+            'apporved_no_action' => $ms(
+                $cm,
+                "{$act} AND ms.sention_status = '1' AND ms.radiobuttonStatus IS NULL
+                 AND ms.forwarded_to_bank IS NULL {$verAnd}"
+            ),
+            'wage_emp' => $ms(
+                $cm,
+                "{$act} AND ms.sention_status = '1' {$cond['wage_in']} {$verAnd}"
+            ),
+            'training_given' => $ms(
+                $cm,
+                "{$act} AND ms.sention_status = '1' {$cond['training_given']} {$verAnd}"
+            ),
+            'honorarium_given' => $ms(
+                $cm,
+                "{$act} AND ms.sention_status = '1' {$cond['honorarium_given']} {$verAnd}"
+            ),
+
+            'forwarded_to_bank' => $ms(
+                $cm,
+                "{$act} AND ms.noscheme = '0' AND ms.forwarded_to_bank IS NOT NULL
+                 {$cond['excluded_case_from_fwd_bank']} {$verAnd}"
+            ),
+            'forwarded_to_bank_no_action' => $ms(
+                $cm,
+                "{$act} AND ms.sention_status = '1' AND ms.radiobuttonStatus IS NULL
+                 AND ms.forwarded_to_bank IS NOT NULL {$verAnd}"
+            ),
+            'pending_disbursal' => $ms(
+                $cm,
+                "{$act} AND ms.sention_status = '1'
+                 AND ms.radiobuttonStatus {$cond['pending_disbursal_bank_in']} {$verAnd}"
+            ),
+            'recjeted_by_bank' => $ms(
+                $cm,
+                "{$act} AND ms.noscheme = '0' AND ms.forwarded_to_bank IS NOT NULL
+                 {$cond['rejected_after_fwd_to_bank_and']} {$cond['and_not']} {$verAnd}"
+            ),
+        ];
+
+        $rows = $this->runReport(self::MEMBER_COLUMNS, $branches, "WHERE District <> 'TEST DISTRICT'");
+
+        return $this->finalise(
+            $rows,
+            self::MEMBER_COLUMNS,
+            static function (array $r): array {
+                $r['percentage'] = ($r['FamilyCount'] ?? 0) > 0
+                    ? round(($r['FamilySurveyed'] / $r['FamilyCount']) * 100, 2)
+                    : null;
+
+                return $r;
+            }
+        );
+    }
+
+    // ------------------------------------------------------------------
+    // Query builder helpers
+    // ------------------------------------------------------------------
+
+    /**
+     * @param list<string>                $columns
+     * @param array<string,array<string,string>> $branches metric => definition
+     */
+    private function runReport(array $columns, array $branches, string $outerWhere): array
+    {
+        $parts = [];
+
+        foreach ($branches as $metric => $b) {
+            $select = [
+                "{$b['district']} AS District",
+                ($b['id'] ?? 'NULL') . ' AS id',
+            ];
+
+            foreach ($columns as $col) {
+                $select[] = ($col === $metric ? $b['expr'] : '0') . " AS {$col}";
+            }
+
+            $sql = 'SELECT ' . implode(', ', $select) . ' FROM ' . $b['from'];
+
+            if (! empty($b['where'])) {
+                $sql .= ' WHERE ' . $b['where'];
+            }
+
+            $parts[] = $sql . ' GROUP BY ' . $b['group'];
+        }
+
+        $sums = implode(', ', array_map(static fn(string $c): string => "SUM({$c}) AS {$c}", $columns));
+
+        $sql = "SELECT District, MAX(id) AS id, {$sums}
+                FROM (" . implode("\nUNION ALL\n", $parts) . ") tbb
+                {$outerWhere}
+                GROUP BY District";
+
+        return $this->db->query($sql)->getResultArray();
+    }
+
+    /**
+     * Cast numbers, build the Total row (before district 25 is removed, like the old SQL),
+     * hide district 25, sort by name and append Total.
+     *
+     * @param list<string> $columns
+     */
+    private function finalise(array $rows, array $columns, callable $derive): array
+    {
+        $total = ['District' => 'Total', 'id' => ''];
+
+        foreach ($columns as $c) {
+            $total[$c] = 0;
+        }
+
+        foreach ($rows as &$row) {
+            foreach ($columns as $c) {
+                $row[$c]    = (int) ($row[$c] ?? 0);
+                $total[$c] += $row[$c];
+            }
+        }
+        unset($row);
+
+        // District id 25 is never shown (same as the old view).
+        $rows = array_values(array_filter(
+            $rows,
+            static fn(array $r): bool => (string) ($r['id'] ?? '') !== '25'
+        ));
+
+        usort($rows, static fn(array $a, array $b): int => strcasecmp((string) $a['District'], (string) $b['District']));
+
+        $rows   = array_map($derive, $rows);
+        $rows[] = $derive($total);
+
+        return $rows;
+    }
+
+
+
+    private const DEPARTMENT_COLUMNS = [
+        'fwdbank',
+        'applicationreceived',
+        'applicationinprogress',
+        'applicationinrejected',
+        'applicationinnotinterested',
+        'applicationinrejectedbybank',
+        'ApplicationsSanction',
+        'honorariumGivenList',
+        'loanapplication',
+        'trainingapplication',
+        'employmentapplication',
+        'UnattendedAppli',
+        'LoanDisbursed',
+        'LoanApplicationByDept',
+        'LoanDisbursedByDept',
+        'ApplicationsSanction_no_action',
+        'fwdbank_no_action',
+        'pending_disbursal',
+    ];
+
+    /**
+     * @return list<array<string,mixed>> department rows (sorted by name) followed by one "Total" row.
+     *                                   Keys: departmentid, department, + the DEPARTMENT_COLUMNS.
+     */
+    public function getDepartmentWise(string $version, int $melaPhase = 0, int $isSsa = 0): array
+    {
+        $verAnd = build_version_condition($version);   // values are intval()'d
+        $cond   = get_ms_conditions($version);
+        $act    = self::ACTIVE;
+
+        if ($melaPhase > 0) {
+            $verAnd .= " AND ms.mela_phase = {$melaPhase} AND ms.is_ssa = {$isSsa}";
+        }
+
+        $fromDept = 'member_schemes ms INNER JOIN departments_list dl ON ms.newdepart_id = dl.id';
+
+        $dept = static fn(string $where): array => [
+            'district' => 'dl.name',          // runReport() aliases this as "District"; renamed below
+            'id'       => 'MAX(dl.id)',
+            'expr'     => 'COUNT(DISTINCT ms.member_id)',
+            'from'     => $fromDept,
+            'where'    => $where,
+            'group'    => 'dl.name',
+        ];
+
+        $branches = [
+            // every active department, so departments with no applications still appear
+            '_all' => [
+                'district' => 'dl.name',
+                'id'       => 'dl.id',
+                'expr'     => '0',
+                'from'     => 'departments_list dl',
+                'where'    => "dl.status = '1'",
+                'group'    => 'dl.id, dl.name',
+            ],
+
+            'fwdbank' => $dept(
+                "{$act} AND ms.noscheme = '0' AND ms.forwarded_to_bank IS NOT NULL
+             {$cond['excluded_case_from_fwd_bank']} {$verAnd}"
+            ),
+
+            'applicationreceived' => $dept(
+                "ms.id IN (SELECT MIN(m.id) FROM member_schemes m
+                       WHERE m.member_scheme_active = '1' AND m.noscheme = '0'
+                       GROUP BY m.member_id)
+             AND {$act} AND ms.noscheme = '0' {$verAnd}"
+            ),
+
+            'applicationinprogress' => $dept(
+                "{$act} AND ms.sent_approve = '1' AND ms.sention_status = '0' {$verAnd}"
+            ),
+
+            'applicationinrejected' => $dept("{$act} {$cond['rejected']} {$verAnd}"),
+
+            'applicationinnotinterested' => $dept("{$act} {$cond['rejected_after_approved_and']} {$verAnd}"),
+
+            'ApplicationsSanction' => $dept(
+                "{$act} AND (ms.sention_status = '1' {$cond['rejected_after_approved_or']}) {$verAnd}"
+            ),
+
+            'loanapplication' => $dept(
+                "{$act} AND ms.sent_approve = '1' AND ms.sention_status = '1'
+             AND ms.radiobuttonStatus {$cond['loan_sanction_bank_in']} {$verAnd}"
+            ),
+
+            'honorariumGivenList' => $dept(
+                "{$act} AND ms.sent_approve = '1' AND ms.sention_status = '1'
+             {$cond['honorarium_given']} {$verAnd}"
+            ),
+
+            'trainingapplication' => $dept(
+                "{$act} AND ms.sent_approve = '1' AND ms.sention_status = '1'
+             {$cond['training_given']} {$verAnd}"
+            ),
+
+            'employmentapplication' => $dept(
+                "{$act} AND ms.sent_approve = '1' AND ms.sention_status = '1'
+             {$cond['wage_in']} {$verAnd}"
+            ),
+
+            // Old query joined `district` and the "first scheme per member" list; kept the same.
+            'UnattendedAppli' => [
+                'district' => 'dl.name',
+                'id'       => 'MAX(dl.id)',
+                'expr'     => 'COUNT(DISTINCT ms.member_id)',
+                'from'     => $fromDept . ' INNER JOIN district d ON ms.district_id = d.id',
+                'where'    => "ms.id IN (SELECT MIN(m.id) FROM member_schemes m
+                                     WHERE m.member_scheme_active = '1' AND m.noscheme = '0'
+                                     GROUP BY m.member_id)
+                           AND {$act} AND ms.sent_approve = '0' AND ms.reject_status = '0'
+                           AND ms.noscheme = '0' {$verAnd}",
+                'group'    => 'dl.name',
+            ],
+
+            'LoanDisbursed' => $dept(
+                "{$act} AND ms.radiobuttonStatus {$cond['loan_disbursed_bank_in']} {$verAnd}"
+            ),
+
+            // Loan sanctioned / disbursed at department level (mostly dept id 9 and 21)
+            'LoanApplicationByDept' => $dept(
+                "ms.radiobuttonStatus {$cond['loan_sanction_dept_in']}
+             AND {$act} AND ms.noscheme = '0' {$verAnd}"
+            ),
+            'LoanDisbursedByDept' => $dept(
+                "ms.radiobuttonStatus {$cond['loan_disbursed_in_dept']}
+             AND {$act} AND ms.noscheme = '0' {$verAnd}"
+            ),
+
+            'applicationinrejectedbybank' => $dept(
+                "{$act} AND ms.forwarded_to_bank IS NOT NULL
+             {$cond['rejected_after_fwd_to_bank_and']} {$cond['and_not']} {$verAnd}"
+            ),
+
+            'ApplicationsSanction_no_action' => $dept(
+                "{$act} AND ms.sention_status = '1' AND ms.radiobuttonStatus IS NULL
+             AND ms.forwarded_to_bank IS NULL {$verAnd}"
+            ),
+
+            'fwdbank_no_action' => $dept(
+                "{$act} AND ms.sention_status = '1' AND ms.forwarded_to_bank IS NOT NULL
+             AND ms.radiobuttonStatus IS NULL {$verAnd}"
+            ),
+
+            'pending_disbursal' => $dept(
+                "{$act} AND ms.sention_status = '1'
+             AND ms.radiobuttonStatus {$cond['pending_disbursal_bank_in']} {$verAnd}"
+            ),
+        ];
+
+        $rows = $this->runReport(self::DEPARTMENT_COLUMNS, $branches, '');
+
+        // Build output rows with department keys + Total row.
+        $total = ['departmentid' => '', 'department' => 'Total'];
+
+        foreach (self::DEPARTMENT_COLUMNS as $c) {
+            $total[$c] = 0;
+        }
+
+        $out = [];
+
+        foreach ($rows as $r) {
+            $row = [
+                'departmentid' => (string) ($r['id'] ?? ''),
+                'department'   => (string) ($r['District'] ?? ''),
+            ];
+
+            foreach (self::DEPARTMENT_COLUMNS as $c) {
+                $row[$c]    = (int) ($r[$c] ?? 0);
+                $total[$c] += $row[$c];
+            }
+
+            $out[] = $row;
+        }
+
+        usort($out, static fn(array $a, array $b): int => strcasecmp($a['department'], $b['department']));
+
+        $out[] = $total;
+
+        return $out;
+    }
+
+
+
+    private const BANK_COLUMNS = [
+        'Applicationsforwardedtobank',
+        'Applicationsloansanction',
+        'Applicationsloandisbursed',
+        'ApplicationsRejectedbybank',
+        'disbursal_pending',
+        'adc_pending',
+        'ApplicationsPending',          // "No action taken by bank"
+    ];
+
+    private const BRANCH_COLUMNS = [
+        'Applications_forwarded_to_bank',
+        'Applications_loan_sanctioned',
+        'Applications_loan_disbursed',
+        'Applications_Rejected_by_bank',
+        'Applications_forwarded_to_bank_no_action',
+        'Applications_loan_disbursed_no_action',   // "Pending for disbursal"
+        'adc_pending',
+    ];
+
+    /** @return list<array{id:string,dist_name:string}> */
+    public function getDistrictOptions(): array
+    {
+        return $this->db->query('SELECT DISTINCT id, dist_name FROM district ORDER BY dist_name')->getResultArray();
+    }
+
+    /** Version + district + mela phase conditions shared by the bank and branch reports. */
+    private function bankReportConditions(string $version, string $districtId, int $melaPhase, int $isSsa): string
+    {
+        $and = build_version_condition($version, 'ms.app_version');   // intval()'d values
+
+        if ($districtId !== '') {
+            $and .= ' AND ms.district_id = ' . $this->db->escape($districtId);
+        }
+
+        if ($melaPhase > 0) {
+            $and .= " AND ms.mela_phase = {$melaPhase} AND ms.is_ssa = {$isSsa}";
+        }
+
+        return $and;
+    }
+
+    /**
+     * Metric definitions shared by both reports: [column => [expr, where]].
+     * Note: loan sanction / disbursed use COUNT(member_id) (not DISTINCT) exactly like the old SQL.
+     *
+     * @return array<string,array{0:string,1:string}>
+     */
+    private function bankMetrics(array $cond, string $ver, array $names): array
+    {
+        $act = self::ACTIVE;
+        $d   = 'COUNT(DISTINCT ms.member_id)';
+
+        return [
+            $names['fwd'] => [
+                $d,
+                "ms.forwarded_to_bank IS NOT NULL AND {$act} {$cond['excluded_case_from_fwd_bank']} {$ver}"
+            ],
+
+            $names['sanction'] => [
+                'COUNT(ms.member_id)',
+                "{$act} AND ms.sention_status = '1' AND ms.radiobuttonStatus {$cond['loan_sanction_bank_in']} {$ver}"
+            ],
+
+            $names['disbursed'] => [
+                'COUNT(ms.member_id)',
+                "{$act} AND ms.sention_status = '1' AND ms.forwarded_to_bank IS NOT NULL
+             AND ms.radiobuttonStatus {$cond['loan_disbursed_in']} {$ver}"
+            ],
+
+            $names['rejected'] => [
+                $d,
+                "{$act} AND ms.forwarded_to_bank IS NOT NULL {$cond['rejected_after_fwd_to_bank_and']} {$ver}"
+            ],
+
+            $names['pending'] => [
+                $d,
+                "{$act} AND ms.sention_status = '1' AND ms.forwarded_to_bank IS NOT NULL
+             AND ms.radiobuttonStatus {$cond['pending_disbursal_bank_in']} {$ver}"
+            ],
+
+            'adc_pending' => [
+                $d,
+                "{$act} AND ms.is_reject_requesting = '1' AND ms.reject_status = '0'
+             AND ms.forwarded_to_bank IS NOT NULL {$ver}"
+            ],
+
+            $names['no_action'] => [
+                $d,
+                "{$act} AND ms.radiobuttonStatus IS NULL AND ms.sention_status = '1'
+             AND ms.forwarded_to_bank IS NOT NULL {$ver}"
+            ],
+        ];
+    }
+
+// ----------------------------------------------------------------------
+// BANK WISE
+// ----------------------------------------------------------------------
+
+    /**
+     * @return list<array<string,mixed>> bank rows (sorted) + one "Total" row. Keys: id, bankname + BANK_COLUMNS
+     */
+    public function getAplicationsCountBankWise(
+        string $version,
+        string $districtId = '',
+        int $melaPhase = 0,
+        int $isSsa = 0
+    ): array {
+        $cond = get_ms_conditions($version);
+        $ver  = $this->bankReportConditions($version, $districtId, $melaPhase, $isSsa);
+        $from = 'member_schemes ms INNER JOIN m_bank mb ON ms.forwarded_to_bank = mb.id';
+
+        $metrics = $this->bankMetrics($cond, $ver, [
+            'fwd'       => 'Applicationsforwardedtobank',
+            'sanction'  => 'Applicationsloansanction',
+            'disbursed' => 'Applicationsloandisbursed',
+            'rejected'  => 'ApplicationsRejectedbybank',
+            'pending'   => 'disbursal_pending',
+            'no_action' => 'ApplicationsPending',
+        ]);
+
+        $branches = [];
+
+        foreach ($metrics as $column => [$expr, $where]) {
+            $branches[$column] = [
+                'district' => 'mb.Name',          // runReport() aliases this as "District"; renamed below
+                'id'       => 'MAX(mb.id)',
+                'expr'     => $expr,
+                'from'     => $from,
+                'where'    => $where,
+                'group'    => 'mb.Name',
+            ];
+        }
+
+        $rows = $this->runReport(self::BANK_COLUMNS, $branches, '');
+
+        $total = ['id' => '', 'bankname' => 'Total'];
+
+        foreach (self::BANK_COLUMNS as $c) {
+            $total[$c] = 0;
+        }
+
+        $out = [];
+
+        foreach ($rows as $r) {
+            $row = ['id' => (string) ($r['id'] ?? ''), 'bankname' => (string) ($r['District'] ?? '')];
+
+            foreach (self::BANK_COLUMNS as $c) {
+                $row[$c]    = (int) ($r[$c] ?? 0);
+                $total[$c] += $row[$c];
+            }
+
+            $out[] = $row;
+        }
+
+        usort($out, static fn(array $a, array $b): int => strcasecmp($a['bankname'], $b['bankname']));
+        $out[] = $total;
+
+        return $out;
+    }
+
+// ----------------------------------------------------------------------
+// BRANCH WISE
+// ----------------------------------------------------------------------
+
+    /**
+     * One row per bank + branch + district (+ mela phase for version 1 / all versions).
+     *
+     * @return list<array<string,mixed>> rows + one "Total" row.
+     *         Keys: bankname, branch_name, district, mela_phase + BRANCH_COLUMNS
+     */
+    public function getAplicationsCountBranchWise(
+        string $version,
+        string $districtId = '',
+        int $melaPhase = 0,
+        int $isSsa = 0
+    ): array {
+        $cond      = get_ms_conditions($version);
+        $ver       = $this->bankReportConditions($version, $districtId, $melaPhase, $isSsa);
+        $withPhase = $version !== '2';   // same as the old group_by: version 2 has no mela phase column
+
+        $from = "member_schemes ms
+             INNER JOIN m_bank mb ON ms.forwarded_to_bank = mb.id AND is_status = '1'
+             INNER JOIN branch_details_new bdn ON bdn.id = ms.forwarded_to_branch
+             INNER JOIN district d ON d.id = ms.district_id";
+
+        $group = 'mb.Name, bdn.Name, d.dist_name' . ($withPhase ? ', ms.mela_phase' : '');
+
+        $metrics = $this->bankMetrics($cond, $ver, [
+            'fwd'       => 'Applications_forwarded_to_bank',
+            'sanction'  => 'Applications_loan_sanctioned',
+            'disbursed' => 'Applications_loan_disbursed',
+            'rejected'  => 'Applications_Rejected_by_bank',
+            'pending'   => 'Applications_loan_disbursed_no_action',
+            'no_action' => 'Applications_forwarded_to_bank_no_action',
+        ]);
+
+        $parts = [];
+
+        foreach ($metrics as $metric => [$expr, $where]) {
+            $select = [
+                'mb.Name AS bankname',
+                'bdn.Name AS branch_name',
+                'd.dist_name AS district',
+                ($withPhase ? 'ms.mela_phase' : '0') . ' AS mela_phase',
+            ];
+
+            foreach (self::BRANCH_COLUMNS as $col) {
+                $select[] = ($col === $metric ? $expr : '0') . " AS {$col}";
+            }
+
+            $parts[] = 'SELECT ' . implode(', ', $select) . " FROM {$from} WHERE {$where} GROUP BY {$group}";
+        }
+
+        $sums = implode(', ', array_map(
+            static fn(string $c): string => "SUM({$c}) AS {$c}",
+            self::BRANCH_COLUMNS
+        ));
+
+        $sql = "SELECT bankname, branch_name, district, mela_phase, {$sums}
+            FROM (" . implode("\nUNION ALL\n", $parts) . ") t
+            GROUP BY bankname, branch_name, district, mela_phase
+            ORDER BY bankname, branch_name, district, mela_phase";
+
+        $rows = $this->db->query($sql)->getResultArray();
+
+        $total = ['bankname' => 'Total', 'branch_name' => '-', 'district' => '-', 'mela_phase' => '-'];
+
+        foreach (self::BRANCH_COLUMNS as $c) {
+            $total[$c] = 0;
+        }
+
+        foreach ($rows as &$row) {
+            foreach (self::BRANCH_COLUMNS as $c) {
+                $row[$c]    = (int) ($row[$c] ?? 0);
+                $total[$c] += $row[$c];
+            }
+
+            // Old display rule: phases above 4 are shown minus one.
+            if (! $withPhase || $row['mela_phase'] === null) {
+                $row['mela_phase'] = '';
+            } else {
+                $phase             = (int) $row['mela_phase'];
+                $row['mela_phase'] = $phase > 4 ? $phase - 1 : $phase;
+            }
+        }
+        unset($row);
+
+        $rows[] = $total;
+
+        return $rows;
     }
 }

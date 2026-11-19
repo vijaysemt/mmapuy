@@ -2,890 +2,558 @@
 
 <?= $this->section('content') ?>
 
-<div class="dashboard-heading">
+<?php
+/**
+ * Renders one stat card.
+ * $statKey  : data-stat path (null = no number shown)
+ * $url      : if given, the card becomes a link
+ */
+$renderCard = function (
+    string $title,
+    ?string $statKey,
+    string $sub,
+    string $icon,
+    string $color = 'primary',
+    ?string $url = null,
+    string $cardClass = 'mela-card'
+): string {
+    $html  = '<div class="col-xl-3 col-md-6">';
+    if ($url) {
+        $html .= '<a href="' . esc($url) . '" class="dashboard-card-link">';
+    }
+    $html .= '<div class="stat-card ' . $cardClass . '"><div>';
+    $html .= '<span class="stat-title">' . esc($title) . '</span>';
+    if ($statKey) {
+        $html .= '<h3 class="stat-value" data-stat="' . esc($statKey) . '">--</h3>';
+    }
+    if ($sub !== '') {
+        $html .= '<small>' . esc($sub) . '</small>';
+    }
+    $html .= '</div><div class="stat-icon ' . esc($color) . '"><i class="bi ' . esc($icon) . '"></i></div></div>';
+    if ($url) {
+        $html .= '</a>';
+    }
+    return $html . '</div>';
+};
 
+/** Mela card (days + venues) */
+$renderMela = function (
+    string $title,
+    string $daysKey,
+    string $venuesKey,
+    string $icon,
+    string $color,
+    string $url,
+    ?string $staticValue = null
+): string {
+    $days   = $staticValue === null
+        ? '<h3 class="stat-value" data-stat="' . esc($daysKey) . '">--</h3>'
+        : '<h3 class="stat-value">' . esc($staticValue) . '</h3>';
+    $venues = $staticValue === null
+        ? '<strong data-stat="' . esc($venuesKey) . '">--</strong>'
+        : '<strong>' . esc($staticValue) . '</strong>';
+
+    return '<div class="col-xl-3 col-md-6">
+        <a href="' . esc($url) . '" class="dashboard-card-link">
+            <div class="stat-card mela-card">
+                <div>
+                    <span class="stat-title">' . esc($title) . '</span>
+                    ' . $days . '
+                    <small>Total Mela Days</small>
+                    <div class="mt-2">
+                        <span class="stat-subtitle">Total Mela Venues:</span> ' . $venues . '
+                    </div>
+                </div>
+                <div class="stat-icon ' . esc($color) . '"><i class="bi ' . esc($icon) . '"></i></div>
+            </div>
+        </a>
+    </div>';
+};
+?>
+
+<div class="dashboard-heading">
     <div>
         <h2>Welcome to Dashboard</h2>
-
         <p>
             मुख्यमंत्री अंत्योदय परिवार उत्थान योजना
             प्रशासनिक पोर्टल
         </p>
     </div>
+    <!-- Dashboard version selection -->
+    <div class="dashboard-version-switch mb-4">
+        <a href="<?= site_url('super-admin/dashboard?v=1') ?>"
+            class="btn <?= $dashboardVersion === '1' ? 'btn-primary' : 'btn-outline-primary' ?>">
+            MMAPUY 1.0
+        </a>
 
+        <a href="<?= site_url('super-admin/dashboard?v=2') ?>"
+            class="btn <?= $dashboardVersion === '2' ? 'btn-primary' : 'btn-outline-primary' ?>">
+            MMAPUY 2.0
+        </a>
+    </div>
     <div class="dashboard-breadcrumb">
         <i class="bi bi-house"></i>
         Home / Dashboard
     </div>
-
 </div>
 
 
-<!-- Dashboard version selection -->
-
-<div class="dashboard-version-switch mb-4">
-
-    <a href="<?= site_url('super-admin/dashboard?v=1') ?>"
-        class="btn <?= $dashboardVersion === '1' ? 'btn-primary' : 'btn-outline-primary' ?>">
-
-        MMAPUY 1.0
-
-    </a>
-
-    <a href="<?= site_url('super-admin/dashboard?v=2') ?>"
-        class="btn <?= $dashboardVersion === '2' ? 'btn-primary' : 'btn-outline-primary' ?>">
-
-        MMAPUY 2.0
-
-    </a>
-
-</div>
 
 
-<!-- Loading / error message -->
 
-<div id="dashboardMessage" class="alert alert-info">
+<!-- Tabs -->
+<ul class="nav nav-pills dashboard-tabs mb-4" id="dashboardTabs" role="tablist">
 
-    <span class="spinner-border spinner-border-sm me-2"></span>
+    <li class="nav-item">
+        <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#pane-overview"
+            data-group="overview" type="button">Overview</button>
+    </li>
 
-    Loading dashboard statistics...
+    <?php if ($dashboardVersion === '1'): ?>
+        <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pane-adc"
+                data-group="adc" type="button">ADC Submissions</button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pane-mela"
+                data-group="mela" type="button">Mela Phases</button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pane-families"
+                data-group="families" type="button">Families</button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pane-members"
+                data-group="members" type="button">Members</button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pane-applications"
+                data-group="applications" type="button">Applications</button>
+        </li>
+    <?php endif; ?>
 
-</div>
+    <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pane-reported"
+            data-group="reported" type="button">Reported Families</button>
+    </li>
+
+    <?php if ($dashboardVersion === '1'): ?>
+        <!-- Static tab: no data-group, so nothing is loaded from the API -->
+        <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pane-tools"
+                type="button">Reports &amp; Tools</button>
+        </li>
+    <?php endif; ?>
+
+    <li class="ms-auto">
+        <button class="btn btn-outline-secondary btn-sm" id="refreshTab" type="button">
+            <i class="bi bi-arrow-clockwise"></i> Refresh
+        </button>
+    </li>
+</ul>
 
 
-<!-- Administration -->
+<div class="tab-content">
 
-<div class="dashboard-section">
+    <!-- ===================== OVERVIEW ===================== -->
+    <div class="tab-pane fade show active" id="pane-overview" data-pane="overview">
 
-    <h4 class="dashboard-section-title">
-        Administration
-    </h4>
+        <div class="pane-status"></div>
 
-    <div class="row g-4">
+        <div class="dashboard-section section-blue">
 
-        <div class="col-xl-3 col-md-6">
-            <div class="stat-card mela-card">
-                <div>
-                    <span class="stat-title">Districts</span>
-                    <h3 class="stat-value" data-stat="administration.districts">--</h3>
-                    <small>District list</small>
-                </div>
-                <div class="stat-icon primary">
-                    <i class="bi bi-geo-alt"></i>
-                </div>
-            </div>
-        </div>
+            <h4 class="dashboard-section-title">Administration</h4>
 
+            <div class="row g-4">
+                <?= $renderCard('Districts', 'administration.districts', 'District list', 'bi-geo-alt', 'primary', site_url('super-admin/district-report-dashboard?v=' . $dashboardVersion)) ?>
+                <?= $renderCard('Departments', 'administration.departments', 'Active departments', 'bi-building', 'success', site_url('super-admin/department-wise-report?v=' . $dashboardVersion)) ?>
 
-        <div class="col-xl-3 col-md-6">
-            <div class="stat-card mela-card">
-                <div>
-                    <span class="stat-title">Departments</span>
-                    <h3 class="stat-value" data-stat="administration.departments">--</h3>
-                    <small>Active departments</small>
-                </div>
-                <div class="stat-icon success">
-                    <i class="bi bi-building"></i>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-xl-3 col-md-6">
-            <div class="stat-card mela-card">
-                <div>
-                    <span class="stat-title">Schemes</span>
-                    <h3 class="stat-value" data-stat="administration.schemes">--</h3>
-                    <small>Active schemes</small>
-                </div>
-                <div class="stat-icon info">
-                    <i class="bi bi-list-check"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="stat-card mela-card">
-                <div>
-                    <span class="stat-title">Bank</span>
-                    <h3 class="stat-value" data-stat="administration.schemes">--</h3>
-                    <!-- <small>Active schemes</small> -->
-                </div>
-                <div class="stat-icon info">
-                    <i class="bi bi-list-check"></i>
-                </div>
-            </div>
-        </div>
-
-        <?php if ($dashboardVersion === '1'): ?>
-
-            <div class="col-xl-3 col-md-6">
-                <div class="stat-card mela-card">
-                    <div>
-                        <span class="stat-title">Zonal Committees</span>
-                        <h3 class="stat-value">
-                            <span data-stat="administration.formed_zones">--</span>
-                            /
-                            <span data-stat="administration.total_zones">--</span>
-                        </h3>
-                        <small>Formed / Total</small>
+                <?= $renderCard('Bank', 'administration.banks', 'Active banks', 'bi-bank', 'info', site_url('super-admin/bank-dashboard?v=' . $dashboardVersion)) ?>
+                <?= $renderCard('Schemes', 'administration.schemes', 'Active schemes', 'bi-list-check', 'info') ?>
+                <!-- <?php if ($dashboardVersion === '1'): ?>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="stat-card mela-card">
+                            <div>
+                                <span class="stat-title">Zonal Committees</span>
+                                <h3 class="stat-value">
+                                    <span data-stat="administration.formed_zones">--</span>
+                                    /
+                                    <span data-stat="administration.total_zones">--</span>
+                                </h3>
+                                <small>Formed / Total</small>
+                            </div>
+                            <div class="stat-icon warning"><i class="bi bi-diagram-3"></i></div>
+                        </div>
                     </div>
-                    <div class="stat-icon warning">
-                        <i class="bi bi-diagram-3"></i>
+                <?php endif; ?> -->
+            </div>
+
+            <?php if ($dashboardVersion === '1'): ?>
+
+                <!-- Highlights: loaded separately so the rest of Overview appears instantly -->
+                <div data-pane="highlights" class="mt-3">
+                    <div class="pane-status"></div>
+                    <div class="row g-3">
+                        <?= $renderCard('Search Family', null, 'Search family details', 'bi-search', 'primary', base_url('super-admin/search-by-family-id?v=1'), 'navigation-card') ?>
+                        <?= $renderCard('Employment through HKRN', 'administration.joined_hkrn_applications', 'एच.के.आर.एन. के माध्यम से रोजगार', 'bi-briefcase-fill', 'primary', base_url('super-admin/search-by-family-id?v=1'), 'navigation-card') ?>
+                        <?= $renderCard('Harhit Approved Applications', 'administration.approved_harhit_applications', 'हरहित स्वीकृत आवेदन', 'bi-patch-check-fill', 'success', base_url('super-admin/search-by-family-id?v=1'), 'navigation-card') ?>
+                        <?= $renderCard('NPA Mark Count', 'administration.npa_marked', 'NPA marked applications', 'bi-exclamation-triangle', 'warning', null, 'navigation-card') ?>
                     </div>
                 </div>
+
+
+            <?php endif; ?>
+        </div>
+
+        <?php if ($dashboardVersion === '2'): ?>
+            <!-- Developer toolkit - MMAPUY 2.0 -->
+            <div class="dashboard-section section-slate mt-4">
+
+                <h4 class="dashboard-section-title">
+                    <i class="bi bi-code-slash"></i>
+                    Developer Toolkit
+                </h4>
+
+                <p class="text-muted">
+                    Internal utilities for development, configuration and data integration.
+                </p>
+
+                <div class="row g-4">
+                    <div class="col-xl-3 col-md-6">
+                        <a href="<?= site_url('super-admin/constituency-ward-village?v=2') ?>" class="dashboard-tool-card">
+                            <i class="bi bi-geo-alt"></i>
+                            <strong>Constituency Setup</strong>
+                            <small>Manage constituency, ward and village mappings.</small>
+                        </a>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6">
+                        <a href="<?= site_url('super-admin/block-push?v=2') ?>" class="dashboard-tool-card">
+                            <i class="bi bi-cloud-upload"></i>
+                            <strong>Block Push (SSA)</strong>
+                            <small>Internal block-level data push utility.</small>
+                        </a>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6">
+                        <a href="<?= site_url('super-admin/get-ssb-families?v=2') ?>" class="dashboard-tool-card">
+                            <i class="bi bi-database"></i>
+                            <strong>SSA Families Data</strong>
+                            <small>Access the SSA family data utility.</small>
+                        </a>
+                    </div>
+                </div>
             </div>
-
-
-
-
-
-
-
-
         <?php endif; ?>
 
     </div>
 
+
     <?php if ($dashboardVersion === '1'): ?>
-        <div class="row g-3 mt-2">
 
-            <!-- Phase 1 -->
-            <div class="col-xl-3 col-md-6">
-                <a href="<?= base_url('super-admin/mela-dashboard-phase-1'); ?>"
-                    class="dashboard-card-link">
-                    <div class="stat-card mela-card">
-                        <div>
-                            <span class="stat-title">Mela Phase 1</span>
-                            <h3 class="stat-value" data-stat="melaStats.phase_1.dayDate">
-                                0
-                            </h3>
-                            <small>Total Mela Days</small>
+        <!-- ===================== ADC SUBMISSIONS ===================== -->
+        <div class="tab-pane fade" id="pane-adc" data-pane="adc">
 
-                            <div class="mt-2">
-                                <span class="stat-subtitle">Total Mela Venues:</span>
-                                <strong data-stat="melaStats.phase_1.Total">
-                                    0
-                                </strong>
-                            </div>
-                        </div>
+            <div class="pane-status"></div>
 
-                        <div class="stat-icon primary">
-                            <i class="bi bi-calendar-event"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            <div class="dashboard-section section-blue">
 
-            <!-- Phase 2 -->
-            <div class="col-xl-3 col-md-6">
-                <a href="<?= base_url('super-admin/mela-dashboard-phase-2'); ?>"
-                    class="dashboard-card-link">
-                    <div class="stat-card mela-card">
-                        <div>
-                            <span class="stat-title">Mela Phase 2</span>
-                            <h3 class="stat-value" data-stat="melaStats.phase_2.mela_days">
-                                0
-                            </h3>
-                            <small>Total Mela Days</small>
+                <h4 class="dashboard-section-title">ADC Submissions</h4>
 
-                            <div class="mt-2">
-                                <span class="stat-subtitle">Total Mela Venues:</span>
-                                <strong data-stat="melaStats.phase_2.total_mela_venues">
-                                    0
-                                </strong>
-                            </div>
-                        </div>
+                <div class="row g-4">
+                    <?php
+                    $link = base_url('super-admin/search-by-family-id?v=1');
 
-                        <div class="stat-icon success">
-                            <i class="bi bi-calendar-check"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
+                    $adcCards = [
+                        ['Pending for decision regarding approve/disapprove of rejected cases', 'administration.rejection_pending', 'अस्वीकृत मामलों के अनुमोदन/अस्वीकृति के संबंध में निर्णय के लिए लंबित', 'bi-hourglass-split'],
+                        ['Rejected cases approved by ADC', 'administration.rejection_approved', 'एडीसी द्वारा स्वीकृत किये गए अस्वीकृत मामले', 'bi-check-circle-fill'],
+                        ['Rejected cases disapproved by ADC', 'administration.rejection_disapproved', 'एडीसी द्वारा अस्वीकृत किये गए अस्वीकृत मामले', 'bi-x-circle-fill'],
+                        ['Pending for decision regarding approve/disapprove of Not interested cases', 'administration.not_interested_pending', 'अनिच्छुक मामलों को स्वीकृत/अस्वीकृत करने के संबंध में निर्णय हेतु लंबित', 'bi-clock-history'],
+                        ['Not interested cases approved by ADC', 'administration.not_interested_approved', 'एडीसी द्वारा स्वीकृत गैर इच्छुक मामले', 'bi-hand-thumbs-up-fill'],
+                        ['Not interested cases disapproved by ADC', 'administration.not_interested_disapproved', 'एडीसी द्वारा अस्वीकृत मामलों में कोई दिलचस्पी नहीं है', 'bi-hand-thumbs-down-fill'],
+                    ];
+                    ?>
 
-            <!-- Phase 3 -->
-            <div class="col-xl-3 col-md-6">
-                <a href="<?= base_url('super-admin/mela-dashboard-phase-3'); ?>"
-                    class="dashboard-card-link">
-                    <div class="stat-card mela-card">
-                        <div>
-                            <span class="stat-title">Mela Phase 3</span>
-                            <h3 class="stat-value" data-stat="melaStats.phase_3.mela_days">
-                                0
-                            </h3>
-                            <small>Total Mela Days</small>
-
-                            <div class="mt-2">
-                                <span class="stat-subtitle">Total Mela Venues:</span>
-                                <strong data-stat="melaStats.phase_3.total_mela_venues">
-                                    0
-                                </strong>
-                            </div>
-                        </div>
-
-                        <div class="stat-icon warning">
-                            <i class="bi bi-calendar-week"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Harhit Mela -->
-            <div class="col-xl-3 col-md-6">
-                <a href="<?= base_url('super-admin/harhit-mela-dashboard'); ?>"
-                    class="dashboard-card-link">
-                    <div class="stat-card mela-card">
-                        <div>
-                            <span class="stat-title">Harhit Mela</span>
-                            <h3 class="stat-value" data-stat="melaStats.harhit.mela_days">
-                                0
-                            </h3>
-                            <small>Total Mela Days</small>
-
-                            <div class="mt-2">
-                                <span class="stat-subtitle">Total Mela Venues:</span>
-                                <strong data-stat="melaStats.harhit.total_mela_venues">
-                                    0
-                                </strong>
-                            </div>
-                        </div>
-
-                        <div class="stat-icon danger">
-                            <i class="bi bi-shop"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Phase 4 -->
-            <div class="col-xl-3 col-md-6">
-                <a href="<?= base_url('super-admin/mela-dashboard-phase-4?mela_phase=5'); ?>"
-                    class="dashboard-card-link">
-                    <div class="stat-card mela-card">
-                        <div>
-                            <span class="stat-title">Mela Phase 4</span>
-                            <h3 class="stat-value" data-stat="melaStats.phase_4.mela_days">
-                                0
-                            </h3>
-                            <small>Total Mela Days</small>
-
-                            <div class="mt-2">
-                                <span class="stat-subtitle">Total Mela Venues:</span>
-                                <strong data-stat="melaStats.phase_4.total_mela_venues">
-                                    0
-                                </strong>
-                            </div>
-                        </div>
-
-                        <div class="stat-icon primary">
-                            <i class="bi bi-geo-alt"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Phase 5 -->
-            <div class="col-xl-3 col-md-6">
-                <a href="<?= base_url('super-admin/mela-dashboard-phase-4?mela_phase=6'); ?>"
-                    class="dashboard-card-link">
-                    <div class="stat-card mela-card">
-                        <div>
-                            <span class="stat-title">Mela Phase 5</span>
-                            <h3 class="stat-value">1</h3>
-                            <small>Total Mela Days</small>
-
-                            <div class="mt-2">
-                                <span class="stat-subtitle">Total Mela Venues:</span>
-                                <strong>1</strong>
-                            </div>
-                        </div>
-
-                        <div class="stat-icon info">
-                            <i class="bi bi-flag"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-        </div>
-        <div class="row g-3 mt-2">
-
-            <div class="col-xl-3 col-md-6">
-                <a href="<?= base_url('super-admin/search-by-family-id?v=1'); ?>"
-                    class="dashboard-card-link">
-                    <div class="stat-card navigation-card">
-                        <div>
-                            <span class="stat-title">Employment through HKRN</span>
-                             <h3 class="stat-value" data-stat="administration.joined_hkrn_applications">0</h3>
-                            <small>एच.के.आर.एन. के माध्यम से रोजगार</small>
-                        </div>
-                        <div class="stat-icon primary">
-                            <i class="bi bi-briefcase-fill"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-xl-3 col-md-6">
-                <a href="<?= base_url('super-admin/search-by-family-id?v=1'); ?>"
-                    class="dashboard-card-link">
-                    <div class="stat-card navigation-card">
-                        <div>
-                            <span class="stat-title">Harhit Approved Applications</span>
-                             <h3 class="stat-value" data-stat="administration.approved_harhit_applications">0</h3>
-                            <small>हरहित स्वीकृत आवेदन</small>
-                        </div>
-                        <div class="stat-icon primary">
-                            <i class="bi bi-patch-check-fill"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-xl-3 col-md-6">
-                <a href="<?= base_url('super-admin/search-by-family-id?v=1'); ?>"
-                    class="dashboard-card-link">
-                    <div class="stat-card navigation-card">
-                        <div>
-                            <span class="stat-title">Pending for decision regarding approve/disapprove of rejected cases</span>
-                             <h3 class="stat-value" data-stat="administration.rejection_pending">0</h3>
-                            <small>अस्वीकृत मामलों के अनुमोदन/अस्वीकृति के संबंध में निर्णय के लिए लंबित</small>
-                        </div>
-                        <div class="stat-icon primary">
-                            <i class="bi bi-hourglass-split"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <a href="<?= base_url('super-admin/search-by-family-id?v=1'); ?>"
-                    class="dashboard-card-link">
-                    <div class="stat-card navigation-card">
-                        <div>
-                            <span class="stat-title">Rejected cases approved by ADC</span>
-                             <h3 class="stat-value" data-stat="administration.rejection_approved">0</h3>
-                            <small>एडीसी द्वारा स्वीकृत किये गए अस्वीकृत मामले</small>
-                        </div>
-                        <div class="stat-icon primary">
-                            <i class="bi bi-check-circle-fill"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <a href="<?= base_url('super-admin/search-by-family-id?v=1'); ?>"
-                    class="dashboard-card-link">
-                    <div class="stat-card navigation-card">
-                        <div>
-                            <span class="stat-title">Rejected cases disapproved by ADC</span>
-                             <h3 class="stat-value" data-stat="administration.rejection_disapproved">0</h3>
-                            <small>एडीसी द्वारा अस्वीकृत किये गए अस्वीकृत मामले</small>
-                        </div>
-                        <div class="stat-icon primary">
-                            <i class="bi bi-x-circle-fill"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-xl-3 col-md-6">
-                <a href="<?= base_url('super-admin/search-by-family-id?v=1'); ?>"
-                    class="dashboard-card-link">
-                    <div class="stat-card navigation-card">
-                        <div>
-                            <span class="stat-title">Pending for decision regarding approve/disapprove of Not interested cases</span>
-                             <h3 class="stat-value" data-stat="administration.not_interested_pending">0</h3>
-                            <small>अनिच्छुक मामलों को स्वीकृत/अस्वीकृत करने के संबंध में निर्णय हेतु लंबित</small>
-                        </div>
-                        <div class="stat-icon primary">
-                            <i class="bi bi-clock-history"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <a href="<?= base_url('super-admin/search-by-family-id?v=1'); ?>"
-                    class="dashboard-card-link">
-                    <div class="stat-card navigation-card">
-                        <div>
-                            <span class="stat-title">Not interested cases approved by ADC</span>
-                             <h3 class="stat-value" data-stat="administration.not_interested_approved">0</h3>
-                            <small>एडीसी द्वारा स्वीकृत गैर इच्छुक मामले</small>
-                        </div>
-                        <div class="stat-icon primary">
-                            <i class="bi bi-hand-thumbs-up-fill"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xl-3 col-md-6">
-                <a href="<?= base_url('super-admin/search-by-family-id?v=1'); ?>"
-                    class="dashboard-card-link">
-                    <div class="stat-card navigation-card">
-                        <div>
-                            <span class="stat-title">Not interested cases disapproved by ADC</span>
-                             <h3 class="stat-value" data-stat="administration.not_interested_disapproved">0</h3>
-                            <small>एडीसी द्वारा अस्वीकृत मामलों में कोई दिलचस्पी नहीं है</small>
-                        </div>
-                        <div class="stat-icon primary">
-                            <i class="bi bi-hand-thumbs-down-fill"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            
-        </div>
-
-        <div class="row g-3 mt-2">
-
-            <div class="col-xl-3 col-md-6">
-                <a href="<?= base_url('super-admin/search-by-family-id?v=1'); ?>"
-                    class="dashboard-card-link">
-                    <div class="stat-card navigation-card">
-                        <div>
-                            <span class="stat-title">Search Family</span>
-                            <small>Search family details</small>
-                        </div>
-                        <div class="stat-icon primary">
-                            <i class="bi bi-search"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-xl-3 col-md-6">
-                <a href="<?= base_url('super-admin/schemewise-report?v=1'); ?>"
-                    class="dashboard-card-link">
-                    <div class="stat-card navigation-card">
-                        <div>
-                            <span class="stat-title">Reports</span>
-                            <small>Scheme-wise reports</small>
-                        </div>
-                        <div class="stat-icon success">
-                            <i class="bi bi-file-earmark-bar-graph"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-xl-3 col-md-6">
-                <a href="<?= base_url('super-admin/calling-status?v=1'); ?>"
-                    class="dashboard-card-link" >
-                    <div class="stat-card navigation-card">
-                        <div>
-                            <span class="stat-title">Calling Status</span>
-                            <small>View calling progress</small>
-                        </div>
-                        <div class="stat-icon warning">
-                            <i class="bi bi-telephone"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-xl-3 col-md-6">
-                <a href="<?= base_url('super-admin/historical-data'); ?>"
-                    class="dashboard-card-link">
-                    <div class="stat-card navigation-card">
-                        <div>
-                            <span class="stat-title">Historical Data</span>
-                            <small>View historical records</small>
-                        </div>
-                        <div class="stat-icon info">
-                            <i class="bi bi-clock-history"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-xl-3 col-md-6">
-                <a href="<?= base_url('super-admin/docs-requests-dashboard?v=1'); ?>"
-                    class="dashboard-card-link">
-                    <div class="stat-card navigation-card">
-                        <div>
-                            <span class="stat-title">Docs Requests Count</span>
-                            <small>View document requests</small>
-                        </div>
-                        <div class="stat-icon danger">
-                            <i class="bi bi-file-earmark-text"></i>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-xl-3 col-md-6">
-                <div class="stat-card navigation-card">
-                    <div>
-                        <span class="stat-title">NPA Mark Count</span>
-                        <h3 class="stat-value">
-                            <?= esc($dashboardStats['administration']['npa_marked'] ?? 0); ?>
-                        </h3>
-                    </div>
-                    <div class="stat-icon warning">
-                        <i class="bi bi-exclamation-triangle"></i>
-                    </div>
+                    <?php foreach ($adcCards as [$title, $key, $sub, $icon]): ?>
+                        <?= $renderCard($title, $key, $sub, $icon, 'primary', $link, 'navigation-card') ?>
+                    <?php endforeach; ?>
                 </div>
             </div>
+        </div>
 
+
+        <!-- ===================== MELA PHASES ===================== -->
+        <div class="tab-pane fade" id="pane-mela" data-pane="mela">
+
+            <div class="pane-status"></div>
+
+            <div class="dashboard-section section-blue">
+
+                <h4 class="dashboard-section-title">Mela Phases</h4>
+
+                <div class="row g-4">
+                    <?= $renderMela('Mela Phase 1', 'melaStats.phase_1.dayDate', 'melaStats.phase_1.Total', 'bi-calendar-event', 'primary', base_url('super-admin/mela-dashboard-phase-1')) ?>
+                    <?= $renderMela('Mela Phase 2', 'melaStats.phase_2.mela_days', 'melaStats.phase_2.total_mela_venues', 'bi-calendar-check', 'success', base_url('super-admin/mela-dashboard-phase-2')) ?>
+                    <?= $renderMela('Mela Phase 3', 'melaStats.phase_3.mela_days', 'melaStats.phase_3.total_mela_venues', 'bi-calendar-week', 'warning', base_url('super-admin/mela-dashboard-phase-3')) ?>
+                    <?= $renderMela('Harhit Mela', 'melaStats.harhit.mela_days', 'melaStats.harhit.total_mela_venues', 'bi-shop', 'danger', base_url('super-admin/harhit-mela-dashboard')) ?>
+                    <?= $renderMela('Mela Phase 4', 'melaStats.phase_4.mela_days', 'melaStats.phase_4.total_mela_venues', 'bi-geo-alt', 'primary', base_url('super-admin/mela-dashboard-phase-4?mela_phase=5')) ?>
+                    <?= $renderMela('Mela Phase 5', '', '', 'bi-flag', 'info', base_url('super-admin/mela-dashboard-phase-4?mela_phase=6'), '1') ?>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ===================== FAMILIES ===================== -->
+        <div class="tab-pane fade" id="pane-families" data-pane="families">
+
+            <div class="pane-status"></div>
+
+            <div class="dashboard-section section-teal">
+
+                <h4 class="dashboard-section-title">Family Statistics</h4>
+
+                <div class="row g-4">
+                    <?php
+                    $familyCards = [
+                        'eligible_familiess'        => 'Total eligible families (Below 18 and above 60 are excluded)',
+                        'profiled_families'         => 'Total Families Surveyed',
+                        'application_families'      => 'Total families surveyed (forwarded to department)',
+                        'noschemeopted_families'    => 'Families opting for no scheme',
+                        'unattended_families'       => 'Total families unattended',
+                        'inprogress_families'       => 'Applications In Progress',
+                        'sanctioned_families'       => 'Total applications approved',
+                        'forwarded_tobank_families' => 'Total families applications forwarded to bank',
+                        'loan_sanction_families'    => 'Total loan applications sanctioned',
+                        'loan_disbursed_families'   => 'Total loan applications disbursed',
+                        'rejected_family'           => 'Total applications rejected',
+                        'not_interested_family'     => 'Total applications not interested',
+                        'not_trace_family'          => 'Total applications not traceable',
+                        'rejected_bybank_family'    => 'Total applications rejected by bank',
+                        'wage_employment_family'    => 'Total applications of wage employment',
+                        'total_private_sector'      => 'Total job joined private sector employment applications',
+                    ];
+                    ?>
+
+                    <?php foreach ($familyCards as $key => $label): ?>
+                        <?= $renderCard($label, 'families.' . $key, 'MMAPUY 1.0', 'bi-people', 'primary') ?>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ===================== MEMBERS ===================== -->
+        <div class="tab-pane fade" id="pane-members" data-pane="members">
+
+            <div class="pane-status"></div>
+
+            <div class="dashboard-section section-purple">
+
+                <h4 class="dashboard-section-title">Member Statistics</h4>
+
+                <div class="row g-4">
+                    <?php
+                    $memberCards = [
+                        'eligible_members'          => 'Eligible Members',
+                        'profiled_members'          => 'Total Member Surveyed',
+                        'inprogress_members'        => 'Total applications in-progress members',
+                        'unattended_members'        => 'Total members unattended',
+                        'applications_received'     => 'Total members surveyed (forwarded to department)',
+                        'noscheme_members'          => 'Members opting for no scheme',
+                        'sanctioned_members'        => 'Total members applications approved',
+                        'forwarded_to_bank_members' => 'Total members applications forwarded to bank',
+                        'loan_sanction_members'     => 'Total member loan applications sanctioned',
+                        'loan_disbursed_members'    => 'Total member loan applications disbursed',
+                        'rejected_member'           => 'Total members applications rejected',
+                        'not_interested_member'     => 'Total members applications not interested',
+                        'not_trace_member'          => 'Total members applications not traceable',
+                    ];
+                    ?>
+
+                    <?php foreach ($memberCards as $key => $label): ?>
+                        <?= $renderCard($label, 'members.' . $key, 'MMAPUY 1.0', 'bi-person', 'info') ?>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ===================== APPLICATIONS ===================== -->
+        <div class="tab-pane fade" id="pane-applications" data-pane="applications">
+
+            <div class="pane-status"></div>
+
+            <div class="dashboard-section section-slate">
+
+                <h4 class="dashboard-section-title">Application Statistics</h4>
+
+                <div class="row g-4">
+                    <?php
+                    $applicationCards = [
+                        'applications_received'        => 'Applications Received',
+                        'family_applications_received' => 'Family Applications Received',
+                        'no_scheme_families'           => 'Families with No Scheme',
+                    ];
+                    ?>
+
+                    <?php foreach ($applicationCards as $key => $label): ?>
+                        <?= $renderCard($label, 'applications.' . $key, 'MMAPUY 1.0', 'bi-file-earmark-text', 'success') ?>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+
+    <?php endif; ?>
+
+
+    <!-- ===================== REPORTED FAMILIES ===================== -->
+    <div class="tab-pane fade" id="pane-reported" data-pane="reported">
+
+        <div class="pane-status"></div>
+
+        <div class="dashboard-section section-amber">
+
+            <h4 class="dashboard-section-title">Reported Families</h4>
+
+            <div class="row g-4">
+                <?= $renderCard('Income Mismatch', 'reported.income_mismatch', 'Reported families', 'bi-exclamation-triangle', 'warning') ?>
+                <?= $renderCard('Splitted Families', 'reported.splitted_families', 'Reported families', 'bi-diagram-2', 'danger') ?>
+
+                <?php if ($dashboardVersion === '2'): ?>
+                    <?= $renderCard('NPA Marked', 'reported.npa_marked', 'NPA applications', 'bi-bank', 'info') ?>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+
+
+    <?php if ($dashboardVersion === '1'): ?>
+        <!-- ===================== REPORTS & TOOLS (static links) ===================== -->
+        <div class="tab-pane fade" id="pane-tools">
+
+            <div class="dashboard-section section-teal">
+
+                <h4 class="dashboard-section-title">Reports &amp; Tools</h4>
+
+                <div class="row g-4">
+                    <?= $renderCard('Reports', null, 'Scheme-wise reports', 'bi-file-earmark-bar-graph', 'success', base_url('super-admin/schemewise-report?v=1'), 'navigation-card') ?>
+                    <?= $renderCard('Calling Status', null, 'View calling progress', 'bi-telephone', 'warning', base_url('super-admin/calling-status?v=1'), 'navigation-card') ?>
+                    <?= $renderCard('Historical Data', null, 'View historical records', 'bi-clock-history', 'info', base_url('super-admin/historical-data'), 'navigation-card') ?>
+                    <?= $renderCard('Docs Requests Count', null, 'View document requests', 'bi-file-earmark-text', 'danger', base_url('super-admin/docs-requests-dashboard?v=1'), 'navigation-card') ?>
+                </div>
+            </div>
         </div>
     <?php endif; ?>
 
 </div>
 
 
-<?php if ($dashboardVersion === '1'): ?>
-
-    <!-- Family statistics -->
-
-    <div class="dashboard-section mt-4">
-
-        <h4 class="dashboard-section-title">
-            Family Statistics
-        </h4>
-
-        <div class="row g-4">
-
-            <?php
-            $familyCards = [
-                'eligible_familiess' => 'Total eligible families  (Below 18 and above 60 are excluded)',
-                'profiled_families' => 'Total Families Surveyed ',
-                'application_families' => 'Total families surveyed (forwarded to department)',
-                'noschemeopted_families' => 'Families opting for no scheme',
-                'unattended_families' => 'Total families unattended',
-                'inprogress_families' => 'Applications In Progress',
-               
-                'sanctioned_families' => 'Total applications approved',
-                'forwarded_tobank_families' => 'Total families applications forwarded to bank',
-                'loan_sanction_families' => 'Total loan applications sanctioned',
-                'loan_disbursed_families' => 'Total loan applications disbursed',
-                'rejected_family' => 'Total applications rejected',
-                'not_interested_family' => 'Total applications not interested',
-                'not_trace_family' => 'Total applications not traceable',
-                'rejected_bybank_family' => 'Total applications rejected by bank',
-                'wage_employment_family' => 'Total applications of wage employment',
-                'total_private_sector' => 'Total job joined private sector employment applications',
-                
-
-            ];
-            ?>
-
-            <?php foreach ($familyCards as $key => $label): ?>
-
-                <div class="col-xl-3 col-md-6">
-                    <div class="stat-card mela-card">
-                        <div>
-                            <span class="stat-title"><?= esc($label) ?></span>
-                            <h3 class="stat-value" data-stat="families.<?= esc($key) ?>">--</h3>
-                            <small>MMAPUY 1.0</small>
-                        </div>
-                        <div class="stat-icon primary">
-                            <i class="bi bi-people"></i>
-                        </div>
-                    </div>
-                </div>
-
-            <?php endforeach; ?>
-
-        </div>
-    </div>
-
-
-    <!-- Member statistics -->
-
-    <div class="dashboard-section mt-4">
-
-        <h4 class="dashboard-section-title">
-            Member Statistics
-        </h4>
-
-        <div class="row g-4">
-
-            <?php
-            $memberCards = [
-                'eligible_members' => 'Eligible Members',
-                'profiled_members' => 'Total Member Surveyed ',
-
-                'inprogress_members' => 'Total applications in-progress members',
-                'unattended_members' => 'Total members unattended',
-                'applications_received' => 'Total members surveyed (forwarded to department)',
-                'noscheme_members' => 'Members opting for no scheme',
-                'sanctioned_members' => 'Total members applications approved',
-                'forwarded_to_bank_members' => 'Total members applications forwarded to bank',
-                'loan_sanction_members' => 'Total member loan applications sanctioned',
-                'loan_disbursed_members' => 'Total member loan applications disbursed',
-                'rejected_member' => 'Total members applications rejected',
-                'not_interested_member' => 'Total members applications not interested',
-                'not_trace_member' => 'Total members applications not traceable',
-            ];
-            ?>
-
-            <?php foreach ($memberCards as $key => $label): ?>
-
-                <div class="col-xl-3 col-md-6">
-                    <div class="stat-card mela-card">
-                        <div>
-                            <span class="stat-title"><?= esc($label) ?></span>
-                            <h3 class="stat-value" data-stat="members.<?= esc($key) ?>">--</h3>
-                            <small>MMAPUY 1.0</small>
-                        </div>
-                        <div class="stat-icon info">
-                            <i class="bi bi-person"></i>
-                        </div>
-                    </div>
-                </div>
-
-            <?php endforeach; ?>
-
-        </div>
-    </div>
-
-
-    <!-- Application statistics -->
-
-    <div class="dashboard-section mt-4">
-
-        <h4 class="dashboard-section-title">
-            Application Statistics
-        </h4>
-
-        <div class="row g-4">
-
-            <?php
-            $applicationCards = [
-                'applications_received' => 'Applications Received',
-                'family_applications_received' => 'Family Applications Received',
-                'no_scheme_families' => 'Families with No Scheme',
-            ];
-            ?>
-
-            <?php foreach ($applicationCards as $key => $label): ?>
-
-                <div class="col-xl-3 col-md-6">
-                    <div class="stat-card mela-card">
-                        <div>
-                            <span class="stat-title"><?= esc($label) ?></span>
-                            <h3 class="stat-value" data-stat="applications.<?= esc($key) ?>">--</h3>
-                            <small>MMAPUY 1.0</small>
-                        </div>
-                        <div class="stat-icon success">
-                            <i class="bi bi-file-earmark-text"></i>
-                        </div>
-                    </div>
-                </div>
-
-            <?php endforeach; ?>
-
-        </div>
-    </div>
-
-<?php endif; ?>
-
-
-<!-- Reported families -->
-
-<div class="dashboard-section mt-4">
-
-    <h4 class="dashboard-section-title">
-        Reported Families
-    </h4>
-
-    <div class="row g-4">
-
-        <div class="col-xl-3 col-md-6">
-            <div class="stat-card mela-card">
-                <div>
-                    <span class="stat-title">Income Mismatch</span>
-                    <h3 class="stat-value" data-stat="reported.income_mismatch">--</h3>
-                    <small>Reported families</small>
-                </div>
-                <div class="stat-icon warning">
-                    <i class="bi bi-exclamation-triangle"></i>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-xl-3 col-md-6">
-            <div class="stat-card mela-card">
-                <div>
-                    <span class="stat-title">Splitted Families</span>
-                    <h3 class="stat-value" data-stat="reported.splitted_families">--</h3>
-                    <small>Reported families</small>
-                </div>
-                <div class="stat-icon danger">
-                    <i class="bi bi-diagram-2"></i>
-                </div>
-            </div>
-        </div>
-
-
-        <?php if ($dashboardVersion === '2'): ?>
-
-            <div class="col-xl-3 col-md-6">
-                <div class="stat-card mela-card">
-                    <div>
-                        <span class="stat-title">NPA Marked</span>
-                        <h3 class="stat-value" data-stat="reported.npa_marked">--</h3>
-                        <small>NPA applications</small>
-                    </div>
-                    <div class="stat-icon info">
-                        <i class="bi bi-bank"></i>
-                    </div>
-                </div>
-            </div>
-
-        <?php endif; ?>
-
-    </div>
-</div>
-
-
-<!-- Developer toolkit - MMAPUY 2.0 -->
-
-<?php if ($dashboardVersion === '2'): ?>
-
-    <div class="dashboard-section mt-4">
-
-        <h4 class="dashboard-section-title">
-            <i class="bi bi-code-slash"></i>
-            Developer Toolkit
-        </h4>
-
-        <p class="text-muted">
-            Internal utilities for development, configuration and data integration.
-        </p>
-
-        <div class="row g-4">
-
-            <div class="col-xl-3 col-md-6">
-                <a href="<?= site_url('super-admin/constituency-ward-village?v=2') ?>"
-                    class="dashboard-tool-card">
-                    <i class="bi bi-geo-alt"></i>
-                    <strong>Constituency Setup</strong>
-                    <small>Manage constituency, ward and village mappings.</small>
-                </a>
-            </div>
-
-
-            <div class="col-xl-3 col-md-6">
-                <a href="<?= site_url('super-admin/block-push?v=2') ?>"
-                    class="dashboard-tool-card">
-                    <i class="bi bi-cloud-upload"></i>
-                    <strong>Block Push (SSA)</strong>
-                    <small>Internal block-level data push utility.</small>
-                </a>
-            </div>
-
-
-            <div class="col-xl-3 col-md-6">
-                <a href="<?= site_url('super-admin/get-ssb-families?v=2') ?>"
-                    class="dashboard-tool-card">
-                    <i class="bi bi-database"></i>
-                    <strong>SSA Families Data</strong>
-                    <small>Access the SSA family data utility.</small>
-                </a>
-            </div>
-
-        </div>
-    </div>
-
-<?php endif; ?>
-
-
-<!-- API loading JavaScript -->
-
+<!-- API loading JavaScript (lazy loads each tab) -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
 
         const apiUrl = <?= json_encode($statsApiUrl) ?>;
         const version = <?= json_encode($dashboardVersion) ?>;
+        const loginUrl = <?= json_encode(site_url('login')) ?>;
 
-        const messageBox = document.getElementById('dashboardMessage');
+        const loaded = {};
+        let currentGroup = 'overview';
 
-        function formatNumber(value) {
-            return Number(value ?? 0).toLocaleString('en-IN');
+        const formatNumber = v => Number(v ?? 0).toLocaleString('en-IN');
+
+        function getNestedValue(obj, path) {
+            return path.split('.').reduce((cur, key) =>
+                cur && cur[key] !== undefined ? cur[key] : null, obj);
         }
 
-        function getNestedValue(object, path) {
-
-            return path.split('.').reduce(function(current, key) {
-
-                return current && current[key] !== undefined ?
-                    current[key] :
-                    null;
-
-            }, object);
-        }
-
-        function renderStats(data) {
-
-            document.querySelectorAll('[data-stat]').forEach(function(element) {
-
-                const path = element.dataset.stat;
-                const value = getNestedValue(data, path);
-
-                element.textContent = value === null ?
-                    '0' :
-                    formatNumber(value);
-
+        function renderStats(data, scope) {
+            scope.querySelectorAll('[data-stat]').forEach(el => {
+                const value = getNestedValue(data, el.dataset.stat);
+                el.textContent = value === null ? '0' : formatNumber(value);
             });
         }
 
-        async function loadDashboardStats() {
+        function setStatus(pane, type, html) {
+            const box = pane.querySelector('.pane-status');
+            box.innerHTML = html ?
+                `<div class="alert alert-${type} py-2">${html}</div>` :
+                '';
+        }
 
-            messageBox.className = 'alert alert-info';
+        async function loadGroup(group, force = false) {
 
-            messageBox.innerHTML =
-                '<span class="spinner-border spinner-border-sm me-2"></span>' +
-                'Loading dashboard statistics...';
+            if (loaded[group] && !force) return;
+
+            const pane = document.querySelector(`[data-pane="${group}"]`);
+            if (!pane) return;
+
+            pane.classList.add('is-loading');
+            setStatus(pane, 'info',
+                '<span class="spinner-border spinner-border-sm me-2"></span>Loading data...');
 
             try {
+                const url = `${apiUrl}?v=${encodeURIComponent(version)}&group=${group}` +
+                    (force ? '&refresh=1' : '');
 
-                const response = await fetch(
-                    apiUrl + '?v=' + encodeURIComponent(version), {
-                        method: 'GET',
-                        credentials: 'same-origin',
-                        headers: {
-                            'Accept': 'application/json'
-                        }
+                const response = await fetch(url, {
+                    credentials: 'same-origin',
+                    headers: {
+                        'Accept': 'application/json'
                     }
-                );
+                });
 
                 if (response.status === 401) {
-                    window.location.href = <?= json_encode(site_url('login')) ?>;
+                    window.location.href = loginUrl;
                     return;
                 }
 
                 const result = await response.json();
 
                 if (!response.ok || !result.status) {
-                    throw new Error(result.message || 'Unable to load statistics.');
+                    throw new Error(result.message || 'Unable to load data.');
                 }
 
-                renderStats(result.data);
-
-                messageBox.className = 'alert alert-success';
-                messageBox.textContent = 'Dashboard statistics loaded successfully.';
-
-                setTimeout(function() {
-                    messageBox.style.display = 'none';
-                }, 2000);
+                renderStats(result.data, pane);
+                loaded[group] = true;
+                setStatus(pane, '', '');
 
             } catch (error) {
-
                 console.error('Dashboard API error:', error);
 
-                messageBox.className = 'alert alert-danger';
-                messageBox.textContent =
-                    error.message || 'Unable to load dashboard statistics.';
+                setStatus(pane, 'danger',
+                    `${error.message} <button type="button" class="btn btn-sm btn-link p-0 ms-2 retry-btn">Retry</button>`);
 
+                const retry = pane.querySelector('.retry-btn');
+                if (retry) retry.addEventListener('click', () => loadGroup(group, true));
+
+            } finally {
+                pane.classList.remove('is-loading');
             }
         }
 
-        loadDashboardStats();
+        // Load a tab the first time it is shown
+        const refreshBtn = document.getElementById('refreshTab');
 
+        document.querySelectorAll('#dashboardTabs [data-bs-toggle="pill"]').forEach(btn => {
+            btn.addEventListener('shown.bs.tab', () => {
+                currentGroup = btn.dataset.group || null; // static tabs have no group
+                refreshBtn.style.display = currentGroup ? '' : 'none';
+                if (currentGroup) loadGroup(currentGroup);
+            });
+        });
+
+        // Refresh the active tab (bypasses cache)
+        refreshBtn.addEventListener('click', () => {
+            if (!currentGroup) return;
+            loadGroup(currentGroup, true);
+            if (currentGroup === 'overview') loadGroup('highlights', true);
+        });
+
+        // First tab (highlights loads in parallel, only exists in version 1)
+        loadGroup('overview');
+        loadGroup('highlights');
     });
 </script>
 
-
 <?= $this->endSection() ?>
+</document_content>
