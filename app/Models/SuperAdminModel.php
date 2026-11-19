@@ -2240,4 +2240,116 @@ class SuperAdminModel extends Model
 
         return $rows;
     }
+
+
+    public function getSchemeIdsByType(int $type): array
+{
+    $rows = $this->db->query('SELECT id FROM scheme_list WHERE `type` = ?', [$type])->getResultArray();
+
+    return array_map(static fn(array $r): string => (string) $r['id'], $rows);
+}
+
+/**
+ * @param list<string> $schemeIds
+ * @return list<array<string,mixed>> one row per scheme, ordered by applications received
+ */
+public function getSchemeDepartmentWiseReport(array $schemeIds, string $version): array
+{
+    if ($schemeIds === []) {
+        return [];
+    }
+
+    $cond      = get_ms_conditions($version);
+    $verInner  = build_version_condition($version);                    // single-table subqueries
+    $verOuter  = build_version_condition($version, 'ms.app_version');  // main query (has joins)
+    $sent      = "ms.sent_approve = '1' AND ms.sention_status = '1'";
+
+    $count = static fn(string $when): string => "COALESCE(SUM(CASE WHEN {$when} THEN 1 ELSE 0 END), 0)";
+    $caseWhen = static fn(string $whenFragment): string => "COALESCE(SUM(CASE {$whenFragment} THEN 1 ELSE 0 END), 0)";
+
+    $metrics = [
+        'applicationreceived'          => $count('f1.min_id IS NOT NULL'),
+        'UnattendedAppli'              => $count("f2.min_id IS NOT NULL AND ms.sent_approve = '0' AND ms.reject_status = '0'"),
+        'applicationinprogress'        => $count("ms.sent_approve = '1' AND ms.sention_status = '0'"),
+        'ApplicationsSanction'         => $count("ms.sent_approve = '1' AND (ms.sention_status = '1' {$cond['rejected_after_approved_or']})"),
+        'ApplicationsPendingDept'      => $count("{$sent} AND ms.radiobuttonStatus IS NULL AND ms.forwarded_to_bank IS NULL"),
+        'ApplicationsPendingDisburse'  => $count("{$sent} AND ms.radiobuttonStatus {$cond['pending_disbursal_bank_in']}"),
+        'bankpending'                  => $count('ms.forwarded_to_bank IS NOT NULL AND ms.radiobuttonStatus IS NULL'),
+        'applicationinrejected'        => $caseWhen($cond['rejected_when']),
+        'applicationinNotInterested'   => $caseWhen($cond['rejected_after_approved_when']),
+        'applicationinrejectedbybank'  => $caseWhen($cond['rejected_after_fwd_to_bank_when']),
+        'fwdbank'                      => $count('ms.forwarded_to_bank IS NOT NULL'),
+        'loanapplication'              => $count("{$sent} AND ms.radiobuttonStatus {$cond['loan_sanction_bank_in']}"),
+        'LoanDisbursed_1st'            => $count("ms.radiobuttonStatus {$cond['loan_disbursed_bank_in']}"),
+        'employmentapplication'        => $count("{$sent} AND ms.radiobuttonStatus IN ('2','9')"),
+        'trainingcompletedapplication' => $count("{$sent} AND (ms.radiobuttonStatus = '4' OR ms.training_honorarium_status IN ('2'))"),
+        'trainingstartedapplication'   => $count("{$sent} AND ms.training_honorarium_status IN ('1')"),
+        'honorariumGivenList'          => $count("{$sent} AND (ms.radiobuttonStatus = '6' OR ms.training_honorarium_status IN ('3'))"),
+        'purchasing_done_1st'          => $count("{$sent} AND ms.radiobuttonStatus IN ('1','12','13','14','15','16') AND ms.newdepart_id = '4'"),
+        'LoanDisbursed_2nd'            => $count("ms.radiobuttonStatus IN ('15','16')"),
+        'subsidy_released_1st'         => $count("ms.radiobuttonStatus IN ('13','14','15','16')"),
+        'purchasing_done_2nd'          => $count("ms.radiobuttonStatus IN ('14','15','16')"),
+        'subsidy_released_2nd'         => $count("ms.radiobuttonStatus IN ('16')"),
+        'assets_released'              => $count("ms.radiobuttonStatus IN ('17')"),
+        'finial_benefit_given'         => $count("ms.is_final_benefit = '1'"),
+        'job_joined'                   => $count("ms.radiobuttonStatus = '9'"),
+    ];
+
+    $select = [];
+
+    foreach ($metrics as $alias => $expr) {
+        $select[] = "{$expr} AS {$alias}";
+    }
+
+    $placeholders = implode(',', array_fill(0, count($schemeIds), '?'));
+
+    $sql = "SELECT sl.scheme_name,
+                   dl.name AS department_name,
+                   ms.newschm_id,
+                   ms.newdepart_id,
+                   " . implode(",\n                   ", $select) . "
+            FROM member_schemes ms
+
+            LEFT JOIN (
+                SELECT MIN(m.id) AS min_id
+                FROM member_schemes m
+                WHERE m.member_scheme_active = '1' AND m.noscheme = '0' {$verInner}
+                GROUP BY m.member_id
+            ) f1 ON f1.min_id = ms.id
+
+            LEFT JOIN (
+                SELECT MIN(m.id) AS min_id
+                FROM member_schemes m
+                WHERE NOT EXISTS (
+                        SELECT 1 FROM member_schemes x
+                        WHERE x.member_id = m.member_id
+                          AND x.member_scheme_active = '1'
+                          AND x.sent_approve = '1'
+                      )
+                  AND m.member_scheme_active = '1' AND m.noscheme = '0' {$verInner}
+                GROUP BY m.member_id
+            ) f2 ON f2.min_id = ms.id
+
+            INNER JOIN scheme_list sl ON ms.newschm_id = sl.id
+            INNER JOIN departments_list dl ON dl.id = ms.newdepart_id
+
+            WHERE ms.newschm_id IN ({$placeholders})
+              AND ms.member_scheme_active = '1'
+              AND ms.noscheme = '0'
+              {$verOuter}
+
+            GROUP BY ms.newschm_id, ms.newdepart_id, sl.scheme_name, dl.name
+            ORDER BY applicationreceived DESC";
+
+    $rows = $this->db->query($sql, array_values($schemeIds))->getResultArray();
+
+    foreach ($rows as &$row) {
+        foreach (array_keys($metrics) as $alias) {
+            $row[$alias] = (int) ($row[$alias] ?? 0);
+        }
+    }
+    unset($row);
+
+    return $rows;
+}
 }

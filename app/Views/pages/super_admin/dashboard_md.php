@@ -169,7 +169,9 @@ $renderMela = function (
                 <?= $renderCard('Departments', 'administration.departments', 'Active departments', 'bi-building', 'success', site_url('super-admin/department-wise-report?v=' . $dashboardVersion)) ?>
 
                 <?= $renderCard('Bank', 'administration.banks', 'Active banks', 'bi-bank', 'info', site_url('super-admin/bank-dashboard?v=' . $dashboardVersion)) ?>
-                <?= $renderCard('Schemes', 'administration.schemes', 'Active schemes', 'bi-list-check', 'info') ?>
+
+                <?= $renderCard('Scheme Reports', 'administration.schemes', 'Active schemes', 'bi-list-check', 'info', site_url('super-admin/scheme-report-dashboard?v=' . $dashboardVersion)) ?>
+                
                 <!-- <?php if ($dashboardVersion === '1'): ?>
                     <div class="col-xl-3 col-md-6">
                         <div class="stat-card mela-card">

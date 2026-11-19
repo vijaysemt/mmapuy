@@ -322,117 +322,174 @@ class SuperAdminController extends BaseController
 
 
     public function bankDashboard(): string|RedirectResponse
-{
-    if ($redirect = $this->reportGuard()) {
-        return $redirect;
+    {
+        if ($redirect = $this->reportGuard()) {
+            return $redirect;
+        }
+
+        $v = trim((string) $this->request->getGet('v'));
+
+        return view('pages/super_admin/bank_dashboard', $this->reportBaseData() + [
+            'version' => preg_match('/^[12](,[12])?$/', $v) === 1 ? $v : '1',
+        ]);
     }
 
-    $v = trim((string) $this->request->getGet('v'));
+    public function bankWiseReport(): string|RedirectResponse
+    {
+        if ($redirect = $this->reportGuard()) {
+            return $redirect;
+        }
 
-    return view('pages/super_admin/bank_dashboard', $this->reportBaseData() + [
-        'version' => preg_match('/^[12](,[12])?$/', $v) === 1 ? $v : '1',
-    ]);
-}
+        $version    = $this->resolveReportVersion();
+        $districtId = $this->resolveDistrictParam('');          // default: all districts
+        $selected   = (string) $this->request->getGet('mela_phase');
 
-public function aplicationsCountBankWise(): string|RedirectResponse
-{
-    if ($redirect = $this->reportGuard()) {
-        return $redirect;
-    }
+        $common = new CommonModel();
+        $phase  = $common->parseMelaPhaseSelection($selected);
 
-    $version    = $this->resolveReportVersion();
-    $districtId = $this->resolveDistrictParam('');          // default: all districts
-    $selected   = (string) $this->request->getGet('mela_phase');
-
-    $common = new CommonModel();
-    $phase  = $common->parseMelaPhaseSelection($selected);
-
-    $key = sprintf(
-        'rep_bank_%s_%s_%d_%d',
-        str_replace(',', '_', $version),
-        $districtId === '' ? 'all' : $districtId,
-        $phase['mela_phase'],
-        $phase['is_ssa']
-    );
-
-    $rows = $this->cachedReport(
-        $key,
-        fn(): array => $this->dashboardModel->getAplicationsCountBankWise(
-            $version,
-            $districtId,
+        $key = sprintf(
+            'rep_bank_%s_%s_%d_%d',
+            str_replace(',', '_', $version),
+            $districtId === '' ? 'all' : $districtId,
             $phase['mela_phase'],
             $phase['is_ssa']
-        )
-    );
+        );
 
-    return view('pages/super_admin/bank_wise_report', $this->reportBaseData() + [
-        'rows'                => $rows,
-        'version'             => $version,
-        'district_list'       => $this->dashboardModel->getDistrictOptions(),
-        'selected_district'   => (string) $this->request->getGet('d'),
-        'selected_version'    => $this->request->getGet('v') ?? '',
-        'selected_mela_phase' => $selected,
-        'mela_phases'         => $common->getMelaPhases($version),
-    ]);
-}
+        $rows = $this->cachedReport(
+            $key,
+            fn(): array => $this->dashboardModel->getAplicationsCountBankWise(
+                $version,
+                $districtId,
+                $phase['mela_phase'],
+                $phase['is_ssa']
+            )
+        );
 
-public function aplicationsCountBranchWise(): string|RedirectResponse
-{
-    if ($redirect = $this->reportGuard()) {
-        return $redirect;
+        return view('pages/super_admin/bank_wise_report', $this->reportBaseData() + [
+            'rows'                => $rows,
+            'version'             => $version,
+            'district_list'       => $this->dashboardModel->getDistrictOptions(),
+            'selected_district'   => (string) $this->request->getGet('d'),
+            'selected_version'    => $this->request->getGet('v') ?? '',
+            'selected_mela_phase' => $selected,
+            'mela_phases'         => $common->getMelaPhases($version),
+        ]);
     }
 
-    $version    = $this->resolveReportVersion();
-    $districtId = $this->resolveDistrictParam('01');        // old default district is 01
-    $selected   = (string) $this->request->getGet('mela_phase');
+    public function branchWiseReport(): string|RedirectResponse
+    {
+        if ($redirect = $this->reportGuard()) {
+            return $redirect;
+        }
 
-    $common = new CommonModel();
-    $phase  = $common->parseMelaPhaseSelection($selected);
+        $version    = $this->resolveReportVersion();
+        $districtId = $this->resolveDistrictParam('01');        // old default district is 01
+        $selected   = (string) $this->request->getGet('mela_phase');
 
-    $key = sprintf(
-        'rep_branch_%s_%s_%d_%d',
-        str_replace(',', '_', $version),
-        $districtId === '' ? 'all' : $districtId,
-        $phase['mela_phase'],
-        $phase['is_ssa']
-    );
+        $common = new CommonModel();
+        $phase  = $common->parseMelaPhaseSelection($selected);
 
-    $rows = $this->cachedReport(
-        $key,
-        fn(): array => $this->dashboardModel->getAplicationsCountBranchWise(
-            $version,
-            $districtId,
+        $key = sprintf(
+            'rep_branch_%s_%s_%d_%d',
+            str_replace(',', '_', $version),
+            $districtId === '' ? 'all' : $districtId,
             $phase['mela_phase'],
             $phase['is_ssa']
-        )
-    );
+        );
 
-    return view('pages/super_admin/branch_wise_report', $this->reportBaseData() + [
-        'rows'                => $rows,
-        'version'             => $version,
-        'district_list'       => $this->dashboardModel->getDistrictOptions(),
-        'selected_district'   => (string) $this->request->getGet('d'),
-        'selected_version'    => $this->request->getGet('v') ?? '',
-        'selected_mela_phase' => $selected,
-        'mela_phases'         => $common->getMelaPhases($version),
-    ]);
-}
+        $rows = $this->cachedReport(
+            $key,
+            fn(): array => $this->dashboardModel->getAplicationsCountBranchWise(
+                $version,
+                $districtId,
+                $phase['mela_phase'],
+                $phase['is_ssa']
+            )
+        );
 
-/**
- * ?d=all  => '' (all districts); ?d=01 => '01'; missing / invalid => $default.
- */
-private function resolveDistrictParam(string $default): string
-{
-    $d = trim((string) $this->request->getGet('d'));
-
-    if ($d === 'all') {
-        return '';
+        return view('pages/super_admin/branch_wise_report', $this->reportBaseData() + [
+            'rows'                => $rows,
+            'version'             => $version,
+            'district_list'       => $this->dashboardModel->getDistrictOptions(),
+            'selected_district'   => (string) $this->request->getGet('d'),
+            'selected_version'    => $this->request->getGet('v') ?? '',
+            'selected_mela_phase' => $selected,
+            'mela_phases'         => $common->getMelaPhases($version),
+        ]);
     }
 
-    if ($d === '' || $d === '0') {
-        return $default;
+    /**
+     * ?d=all  => '' (all districts); ?d=01 => '01'; missing / invalid => $default.
+     */
+    private function resolveDistrictParam(string $default): string
+    {
+        $d = trim((string) $this->request->getGet('d'));
+
+        if ($d === 'all') {
+            return '';
+        }
+
+        if ($d === '' || $d === '0') {
+            return $default;
+        }
+
+        return preg_match('/^[A-Za-z0-9_-]{1,10}$/', $d) === 1 ? $d : $default;
     }
 
-    return preg_match('/^[A-Za-z0-9_-]{1,10}$/', $d) === 1 ? $d : $default;
-}
+
+
+    private const SCHEME_TYPES = [
+        1 => ['LOAN BASED SCHEMES',                  'ऋण आधारित योजनाएँ',              'bi-cash-coin',        'warning'],
+        2 => ['SKILL DEVELOPMENT BASED SCHEMES',     'कौशल विकास आधारित योजनाएँ',       'bi-mortarboard',      'info'],
+        3 => ['TRAINING CUM LOAN BASED SCHEMES',     'प्रशिक्षण सह ऋण आधारित योजनाएँ',  'bi-journal-check',    'primary'],
+        4 => ['EMPLOYMENT BASED SCHEMES',            'रोजगार आधारित योजनाएँ',           'bi-briefcase',        'success'],
+        5 => ['WAGE EMPLOYMENT BASED SCHEMES',       'वेतन रोज़गार आधारित योजनाएँ',      'bi-wallet2',          'info'],
+        6 => ['Establishment based scheme',          'स्थापना आधारित योजना',            'bi-shop',             'danger'],
+    ];
+
+    /** Opened from the "Schemewise Reports" card on the dashboard. */
+    public function schemeReportDashboard(): string|RedirectResponse
+    {
+        if ($redirect = $this->reportGuard()) {
+            return $redirect;
+        }
+
+        $v = trim((string) $this->request->getGet('v'));
+
+        return view('pages/super_admin/scheme_type_dashboard', $this->reportBaseData() + [
+            'version' => preg_match('/^[12](,[12])?$/', $v) === 1 ? $v : '1',
+            'types'   => self::SCHEME_TYPES,
+        ]);
+    }
+
+    public function schemeWiseReport(): string|RedirectResponse
+    {
+        if ($redirect = $this->reportGuard()) {
+            return $redirect;
+        }
+
+        $version = $this->resolveReportVersion();
+        $type    = (int) $this->request->getGet('type');
+
+        if (! isset(self::SCHEME_TYPES[$type])) {
+            return redirect()->to(site_url('super-admin/scheme-report-dashboard?v=' . $version));
+        }
+
+        $key = sprintf('rep_scheme_%s_%d', str_replace(',', '_', $version), $type);
+
+        $rows = $this->cachedReport(
+            $key,
+            fn(): array => $this->dashboardModel->getSchemeDepartmentWiseReport(
+                $this->dashboardModel->getSchemeIdsByType($type),
+                $version
+            )
+        );
+
+        return view('pages/super_admin/scheme_wise_report', $this->reportBaseData() + [
+            'rows'    => $rows,
+            'version' => $version,
+            'type'    => $type,
+            'title'   => self::SCHEME_TYPES[$type],
+        ]);
+    }
 }

@@ -91,8 +91,11 @@ $routes->group('super-admin', static function ($routes) {
     $routes->get('department-wise-report',    'SuperAdminController::departmentWiseReport');
 
     $routes->get('bank-dashboard',            'SuperAdminController::bankDashboard');
-    $routes->get('bank-wise-report',   'SuperAdminController::aplicationsCountBankWise');
-    $routes->get('branch-wise-report', 'SuperAdminController::aplicationsCountBranchWise');
+    $routes->get('bank-wise-report',   'SuperAdminController::bankWiseReport');
+    $routes->get('branch-wise-report', 'SuperAdminController::branchWiseReport');
+
+    $routes->get('scheme-report-dashboard', 'SuperAdminController::schemeReportDashboard');
+    $routes->get('scheme-wise-report',      'SuperAdminController::schemeWiseReport');
 
 
     $routes->get('search-by-family-id', 'SuperAdminController::searchByFamilyId');
